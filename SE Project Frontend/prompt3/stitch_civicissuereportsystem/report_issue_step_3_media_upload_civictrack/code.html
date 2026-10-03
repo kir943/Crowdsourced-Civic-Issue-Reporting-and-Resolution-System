@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack - Report an Issue: Media Upload</title>
+<!-- Google Fonts: Public Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#283044",
+            "primary-fixed-dim": "#a5c8ff",
+            "inverse-on-surface": "#eef0ff",
+            "secondary": "#1d4ed8",
+            "surface-bright": "#faf8ff",
+            "on-secondary-fixed": "#001551",
+            "tertiary-container": "#2f3d51",
+            "on-secondary-fixed-variant": "#0039b5",
+            "secondary-container": "#4069f2",
+            "on-background": "#131b2e",
+            "secondary-fixed": "#dce1ff",
+            "background": "#faf8ff",
+            "on-primary-container": "#84a9e0",
+            "primary-fixed": "#d4e3ff",
+            "on-primary-fixed": "#001c3a",
+            "outline-variant": "#c3c6d0",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-high": "#e2e7ff",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "surface-container": "#eaedff",
+            "on-surface": "#131b2e",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#0d1c2f",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary": "#19273a",
+            "surface-tint": "#396092",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#43474f",
+            "surface": "#faf8ff",
+            "on-primary-fixed-variant": "#1e4879",
+            "surface-dim": "#d2d9f4",
+            "secondary-fixed-dim": "#b7c4ff",
+            "on-tertiary-container": "#99a8bf",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-variant": "#dae2fd",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#a5c8ff",
+            "primary": "#00274e",
+            "outline": "#737780",
+            "tertiary-fixed": "#d5e3fd",
+            "primary-container": "#0f3d6e",
+            "on-secondary-container": "#fffbff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "gutter-lg": "2rem",
+            "space-sm": "0.5rem",
+            "margin-lg": "3rem",
+            "margin": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "headline-lg": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "body-lg": ["Public Sans"]
+          },
+          "fontSize": {
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "code-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar (from Shared Components JSON) -->
+<header class="bg-surface-container-lowest fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm md:px-margin-lg h-16 border-b border-outline-variant flat no shadows">
+<div class="flex items-center gap-4">
+<button aria-label="Open navigation menu" class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-lg transition-colors duration-150 ease-in-out flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary fill-1" data-icon="account_balance">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">CivicTrack</span>
+</div>
+<div class="hidden lg:flex items-center ml-6 pl-6 border-l border-outline-variant">
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded">INC-2025-08492</span>
+<span class="ml-3 font-label-sm text-label-sm text-on-surface-variant">Public Intake Portal</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button aria-label="Notifications" class="relative p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors duration-150 ease-in-out">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<div class="h-6 w-px bg-outline-variant hidden sm:block"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-label-md text-label-md">
+          MV
+        </div>
+<div class="hidden sm:flex flex-col text-left">
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-none">Marcus Vance</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-none">Badge #PW-4821</span>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- NavigationDrawer (from Shared Components JSON - Active state: Issue Registry) -->
+<aside class="bg-surface-container-low fixed top-0 left-0 h-screen w-72 z-30 flex flex-col pt-16 border-r border-outline-variant flat no shadows hidden md:flex">
+<!-- Profile Header Block -->
+<div class="p-4 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center font-title-md text-title-md font-bold">
+            MV
+          </div>
+<div class="flex flex-col truncate">
+<span class="font-title-md text-title-md text-on-surface font-semibold leading-tight truncate">Marcus Vance</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Department Officer - Public Works</span>
+<span class="font-code-sm text-code-sm text-secondary font-medium">Badge #PW-4821</span>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 p-3 space-y-1 overflow-y-auto">
+<!-- 0: Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 1: Issue Registry (Active - matches reporting an issue journey) -->
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg transition-all duration-150 ease-in-out shadow-sm" href="#">
+<span class="material-symbols-outlined fill-1" data-icon="report_problem">report_problem</span>
+<span class="font-semibold">Issue Registry</span>
+</a>
+<!-- 2: Intake Queue -->
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="inbox">inbox</span>
+<span>Intake Queue</span>
+</a>
+<!-- 3: Department Dispatch -->
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span>Department Dispatch</span>
+</a>
+<!-- 4: Audit Logs -->
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span>Audit Logs</span>
+</a>
+</nav>
+<!-- Institutional Footnote in Drawer -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-low text-on-surface-variant">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase font-semibold tracking-wider">Secured Terminal</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">Dept. of Infrastructure &amp; Civil Works • Server Node 04</p>
+</div>
+</aside>
+<!-- Main Workspace Area -->
+<main class="flex-1 md:ml-72 bg-background min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-10 flex flex-col justify-between">
+<div class="max-w-5xl mx-auto w-full">
+<!-- Breadcrumb & Top Indicator -->
+<div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="hover:text-primary cursor-pointer">Issue Registry</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="hover:text-primary cursor-pointer">File Incident</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-semibold">Incident Intake Wizard</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-1 rounded border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Session ID: <strong class="text-on-surface">CIV-8832-B</strong></span>
+</div>
+</div>
+<!-- Wizard Stepper -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 sm:p-6 mb-6 shadow-sm">
+<div class="grid grid-cols-1 sm:grid-cols-4 gap-4 relative">
+<!-- Step 1: Completed -->
+<div class="flex items-center sm:flex-col lg:flex-row gap-3 relative group">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Step 1</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">Issue Details</span>
+</div>
+<div class="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 w-8 lg:w-12 h-0.5 bg-primary-container"></div>
+</div>
+<!-- Step 2: Completed -->
+<div class="flex items-center sm:flex-col lg:flex-row gap-3 relative">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Step 2</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">Location &amp; Geotag</span>
+</div>
+<div class="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 w-8 lg:w-12 h-0.5 bg-primary-container"></div>
+</div>
+<!-- Step 3: ACTIVE -->
+<div class="flex items-center sm:flex-col lg:flex-row gap-3 relative">
+<div class="w-9 h-9 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 ring-4 ring-secondary/20 shadow">
+<span class="font-headline-sm text-headline-sm font-bold text-sm">3</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Active Step</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">Media &amp; Evidence</span>
+</div>
+<div class="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 w-8 lg:w-12 h-0.5 bg-outline-variant"></div>
+</div>
+<!-- Step 4: Upcoming -->
+<div class="flex items-center sm:flex-col lg:flex-row gap-3 relative opacity-60">
+<div class="w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="font-title-md text-title-md">4</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Step 4</span>
+<span class="font-title-md text-title-md text-on-surface font-normal">Review &amp; Submit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Card Content for Step 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden mb-8">
+<!-- Section Header Block -->
+<div class="px-6 py-5 border-b border-outline-variant flex flex-wrap items-center justify-between gap-3">
+<div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Step 3: Photographic Evidence &amp; Documentation</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Attach authoritative visual evidence to confirm field severity and expedite municipal maintenance dispatch.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded border border-outline-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm">Chain of Custody Preserved</span>
+</div>
+</div>
+<div class="p-6 space-y-6">
+<!-- Amber Dismissible Warning Banner -->
+<div class="bg-[#FFFBEB] border border-[#FDE68A] rounded-lg p-4 flex items-start justify-between gap-3 transition-all duration-200" id="civic-integrity-banner">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[#B45309] fill-1 mt-0.5 text-xl" data-icon="shield">shield</span>
+<div class="pr-2">
+<span class="font-label-md text-label-md text-[#92400E] font-bold block mb-0.5">Warning: Civic Integrity Protocol in effect</span>
+<p class="font-body-md text-body-md text-[#B45309] leading-relaxed">
+                    Submitting fake, altered, or duplicate reports may result in account review and civic point deduction under Municipal Code Section 14-B.
+                  </p>
+</div>
+</div>
+<button aria-label="Dismiss warning banner" class="text-[#B45309] hover:text-[#92400E] hover:bg-[#FEF3C7] p-1.5 rounded transition-colors" onclick="document.getElementById('civic-integrity-banner').remove()">
+<span class="material-symbols-outlined text-lg" data-icon="close">close</span>
+</button>
+</div>
+<!-- Drag-and-drop File Upload Zone -->
+<div class="relative border-2 border-dashed border-secondary/40 hover:border-secondary bg-surface-container-low/40 hover:bg-surface-container-low transition-all duration-200 rounded-xl p-8 text-center cursor-pointer group">
+<input accept=".jpg,.jpeg,.png,.heic" aria-label="Upload incident photos" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" multiple="" type="file"/>
+<div class="flex flex-col items-center justify-center max-w-lg mx-auto">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest border border-outline-variant flex items-center justify-center text-secondary mb-4 shadow-sm group-hover:scale-105 group-hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-on-surface font-semibold mb-1 group-hover:text-secondary transition-colors">
+                  Drag and drop incident photos here, or browse files
+                </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-5">
+                  Supports JPG, PNG, HEIC up to 15MB each (Max 5 photos). EXIF geotag data will be automatically extracted.
+                </p>
+<button class="bg-surface-container-lowest border border-outline-variant hover:border-secondary text-primary font-label-md text-label-md px-5 py-2.5 rounded-lg shadow-sm group-hover:shadow transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-base" data-icon="add_photo_alternate">add_photo_alternate</span>
+                  Select Files from Device
+                </button>
+</div>
+</div>
+<!-- Upload Progress Summary -->
+<div class="pt-2">
+<div class="flex flex-wrap items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-2">
+<span class="flex items-center gap-1.5 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="task_alt">task_alt</span>
+                  3 of 5 photos uploaded · 10.1 MB / 50 MB total
+                </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">2 slots remaining</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 60%"></div>
+</div>
+</div>
+<!-- Uploaded Media Gallery (3 items) -->
+<div class="space-y-3">
+<h3 class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-wide">Attached Evidence Manifest</h3>
+<!-- Item 1 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-surface-container-lowest border border-outline-variant hover:border-secondary/50 rounded-lg gap-4 transition-colors">
+<div class="flex items-center gap-3.5">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0 border border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A gritty high-contrast macro photograph of an asphalt pothole on a municipal roadway with deep fracture lines, exposed aggregate, and sharp concrete edges in harsh morning daylight, presenting a stark civic documentary style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB34JTnyChSBccdqYk-OVI2nYsH9mjgeIaoNWcFNDQx4uK2PRzEbETfgjR-hvhUjSjoczfjso-0A3yNC6jq2kHUdojaBC6gPMvYFEflBfQvc6urmZg97omgZvworwQkafNMOOOEzO66KNwD924CpBc3p__LZG4YznkcySrwvkYTcH9wZNJb6Lzxg3T8LQraXqCEdL0wWLdnmB8em76C8XyxYCWSrcWSQ-60nZu5jq_RfRvFq9FYKJlm"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">IMG_20250518_crater_zoom.jpg</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-code-sm text-code-sm text-on-surface-variant">3.2 MB</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1 bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D] px-2 py-0.5 rounded font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span>
+                        GPS Matched
+                      </span>
+<span class="hidden md:inline-block font-code-sm text-code-sm text-outline">37.7749° N, 122.4194° W</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 border-t sm:border-t-0 pt-2 sm:pt-0 border-surface-container-high">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded transition-colors" title="View Full Preview">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container hover:text-on-error-container rounded transition-colors flex items-center justify-center" title="Remove image">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-surface-container-lowest border border-outline-variant hover:border-secondary/50 rounded-lg gap-4 transition-colors">
+<div class="flex items-center gap-3.5">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0 border border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A wide-angle urban street photography shot depicting an active metropolitan intersection with bright orange traffic safety cones cordoning off a damaged roadway lane against overcast architectural background in documentary style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-ETLpIjEYHZyazHrUp8OEqoKXg3jrGx---daRO1qDlnIzK5PnYadcnHn9WvsfNtux8N58h-gwTthG7YTXNElgr6XdkUsZ9miw5hX5re0Z1lzIzzkcfdjLglGWwjL9IXGxck1kAzWR-YQugMHj_QjL5FQwxQdOOVQ4e8j1jg3ZdZH4fNHBkzxMTHkWCZAhjQavGXSqiNJEZ83b0WGXcmLWBRC--iWUzCuoUXaLNhloUiCiSpCAipLN"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">IMG_20250518_street_view.jpg</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-code-sm text-code-sm text-on-surface-variant">4.1 MB</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1 bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D] px-2 py-0.5 rounded font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span>
+                        GPS Matched
+                      </span>
+<span class="hidden md:inline-block font-code-sm text-code-sm text-outline">37.7751° N, 122.4191° W</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 border-t sm:border-t-0 pt-2 sm:pt-0 border-surface-container-high">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded transition-colors" title="View Full Preview">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container hover:text-on-error-container rounded transition-colors flex items-center justify-center" title="Remove image">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-surface-container-lowest border border-outline-variant hover:border-secondary/50 rounded-lg gap-4 transition-colors">
+<div class="flex items-center gap-3.5">
+<div class="w-16 h-16 rounded overflow-hidden flex-shrink-0 border border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A focused automotive inspection photograph showing severe aluminum wheel rim deformation and curb scuff marks caused by direct road impact, captured with clean studio-grade field lighting in realistic institutional clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiUw-9Fz5QVpXSu39kT_yfq74Qi-vpXZ3_Ekl0WJ-vx2dDSne7NZWpYhurLUTiyKg9RFvx_tzbKBSq79uurZY_x11nnmfWMrZXZTRknuqOc_agsG0Ark7HReVUtzIKc5xVwgwE1Xbzusq1BwH_IvzpLr-dxVv0WkIGEWdI_qZ1fie_wOHXS2-2NSGobzfdtaZRl7ihEzr30_p0nJdttYcf5kDwTvKKxYckKfKF_qoFbWODpwtiF-R7"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">IMG_20250518_rim_dent.jpg</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-code-sm text-code-sm text-on-surface-variant">2.8 MB</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-1 bg-[#FFFBEB] border border-[#FDE68A] text-[#B45309] px-2 py-0.5 rounded font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D97706]"></span>
+                        No Geotag Found
+                      </span>
+<span class="hidden md:inline-block font-code-sm text-code-sm text-outline">EXIF Pending Manual Link</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 border-t sm:border-t-0 pt-2 sm:pt-0 border-surface-container-high">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded transition-colors" title="View Full Preview">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container hover:text-on-error-container rounded transition-colors flex items-center justify-center" title="Remove image">
+<span class="material-symbols-outlined text-lg" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Informational Audit Callout -->
+<div class="bg-surface-container p-4 rounded-lg flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="fingerprint">fingerprint</span>
+<span class="font-body-sm text-body-sm">All uploaded visual evidence is cryptographically stamped with SHA-256 integrity hashes upon transmission.</span>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-primary">ENCRYPTED // FIPS-140-2</span>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant flex flex-col-reverse sm:flex-row items-center justify-between gap-3">
+<button class="w-full sm:w-auto bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container-high hover:border-outline font-label-md text-label-md px-4 py-2 rounded-lg transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-base" data-icon="arrow_back">arrow_back</span>
+              Back to Location
+            </button>
+<div class="w-full sm:w-auto flex items-center gap-3">
+<button class="w-full sm:w-auto bg-primary text-on-primary hover:bg-[#1E40AF] active:bg-[#1E3A8A] font-label-md text-label-md px-6 py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2 shadow" type="button">
+<span>Continue to Review &amp; Submit</span>
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Institutional Footer -->
+<footer class="mt-auto pt-6 border-t border-outline-variant flex flex-col sm:flex-row items-center justify-between text-outline font-body-sm text-body-sm gap-2">
+<div>
+<span>CivicTrack™ Infrastructure Management System • Municipal Services Division</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:underline" href="#">Integrity Standards</a>
+<span>•</span>
+<a class="hover:underline" href="#">Privacy Guidelines</a>
+<span>•</span>
+<a class="hover:underline" href="#">Technical Support</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

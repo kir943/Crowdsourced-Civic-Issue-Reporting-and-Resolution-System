@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack - Civic Issue Stream</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#396092",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#131b2e",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#d4e3ff",
+            "primary": "#00274e",
+            "tertiary": "#19273a",
+            "secondary-container": "#4069f2",
+            "on-surface-variant": "#43474f",
+            "on-tertiary-container": "#99a8bf",
+            "on-primary-fixed": "#001c3a",
+            "surface-variant": "#dae2fd",
+            "tertiary-fixed": "#d5e3fd",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "background": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "on-secondary": "#ffffff",
+            "on-surface": "#131b2e",
+            "surface-container-high": "#e2e7ff",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "on-secondary-fixed": "#001551",
+            "surface-container-low": "#f2f3ff",
+            "on-error": "#ffffff",
+            "primary-container": "#0f3d6e",
+            "surface": "#faf8ff",
+            "secondary-fixed": "#dce1ff",
+            "inverse-on-surface": "#eef0ff",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#b7c4ff",
+            "secondary": "#1d4ed8",
+            "on-secondary-container": "#fffbff",
+            "surface-container-highest": "#dae2fd",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#0039b5",
+            "on-primary-container": "#84a9e0",
+            "inverse-primary": "#a5c8ff",
+            "on-primary-fixed-variant": "#1e4879",
+            "surface-dim": "#d2d9f4",
+            "on-tertiary-fixed": "#0d1c2f",
+            "primary-fixed-dim": "#a5c8ff",
+            "outline-variant": "#c3c6d0",
+            "tertiary-container": "#2f3d51",
+            "outline": "#737780",
+            "surface-container": "#eaedff",
+            "inverse-surface": "#283044",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-sm": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-sm": "1rem",
+            "gutter": "1.5rem",
+            "space-md": "1rem",
+            "gutter-lg": "2rem",
+            "space-xl": "2.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-lg": "3rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "label-md": ["Public Sans"],
+            "headline-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "headline-lg": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "code-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F8FAFC] text-on-surface antialiased font-body-md text-body-md min-h-screen">
+<!-- TopAppBar (Shared Component Implementation) -->
+<header class="fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm md:px-margin-lg h-16 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-space-md">
+<button aria-label="Toggle navigation drawer" class="text-primary hover:bg-surface-container-high transition-colors duration-150 ease-in-out p-space-xs rounded-lg flex items-center justify-center focus:outline-none">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="account_balance">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-extrabold">CivicTrack</span>
+</div>
+<span class="hidden md:inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-low text-primary border border-outline-variant ml-2">
+        MUNICIPAL PUBLIC PORTAL
+      </span>
+</div>
+<!-- Center Quick Stat / District Indicator -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-lg border border-outline-variant text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="pin_drop">pin_drop</span>
+<span>Metropolitan District — <strong class="text-on-surface font-semibold">Ward 4</strong></span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-1"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Live Dispatch Active</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button aria-label="Notifications" class="relative text-primary hover:bg-surface-container-high transition-colors duration-150 ease-in-out p-space-xs rounded-lg flex items-center justify-center focus:outline-none">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<div class="flex items-center gap-2 pl-1">
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="Official municipal portrait of citizen advocate Sarah Jenkins in a professional business attire against an architectural civic center background with soft institutional daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC28Z7TJe-VZa3wGrKfHZY1eSjCekY7H8E32xtCGvX7DommHN8K2n8MVaKNLjOX6MkUzaPqjdLQXtzk3KglAShd21AnwgedfJXR_5isF6dgs8maDU1Wn4QJFdtLVfBWevi2tDybwDlTiZE0_1urZl3cYcpALcV1uJwxbxdku4L4bR3K21ZXsIRP4Xgt-dkFRJ4GLUoZUNxnlLOpPsNRDSymUn6TkQhqO7fvqU8G1KEIIlOcUYGbLmCt"/>
+<div class="hidden xl:flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold leading-tight">Sarah Jenkins</span>
+<span class="font-code-sm text-[10px] text-on-surface-variant leading-tight">Citizen #SJ-9022</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Sidebar Navigation Drawer (CivicTrack NavigationDrawer Implementation) -->
+<aside class="fixed top-0 left-0 h-screen w-72 z-30 flex flex-col pt-16 bg-surface-container-low border-r border-outline-variant">
+<!-- Citizen Profile Header Block -->
+<div class="p-space-md border-b border-outline-variant bg-surface-container-lowest/60">
+<div class="flex items-start gap-space-sm">
+<img class="w-12 h-12 rounded-lg border border-outline-variant object-cover" data-alt="Portrait photograph of Sarah Jenkins displaying her municipal resident credential badge with calm authority in natural daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNmkkV73GWWOEFykleqG_xM5II3AVaeckdy2GJ16XyIXg4Faf5JUIig8C5x_JVpGT5tGP2l5yZAePZulZfgQpYuLrkdE6ywYtoVZ7ZY79jgOR2YsrDLyjUMDWnKwoVWRXyxHZuKJ9DDw-xCNiSZxNvjxa16tX1_1AuZfeabjMUp989trOoR0igaDI7ciwCkrHeRIU-ivtWGlyC-Gtgcw8-XHrFexIROOXF0E8jCvj0CapsQMdRtGsR"/>
+<div class="flex flex-col overflow-hidden">
+<span class="font-title-md text-title-md text-primary font-bold truncate">Sarah Jenkins</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Ward 4 Advisory Member</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded font-code-sm text-[11px] bg-surface-container-high text-primary border border-outline-variant">
+              Badge #W4-RES-104
+            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Items -->
+<div class="flex-1 overflow-y-auto px-3 py-4 space-y-1">
+<!-- Active Tab: Civic Stream -->
+<a class="flex items-center gap-3 px-3 py-2.5 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg shadow-sm transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="stream" style="font-variation-settings: 'FILL' 1;">stream</span>
+<span class="flex-1 font-semibold">Civic Stream</span>
+<span class="px-1.5 py-0.2 bg-white/20 text-white font-code-sm text-[10px] rounded font-bold">LIVE</span>
+</a>
+<!-- Other Destination Tabs matching Citizen Ecosystem -->
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md rounded-lg transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Dashboard Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md rounded-lg transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="report_problem">report_problem</span>
+<span class="flex-1">Report New Issue</span>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="add_circle">add_circle</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md rounded-lg transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="assignment">assignment</span>
+<span>My Submissions</span>
+<span class="px-1.5 py-0.5 bg-surface-container-high text-primary font-code-sm text-[10px] rounded">3</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md rounded-lg transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="fact_check">fact_check</span>
+<span>Ward 4 Audit Logs</span>
+</a>
+<div class="pt-4 pb-1">
+<span class="px-3 font-code-sm text-[11px] font-semibold text-outline tracking-wider uppercase">Institutional Services</span>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md rounded-lg transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+<span>Department Dispatch</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md rounded-lg transition-colors duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="map">map</span>
+<span>Ward GIS Map</span>
+</a>
+</div>
+<!-- Operational System Status Footer -->
+<div class="p-3 border-t border-outline-variant bg-surface-container-lowest">
+<div class="p-2.5 rounded border border-outline-variant bg-surface-container-low text-on-surface-variant space-y-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-primary font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Dispatch Link
+          </span>
+<span class="font-code-sm text-[11px] text-on-surface-variant">ONLINE</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant leading-tight">
+          Public Works SLA Response Time: <strong class="text-primary">2.4h avg</strong>
+</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pl-72 pt-16 min-h-screen">
+<div class="max-w-[1440px] mx-auto p-margin-lg space-y-space-lg">
+<!-- Header Section -->
+<section class="border-b border-outline-variant pb-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 font-code-sm text-[11px] bg-primary text-white font-semibold rounded">OFFICIAL STREAM</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Metro Region #04-Central</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold mt-1 tracking-tight">
+              Civic Issue Stream - Ward 4 &amp; Metropolitan District
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-0.5">
+              Browse, upvote, and track public utility and municipal work orders.
+            </p>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-outline-variant bg-surface-container-lowest text-primary hover:bg-surface-container-high transition-colors text-label-md font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="file_download">file_download</span>
+<span>Export Stream (.CSV)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-container text-white hover:bg-primary transition-colors text-label-md font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span>
+<span>Submit Issue</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Prominent Expanded Filter Bar across the top of the stream -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-space-lg space-y-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="tune">tune</span>
+<span class="font-title-md text-title-md text-primary font-bold">Stream Filters &amp; Parameters</span>
+<span class="text-xs bg-surface-container-high px-2 py-0.5 rounded text-primary font-semibold">Live Queries</span>
+</div>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary font-bold inline-flex items-center gap-1 transition-colors">
+<span>Reset Defaults</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="restart_alt">restart_alt</span>
+</button>
+</div>
+<!-- Row 1: Category filter pill toggles with multi-select buttons -->
+<div class="space-y-1.5">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
+            Category Domain
+          </label>
+<div class="flex flex-wrap items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg text-label-md font-semibold bg-primary text-white border border-primary transition-colors flex items-center gap-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="done">done</span>
+<span>All Categories</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-low text-on-surface hover:bg-surface-container-high border border-outline-variant transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="traffic">traffic</span>
+<span>Roads &amp; Infrastructure</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-low text-on-surface hover:bg-surface-container-high border border-outline-variant transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="water_drop">water_drop</span>
+<span>Water &amp; Sanitation</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-low text-on-surface hover:bg-surface-container-high border border-outline-variant transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="bolt">bolt</span>
+<span>Electricity &amp; Power</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-low text-on-surface hover:bg-surface-container-high border border-outline-variant transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="delete_outline">delete_outline</span>
+<span>Waste Management</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-low text-on-surface hover:bg-surface-container-high border border-outline-variant transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="park">park</span>
+<span>Parks &amp; Public Realm</span>
+</button>
+</div>
+</div>
+<!-- Row 2: Status filter toggles -->
+<div class="space-y-1.5 pt-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
+            Operational Lifecycle Status
+          </label>
+<div class="flex flex-wrap items-center gap-2">
+<!-- All Statuses (Active) -->
+<button class="px-3 py-1.5 rounded-lg text-label-md font-semibold bg-primary text-white border border-primary transition-colors flex items-center gap-2 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+<span>All Statuses</span>
+</button>
+<!-- Reported / Pending (Amber dot) -->
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-lowest text-on-surface hover:bg-[#FFFBEB] border border-outline-variant transition-colors flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#D97706]"></span>
+<span>Reported / Pending</span>
+<span class="font-code-sm text-[11px] text-[#B45309] bg-[#FFFBEB] px-1.5 py-0.2 rounded border border-[#FDE68A]">1</span>
+</button>
+<!-- In Progress (Blue dot) -->
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-lowest text-on-surface hover:bg-[#EFF6FF] border border-outline-variant transition-colors flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#2563EB]"></span>
+<span>In Progress</span>
+<span class="font-code-sm text-[11px] text-[#1D4ED8] bg-[#EFF6FF] px-1.5 py-0.2 rounded border border-[#BFDBFE]">1</span>
+</button>
+<!-- Resolved / Closed (Green dot) -->
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-lowest text-on-surface hover:bg-[#F0FDF4] border border-outline-variant transition-colors flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#16A34A]"></span>
+<span>Resolved / Closed</span>
+<span class="font-code-sm text-[11px] text-[#15803D] bg-[#F0FDF4] px-1.5 py-0.2 rounded border border-[#BBF7D0]">1</span>
+</button>
+<!-- Rejected / Closed (Red dot) -->
+<button class="px-3 py-1.5 rounded-lg text-label-md font-medium bg-surface-container-lowest text-on-surface hover:bg-[#FEF2F2] border border-outline-variant transition-colors flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#DC2626]"></span>
+<span>Rejected / Closed</span>
+<span class="font-code-sm text-[11px] text-[#B91C1C] bg-[#FEF2F2] px-1.5 py-0.2 rounded border border-[#FECACA]">1</span>
+</button>
+</div>
+</div>
+<!-- Row 3: Controls row: Search by location or keyword, Sort Dropdown, and Clear All Filters -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm pt-2 border-t border-outline-variant/80 items-center">
+<div class="md:col-span-6 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg text-on-surface font-body-md text-body-md focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:outline-none" placeholder="Search by street name, ticket ID, or issue description..." type="text" value="Ward 4 &amp; Metropolitan District"/>
+</div>
+<div class="md:col-span-4 flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap">Sort Order:</span>
+<div class="relative w-full">
+<select class="w-full appearance-none pl-3 pr-8 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg text-on-surface font-label-md text-label-md font-medium focus:border-secondary focus:ring-2 focus:ring-secondary/20 focus:outline-none cursor-pointer">
+<option selected="" value="most_upvoted">Sort: Most Upvoted</option>
+<option value="newest_first">Newest First</option>
+<option value="highest_priority">Highest Priority</option>
+<option value="recently_updated">Recently Updated</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="px-3 py-2 text-label-md font-semibold text-error hover:bg-error-container/40 rounded-lg transition-colors inline-flex items-center gap-1 focus:outline-none">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_alt_off">filter_alt_off</span>
+<span>Clear All Filters</span>
+</button>
+</div>
+</div>
+<!-- Active Filters Summary Banner -->
+<div class="bg-surface-container-low px-4 py-2.5 rounded-lg border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-label-md text-label-md text-primary font-semibold">
+              Showing 4 issues matching filters in Ward 4
+            </span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">— Verified public service data</span>
+</div>
+<div class="flex items-center gap-3 font-code-sm text-[12px] text-on-surface-variant">
+<span>Auto-refresh: <strong>30s</strong></span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+</div>
+</div>
+</section>
+<!-- 4 Distinct Issue Cards Displayed Side-by-Side in Responsive Asymmetric Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Card 1: Status REPORTED -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Block with Lifecycle Status & Priority -->
+<div class="p-space-md border-b border-[#F1F5F9] bg-[#FAF8FF]/40 flex items-start justify-between gap-2">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Status Pill Amber/Pending -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-label-sm font-semibold bg-[#FFFBEB] border border-[#FDE68A] text-[#B45309]">
+<span class="w-2 h-2 rounded-full bg-[#D97706]"></span>
+                  REPORTED - PENDING TRIAGE
+                </span>
+<!-- Priority: Critical -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-bold bg-[#FEF2F2] border border-[#FECACA] text-[#DC2626]">
+<span class="material-symbols-outlined text-[14px]" data-icon="priority_high">priority_high</span>
+                  Priority: Critical
+                </span>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Reported 45m ago</span>
+</div>
+<!-- Content Area -->
+<div class="p-space-md space-y-space-sm">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="water_drop">water_drop</span>
+<span class="font-semibold text-primary">Category: Water &amp; Sanitation</span>
+<span>•</span>
+<span class="font-code-sm">ID: #WR-8491</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-primary font-bold tracking-tight hover:text-secondary cursor-pointer">
+                Open Manhole Hazard near Elm St School
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Cast-iron storm drain access cover displaced following heavy rain. Severe vehicle puncture risk and hazard for pedestrians directly across pedestrian crossing gate.
+              </p>
+<!-- Location Tag -->
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="location_on">location_on</span>
+<span>240 Elm Street (North Crosswalk facing Public School #9)</span>
+</div>
+<!-- Citizen Confirmation Metric -->
+<div class="p-2.5 rounded bg-surface-container-low border border-outline-variant/60 flex items-center justify-between">
+<div class="flex items-center gap-2 text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="group">group</span>
+<span class="font-semibold">32 citizens confirmed this</span>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Triage Tier 1</span>
+</div>
+</div>
+</div>
+<!-- Card Actions Footer -->
+<div class="px-space-md py-3 bg-[#F8FAFC] border-t border-outline-variant flex items-center justify-between">
+<!-- Upvote Button -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-high text-primary font-label-md text-label-md font-bold transition-colors">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="arrow_upward">arrow_upward</span>
+<span>48 Upvotes</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-white hover:bg-primary font-label-md text-label-md font-semibold transition-colors flex items-center gap-1">
+<span>View Ticket Details</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Status IN PROGRESS -->
+<article class="bg-surface-container-lowest rounded-xl border border-secondary/30 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between overflow-hidden ring-1 ring-secondary/20">
+<div>
+<!-- Header Block with Lifecycle Status & Priority -->
+<div class="p-space-md border-b border-[#F1F5F9] bg-[#EFF6FF]/40 flex items-start justify-between gap-2">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Status Pill Blue -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-label-sm font-semibold bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8]">
+<span class="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span>
+                  IN PROGRESS - CREW DISPATCHED
+                </span>
+<!-- Priority: High Priority -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-bold bg-[#FFF7ED] border border-[#FFEDD5] text-[#C2410C]">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+                  Priority: High Priority
+                </span>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Updated 2h ago</span>
+</div>
+<!-- Content Area -->
+<div class="p-space-md space-y-space-sm">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="bolt">bolt</span>
+<span class="font-semibold text-primary">Category: Electricity &amp; Lighting</span>
+<span>•</span>
+<span class="font-code-sm">ID: #EL-4109</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-primary font-bold tracking-tight hover:text-secondary cursor-pointer">
+                Traffic Signal Array Failure at 8th &amp; Broad
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Four-way flashing red cycle triggered by control module power surge. Department of Transportation field engineer dispatched for cabinet diagnostic and manual override.
+              </p>
+<!-- Location Tag -->
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="location_on">location_on</span>
+<span>Intersection of 8th Avenue &amp; Broad Street</span>
+</div>
+<!-- Citizen Confirmation Metric -->
+<div class="p-2.5 rounded bg-[#EFF6FF]/60 border border-[#BFDBFE] flex items-center justify-between">
+<div class="flex items-center gap-2 text-[#1D4ED8] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="local_shipping">local_shipping</span>
+<span class="font-semibold">19 citizens confirmed this • Unit #4 en route</span>
+</div>
+<span class="font-code-sm text-[11px] text-[#1D4ED8] font-bold">ETA 18m</span>
+</div>
+</div>
+</div>
+<!-- Card Actions Footer -->
+<div class="px-space-md py-3 bg-[#F8FAFC] border-t border-outline-variant flex items-center justify-between">
+<!-- Upvoted Button (Active State) -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-secondary bg-secondary text-white font-label-md text-label-md font-bold transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_upward" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+<span>36 Upvoted</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="engineering">engineering</span>
+<span>View Work Order</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3: Status RESOLVED -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Block with Lifecycle Status & Priority -->
+<div class="p-space-md border-b border-[#F1F5F9] bg-[#F0FDF4]/50 flex items-start justify-between gap-2">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Status Pill Green -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-label-sm font-semibold bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D]">
+<span class="w-2 h-2 rounded-full bg-[#16A34A]"></span>
+                  RESOLVED - VERIFIED
+                </span>
+<!-- Priority: Routine -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-semibold bg-surface-container-low border border-outline-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                  Priority: Routine
+                </span>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Closed 4h ago</span>
+</div>
+<!-- Content Area -->
+<div class="p-space-md space-y-space-sm">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="traffic">traffic</span>
+<span class="font-semibold text-primary">Category: Roads &amp; Infrastructure</span>
+<span>•</span>
+<span class="font-code-sm">ID: #RD-2830</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-primary font-bold tracking-tight hover:text-secondary cursor-pointer">
+                Asphalt Pothole Filled &amp; Sealed on 3rd Ave
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Extensive 4-inch deep road cavitation patched using cold-pour binder and asphalt hot-mix compactor. Roadway fully reopened with thermal sealant barrier applied.
+              </p>
+<!-- Location Tag -->
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="location_on">location_on</span>
+<span>Third Avenue, between Pine &amp; Maple Streets</span>
+</div>
+<!-- Citizen Confirmation Metric -->
+<div class="p-2.5 rounded bg-[#F0FDF4]/70 border border-[#BBF7D0] flex items-center justify-between">
+<div class="flex items-center gap-2 text-[#15803D] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+<span class="font-semibold">45 citizens confirmed this • Resolution photo attached</span>
+</div>
+<span class="font-code-sm text-[11px] text-[#15803D] font-bold">Sign-off: PW-Crew #12</span>
+</div>
+</div>
+</div>
+<!-- Card Actions Footer -->
+<div class="px-space-md py-3 bg-[#F8FAFC] border-t border-outline-variant flex items-center justify-between">
+<!-- Upvote Button -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-high text-primary font-label-md text-label-md font-bold transition-colors">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="arrow_upward">arrow_upward</span>
+<span>62 Upvotes</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-[#BBF7D0] hover:bg-[#F0FDF4] text-[#15803D] font-label-md text-label-md font-semibold transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="image">image</span>
+<span>View Photo Proof</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4: Status REJECTED -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between overflow-hidden">
+<div>
+<!-- Header Block with Lifecycle Status & Priority -->
+<div class="p-space-md border-b border-[#F1F5F9] bg-[#FEF2F2]/40 flex items-start justify-between gap-2">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Status Pill Red/Coral -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-label-sm font-semibold bg-[#FEF2F2] border border-[#FECACA] text-[#B91C1C]">
+<span class="w-2 h-2 rounded-full bg-[#DC2626]"></span>
+                  REJECTED - OUT OF JURISDICTION
+                </span>
+<!-- Priority: Routine -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-semibold bg-surface-container-low border border-outline-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="rule">rule</span>
+                  Priority: Routine
+                </span>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Closed yesterday</span>
+</div>
+<!-- Content Area -->
+<div class="p-space-md space-y-space-sm">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="gavel">gavel</span>
+<span class="font-semibold text-primary">Category: Code Enforcement</span>
+<span>•</span>
+<span class="font-code-sm">ID: #CE-1984</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-primary font-bold tracking-tight hover:text-secondary cursor-pointer">
+                Commercial Billboard Lighting Complaint
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Notice filed regarding high-intensity LED advertisement luminescence along State Route 12 corridor. Inspected by city zoning officer and determined to fall under State DOT jurisdiction.
+              </p>
+<!-- Location Tag -->
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="location_on">location_on</span>
+<span>Highway 12 Overpass, Mile Marker 4.2</span>
+</div>
+<!-- Citizen Confirmation Metric / Transfer note -->
+<div class="p-2.5 rounded bg-[#FEF2F2]/60 border border-[#FECACA] flex items-center justify-between">
+<div class="flex items-center gap-2 text-[#B91C1C] font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="forward">forward</span>
+<span class="font-semibold">Referred to State Highway Commission</span>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Ref #DOT-4019</span>
+</div>
+</div>
+</div>
+<!-- Card Actions Footer -->
+<div class="px-space-md py-3 bg-[#F8FAFC] border-t border-outline-variant flex items-center justify-between">
+<!-- Upvote Button -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-high text-primary font-label-md text-label-md font-medium transition-colors">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="arrow_upward">arrow_upward</span>
+<span>4 Upvotes</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="info">info</span>
+<span>Read Official Reason</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- Institutional Transparency & Accountability Footer Note -->
+<footer class="mt-8 pt-6 border-t border-outline-variant text-on-surface-variant flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="policy">policy</span>
+<span>Municipal Open Data Initiative — All issue records are matters of public civil record under Metropolitan Freedom of Information Code.</span>
+</div>
+<div class="flex items-center gap-4 font-label-sm text-label-sm">
+<a class="hover:text-primary underline" href="#">Ward 4 Service SLAs</a>
+<a class="hover:text-primary underline" href="#">Contact Municipal Clerk</a>
+<a class="hover:text-primary underline" href="#">Accessibility Standards (WCAG AAA)</a>
+</div>
+</footer>
+</div>
+</main>
+</body></html>

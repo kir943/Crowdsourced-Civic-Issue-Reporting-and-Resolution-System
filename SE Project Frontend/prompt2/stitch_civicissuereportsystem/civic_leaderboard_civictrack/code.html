@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack - Civic Guardian Leaderboard</title>
+<!-- Google Fonts: Public Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#396092",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#131b2e",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#d4e3ff",
+            "primary": "#00274e",
+            "tertiary": "#19273a",
+            "secondary-container": "#4069f2",
+            "on-surface-variant": "#43474f",
+            "on-tertiary-container": "#99a8bf",
+            "on-primary-fixed": "#001c3a",
+            "surface-variant": "#dae2fd",
+            "tertiary-fixed": "#d5e3fd",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "background": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "on-secondary": "#ffffff",
+            "on-surface": "#131b2e",
+            "surface-container-high": "#e2e7ff",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "on-secondary-fixed": "#001551",
+            "surface-container-low": "#f2f3ff",
+            "on-error": "#ffffff",
+            "primary-container": "#0f3d6e",
+            "surface": "#faf8ff",
+            "secondary-fixed": "#dce1ff",
+            "inverse-on-surface": "#eef0ff",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#b7c4ff",
+            "secondary": "#1d4ed8",
+            "on-secondary-container": "#fffbff",
+            "surface-container-highest": "#dae2fd",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#0039b5",
+            "on-primary-container": "#84a9e0",
+            "inverse-primary": "#a5c8ff",
+            "on-primary-fixed-variant": "#1e4879",
+            "surface-dim": "#d2d9f4",
+            "on-tertiary-fixed": "#0d1c2f",
+            "primary-fixed-dim": "#a5c8ff",
+            "outline-variant": "#c3c6d0",
+            "tertiary-container": "#2f3d51",
+            "outline": "#737780",
+            "surface-container": "#eaedff",
+            "inverse-surface": "#283044",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-sm": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-sm": "1rem",
+            "gutter": "1.5rem",
+            "space-md": "1rem",
+            "gutter-lg": "2rem",
+            "space-xl": "2.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-lg": "3rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "label-md": ["Public Sans"],
+            "headline-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "headline-lg": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "code-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md min-h-screen flex flex-col">
+<!-- TOP APP BAR (Shared Component Anchor) -->
+<header class="bg-surface-container-lowest text-primary font-title-lg text-title-lg docked full-width top-0 border-b border-outline-variant fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm md:px-margin-lg h-16">
+<div class="flex items-center gap-space-md">
+<button aria-label="Toggle Navigation Menu" class="p-space-xs text-primary hover:bg-surface-container-high transition-colors duration-150 ease-in-out rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+<span class="material-symbols-outlined text-primary text-[24px]">menu</span>
+</button>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[26px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CivicTrack</span>
+</div>
+<div class="hidden md:flex items-center ml-space-md pl-space-md border-l border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+<span class="bg-surface-container-low px-space-sm py-1 border border-outline-variant rounded text-on-surface font-code-sm text-code-sm">MUNICIPAL DISTRICT 04 • CITIZEN PORTAL</span>
+</div>
+</div>
+<!-- Desktop User / Notification Actions -->
+<div class="flex items-center gap-space-md">
+<div class="hidden lg:flex items-center gap-space-sm text-on-surface-variant font-label-md text-label-md bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Verified Citizen: <strong>Ward 4 Central</strong></span>
+</div>
+<button aria-label="Notifications" class="relative p-space-xs text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150 ease-in-out rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-1 hidden sm:block"></div>
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-label-md text-label-md font-bold">
+          SJ
+        </div>
+<div class="hidden sm:flex flex-col text-left">
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Sarah Jenkins</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Rank #14 • 420 pts</span>
+</div>
+</div>
+</div>
+</header>
+<!-- APP SHELL CONTAINER -->
+<div class="flex pt-16 flex-1 min-h-screen">
+<!-- NAVIGATION DRAWER (Sidebar Component) -->
+<aside class="bg-surface-container-low text-primary font-label-md text-label-md docked left-0 top-0 h-screen w-72 z-30 flex flex-col pt-16 border-r border-outline-variant fixed hidden md:flex">
+<!-- Profile Header Block -->
+<div class="px-space-md py-space-lg border-b border-outline-variant bg-surface-container-lowest/50">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center font-bold text-headline-sm border border-outline-variant">
+            SJ
+          </div>
+<div class="flex flex-col">
+<h2 class="font-title-md text-title-md text-primary font-bold leading-tight">Sarah Jenkins</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Active Community Reporter</p>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface-variant font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">badge</span>
+<span>Ward 4 Citizen #CW-9284</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/60 flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Civic Standing:</span>
+<span class="font-code-sm text-secondary font-bold">420 Points</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Primary Navigation" class="p-space-md flex-1 space-y-1.5 overflow-y-auto">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-md px-space-md py-2.5 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 ease-in-out font-label-md text-label-md rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Issue Registry -->
+<a class="flex items-center justify-between px-space-md py-2.5 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 ease-in-out font-label-md text-label-md rounded-lg" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]">report_problem</span>
+<span>Issue Registry</span>
+</div>
+</a>
+<!-- Intake Queue -->
+<a class="flex items-center justify-between px-space-md py-2.5 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 ease-in-out font-label-md text-label-md rounded-lg" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]">inbox</span>
+<span>Intake Queue</span>
+</div>
+</a>
+<!-- Department Dispatch -->
+<a class="flex items-center gap-space-md px-space-md py-2.5 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 ease-in-out font-label-md text-label-md rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span>Department Dispatch</span>
+</a>
+<!-- Audit Logs -->
+<a class="flex items-center gap-space-md px-space-md py-2.5 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 ease-in-out font-label-md text-label-md rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<span>Audit Logs</span>
+</a>
+<div class="pt-2 pb-1">
+<div class="h-[1px] bg-outline-variant w-full"></div>
+</div>
+<div class="px-space-md py-1 text-label-sm font-label-sm text-outline uppercase tracking-wider font-semibold">
+          Community Engagement
+        </div>
+<!-- Leaderboard (ACTIVE TAB as specified) -->
+<a class="flex items-center justify-between px-space-md py-2.5 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span class="font-semibold">Leaderboard</span>
+</div>
+<span class="bg-surface-container-lowest text-primary font-code-sm text-label-sm px-2 py-0.5 rounded font-bold">185 pts</span>
+</a>
+<!-- Community Verifications -->
+<a class="flex items-center gap-space-md px-space-md py-2.5 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150 ease-in-out font-label-md text-label-md rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+<span>Field Verifications</span>
+</a>
+</nav>
+<!-- Sidebar Footer / Municipal Notice -->
+<div class="p-space-md border-t border-outline-variant bg-surface-container-low">
+<div class="bg-surface-container-lowest p-space-sm rounded border border-outline-variant">
+<div class="flex items-center gap-space-xs text-primary font-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+<span>Civic Integrity Protocol</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Points audited weekly against verified DPW field dispatches.</p>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT CANVAS -->
+<main class="flex-1 md:ml-72 bg-background min-h-[calc(100vh-4rem)] p-margin-sm md:p-gutter-lg space-y-space-lg">
+<!-- Top Section Header & Subtitle -->
+<div class="border-b border-outline-variant pb-space-md">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs text-secondary font-label-sm text-label-sm mb-1 uppercase tracking-wide">
+<span class="material-symbols-outlined text-[16px]">military_tech</span>
+<span>Ward 4 Civic Engagement Program</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">Civic Guardian Leaderboard</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-4xl">
+              Recognizing active citizens who report infrastructure hazards, verify community repairs, and improve municipal safety in Ward 4.
+            </p>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button class="flex items-center gap-space-xs bg-surface-container-lowest text-primary border border-outline-variant hover:bg-surface-container-high font-label-md text-label-md px-space-md py-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Monthly Audit</span>
+</button>
+<button class="flex items-center gap-space-xs bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md px-space-md py-2 rounded-lg transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+<span>Submit Hazard Report</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CIVIC POINTS SUMMARY BANNER FOR LOGGED-IN USER -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-lg">
+<!-- User Status Info & Progress -->
+<div class="flex-1 space-y-space-sm">
+<div class="flex items-center flex-wrap gap-space-sm">
+<span class="bg-primary text-on-primary font-code-sm text-code-sm font-semibold px-2.5 py-1 rounded">
+                Your Standing: Rank #14
+              </span>
+<span class="font-title-md text-title-md text-primary font-bold">Sarah Jenkins</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-md text-label-md text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                420 Civic Points
+              </span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">18 Issues Resolved</span>
+</div>
+<!-- Tier Advancement Message -->
+<p class="font-body-md text-body-md text-on-surface">
+              Next tier: <strong class="text-primary font-semibold">Civic Champion at 500 pts</strong> <span class="text-secondary font-semibold font-code-sm">(+80 pts to go)</span>
+</p>
+<!-- Progress Bar -->
+<div class="w-full max-w-2xl pt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-1.5">
+<span>Active Rank: Community Sentry (400 pts)</span>
+<span class="font-code-sm font-semibold text-primary">84% Completed</span>
+</div>
+<div class="h-3 w-full bg-surface-container-high rounded-full overflow-hidden border border-outline-variant/50">
+<div class="h-full bg-secondary transition-all duration-300" style="width: 84%;"></div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-center gap-space-sm border-t lg:border-t-0 lg:border-l border-outline-variant pt-space-md lg:pt-0 lg:pl-space-lg">
+<button class="w-full sm:w-auto bg-surface-container-lowest text-primary border border-outline-variant hover:bg-surface-container-high px-space-md py-2.5 rounded font-label-md text-label-md flex items-center justify-center gap-space-sm font-semibold transition-colors">
+<span class="material-symbols-outlined text-secondary text-[20px]">military_tech</span>
+<span>View Points History &amp; Badges</span>
+</button>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-outline">history</span>
+<span>Last earned +25 pts on May 18 (Pothole Verification)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- LEADERBOARD TABS & TIME FILTERS -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md bg-surface-container-low p-2 rounded-lg border border-outline-variant">
+<!-- Filter Tabs -->
+<div class="flex items-center flex-wrap gap-1" role="tablist">
+<!-- Active Tab: 'This Month' -->
+<button class="bg-primary text-on-primary px-space-md py-1.5 rounded text-label-md font-label-md font-semibold transition-colors shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">calendar_month</span>
+<span>This Month</span>
+</button>
+<button class="bg-transparent text-on-surface-variant hover:bg-surface-container-high px-space-md py-1.5 rounded text-label-md font-label-md transition-colors">
+            Quarterly
+          </button>
+<button class="bg-transparent text-on-surface-variant hover:bg-surface-container-high px-space-md py-1.5 rounded text-label-md font-label-md transition-colors">
+            All Time
+          </button>
+<div class="h-5 w-[1px] bg-outline-variant mx-1"></div>
+<!-- Ward Filter Button -->
+<button class="bg-surface-container-lowest border border-outline-variant text-primary font-semibold hover:bg-surface-container-high px-space-md py-1.5 rounded text-label-md font-label-md transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
+<span>My Ward (Ward 4)</span>
+</button>
+<button class="bg-transparent text-on-surface-variant hover:bg-surface-container-high px-space-md py-1.5 rounded text-label-md font-label-md transition-colors">
+            Citywide
+          </button>
+</div>
+<!-- Search / Sub-filter -->
+<div class="flex items-center gap-space-sm px-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-outline text-[18px]">search</span>
+<input class="bg-surface-container-lowest text-on-surface text-body-sm font-body-sm rounded border border-outline-variant pl-8 pr-3 py-1.5 w-48 sm:w-60 focus:ring-1 focus:ring-secondary focus:border-secondary" placeholder="Search citizen or badge..." type="text"/>
+</div>
+</div>
+</div>
+<!-- TOP 3 PODIUM / CARDS SECTION -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- RANK 1: MARCUS VANCE (GOLD PODIUM CARD) -->
+<div class="bg-surface-container-lowest border-2 border-amber-300 bg-amber-50/20 rounded-xl p-space-md relative flex flex-col justify-between shadow-sm">
+<div class="absolute -top-3 left-4 bg-amber-500 text-surface-container-lowest font-code-sm text-label-sm font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span>Rank 1 • Gold Medal</span>
+</div>
+<div class="pt-space-sm space-y-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high border-2 border-amber-400 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male municipal department officer wearing a sharp navy blue public service utility jacket against a neutral architectural backdrop. The lighting is crisp, even daylight emphasizing institutional competence, high contrast, and clean modern styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJAw6trDJUYmjwePMS3Mkbs7D693LelSa2cft2XW9eyiHD-r61jGUsBfs8u3DQ0h-8-C8A8M19ObBJfpafiolG5WlorJh9Dk7KGdjRNVi9ZfqMfOMVeJuK8mkRNH9y8yTVmkwzEGR7HIBHijFG8-LFMpfM5gwk-UdCKiFE9xCcuZnEZOTeaHs-ToVrbqCqnH5R5QtDQrXERRkSohQZPwZojZ5WdHT_we7vwykKKwL18sAedvTozGVg"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-amber-400 text-on-surface rounded-full p-0.5 border border-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary font-bold">Marcus Vance</h3>
+<span class="inline-block font-label-sm text-label-sm text-secondary font-medium bg-surface-container px-2 py-0.5 rounded">Civic Sentinel</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">District: Ward 4</p>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 gap-2 bg-surface-container-lowest/80 border border-amber-200/80 p-space-sm rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Verified Reports</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">38</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Issues Resolved</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">34</span>
+</div>
+</div>
+<!-- Badges Array -->
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1.5 font-semibold">Earned Accreditations:</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-amber-100/70 border border-amber-300 text-amber-900 font-label-sm text-label-sm px-2 py-0.5 rounded font-medium">Top Spotter</span>
+<span class="bg-amber-100/70 border border-amber-300 text-amber-900 font-label-sm text-label-sm px-2 py-0.5 rounded font-medium">Road Guardian</span>
+<span class="bg-amber-100/70 border border-amber-300 text-amber-900 font-label-sm text-label-sm px-2 py-0.5 rounded font-medium">Rapid Verifier</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-amber-200 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Civic Points</span>
+<span class="font-title-lg text-title-lg font-bold text-amber-700 font-code-sm">1,280 pts</span>
+</div>
+</div>
+<!-- RANK 2: ELENA ROSTOVA (SILVER PODIUM CARD) -->
+<div class="bg-surface-container-lowest border-2 border-slate-300 bg-slate-50/50 rounded-xl p-space-md relative flex flex-col justify-between shadow-sm">
+<div class="absolute -top-3 left-4 bg-slate-500 text-surface-container-lowest font-code-sm text-label-sm font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span>Rank 2 • Silver Medal</span>
+</div>
+<div class="pt-space-sm space-y-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high border-2 border-slate-400 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A portrait of a professional female civil engineer wearing a high-visibility badge lanyard and navy civic blazer, captured with bright daylight lighting in front of an urban public works facility. High contrast, authoritative, institutional framing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzeMIEvnpbGlvJ4GSSuBst5-6HNADONFO3F54dD1Pr3aMzP4J1PgD2M7uRKkteXaiV5K_YUY1APfBM1KcTQqqaOYpm5hygDu9JOqhFQX8aY8dLi4FWJpefCXyVLjWy69e_2pN6-bytRHnJ-t6MujuAmqH0Y-idOPRF1C_86MrUrv3XyZ0oayl-tlPqTdElGHcw8apP8VjPuBfOMtoVvdoZqjjta8_sSAxWN_oVEHc2UVe4fuSbFhp0"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-slate-400 text-on-surface rounded-full p-0.5 border border-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary font-bold">Elena Rostova</h3>
+<span class="inline-block font-label-sm text-label-sm text-secondary font-medium bg-surface-container px-2 py-0.5 rounded">Community Lead</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">District: Ward 2</p>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 gap-2 bg-surface-container-lowest/80 border border-slate-200 p-space-sm rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Verified Reports</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">31</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Issues Resolved</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">28</span>
+</div>
+</div>
+<!-- Badges Array -->
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1.5 font-semibold">Earned Accreditations:</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-slate-200/80 border border-slate-300 text-slate-800 font-label-sm text-label-sm px-2 py-0.5 rounded font-medium">Clean Water Advocate</span>
+<span class="bg-slate-200/80 border border-slate-300 text-slate-800 font-label-sm text-label-sm px-2 py-0.5 rounded font-medium">Active Inspector</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-slate-200 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Civic Points</span>
+<span class="font-title-lg text-title-lg font-bold text-slate-700 font-code-sm">940 pts</span>
+</div>
+</div>
+<!-- RANK 3: DAVID RUIZ (BRONZE PODIUM CARD) -->
+<div class="bg-surface-container-lowest border-2 border-orange-300 bg-amber-50/10 rounded-xl p-space-md relative flex flex-col justify-between shadow-sm">
+<div class="absolute -top-3 left-4 bg-orange-600 text-surface-container-lowest font-code-sm text-label-sm font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span>Rank 3 • Bronze Medal</span>
+</div>
+<div class="pt-space-sm space-y-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high border-2 border-orange-400 overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male community neighborhood leader smiling warmly against a civic park background with brick pathways. Daylight illumination, clean composition, crisp focus on face, public civil engagement theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRpISNNru2FLvDCCAXCrHKmq2Lo_2OeGM0bDm5z_sN1OX8m4vC8iXqyJJrUoITAUSqlTp1XQcmIj03NYNeFogUfUlBVt9A0vLIRtg2sWVWBajkVJOzvVEKaanmmfJj8dcWsUw-hI-s5H-bim1Lut2OGEpkrcl1JfoFNZfU7roKF1JMQ7nlR_M1mifv5nyrasJkWh4ILj802Yc3ncETe7hQuPLtD4H4U4oH2MEiLG1EnfAZJlfsQBXH"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-orange-500 text-on-surface rounded-full p-0.5 border border-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary font-bold">David Ruiz</h3>
+<span class="inline-block font-label-sm text-label-sm text-secondary font-medium bg-surface-container px-2 py-0.5 rounded">Public Advocate</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">District: Ward 4</p>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 gap-2 bg-surface-container-lowest/80 border border-orange-200 p-space-sm rounded-lg">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Verified Reports</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">26</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Issues Resolved</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">22</span>
+</div>
+</div>
+<!-- Badges Array -->
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1.5 font-semibold">Earned Accreditations:</span>
+<div class="flex flex-wrap gap-1">
+<span class="bg-orange-100/70 border border-orange-300 text-orange-950 font-label-sm text-label-sm px-2 py-0.5 rounded font-medium">Night Owl Watch</span>
+<span class="bg-orange-100/70 border border-orange-300 text-orange-950 font-label-sm text-label-sm px-2 py-0.5 rounded font-medium">Streetlight Hero</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-orange-200 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Civic Points</span>
+<span class="font-title-lg text-title-lg font-bold text-orange-800 font-code-sm">790 pts</span>
+</div>
+</div>
+</div>
+<!-- CIVIC DATA TABLE: RANKED LIST OF CITIZENS (RANKS 4-10 + HIGHLIGHTED USER ROW) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="p-space-md border-b border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-low/40">
+<div>
+<h2 class="font-title-md text-title-md text-primary font-bold">Verified Citizen Ranks (May 2025 Audit Cycle)</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Audited by Municipal Department of Public Works dispatch verifications</p>
+</div>
+<div class="flex items-center gap-space-sm text-label-sm font-label-sm">
+<span class="inline-flex items-center gap-1 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span> Live DPW sync
+            </span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm">
+<th class="py-3 px-space-md w-16 text-center" scope="col">Rank</th>
+<th class="py-3 px-space-md" scope="col">Citizen</th>
+<th class="py-3 px-space-md" scope="col">Ward / District</th>
+<th class="py-3 px-space-md text-center" scope="col">Verified Reports</th>
+<th class="py-3 px-space-md text-center" scope="col">Issues Resolved</th>
+<th class="py-3 px-space-md text-right" scope="col">Civic Points</th>
+<th class="py-3 px-space-md" scope="col">Badges / Impact</th>
+<th class="py-3 px-space-md text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/60 font-body-md text-body-md text-on-surface">
+<!-- RANK 1 (Compact Table Representation) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-amber-50/10">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded bg-amber-100 text-amber-900 border border-amber-300 font-code-sm font-bold text-label-sm">
+                    1
+                  </span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-bold text-label-sm font-code-sm">
+                      MV
+                    </div>
+<div>
+<span class="font-semibold text-primary block leading-tight">Marcus Vance</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Civic Sentinel</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Ward 4</span>
+</td>
+<td class="py-3 px-space-md text-center font-code-sm font-medium">38</td>
+<td class="py-3 px-space-md text-center font-code-sm text-emerald-700 font-semibold">34</td>
+<td class="py-3 px-space-md text-right font-code-sm font-bold text-primary">1,280</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm border border-outline-variant/50">Top Spotter</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm border border-outline-variant/50">Road Guardian</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="View Public Records">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- RANK 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-slate-50/20">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded bg-slate-200 text-slate-800 border border-slate-300 font-code-sm font-bold text-label-sm">
+                    2
+                  </span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-tint text-on-primary flex items-center justify-center font-bold text-label-sm font-code-sm">
+                      ER
+                    </div>
+<div>
+<span class="font-semibold text-primary block leading-tight">Elena Rostova</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Community Lead</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Ward 2</span>
+</td>
+<td class="py-3 px-space-md text-center font-code-sm font-medium">31</td>
+<td class="py-3 px-space-md text-center font-code-sm text-emerald-700 font-semibold">28</td>
+<td class="py-3 px-space-md text-right font-code-sm font-bold text-primary">940</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm border border-outline-variant/50">Clean Water Advocate</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="View Public Records">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- RANK 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-amber-50/10">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded bg-orange-100 text-orange-900 border border-orange-300 font-code-sm font-bold text-label-sm">
+                    3
+                  </span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-tertiary-container text-on-primary flex items-center justify-center font-bold text-label-sm font-code-sm">
+                      DR
+                    </div>
+<div>
+<span class="font-semibold text-primary block leading-tight">David Ruiz</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Public Advocate</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Ward 4</span>
+</td>
+<td class="py-3 px-space-md text-center font-code-sm font-medium">26</td>
+<td class="py-3 px-space-md text-center font-code-sm text-emerald-700 font-semibold">22</td>
+<td class="py-3 px-space-md text-right font-code-sm font-bold text-primary">790</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm border border-outline-variant/50">Streetlight Hero</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="View Public Records">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- RANK 4: CLARA JENKINS -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-md text-center font-code-sm font-semibold text-on-surface-variant">4</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container-high text-primary flex items-center justify-center font-bold text-label-sm font-code-sm">
+                      CJ
+                    </div>
+<div>
+<span class="font-semibold text-primary block leading-tight">Clara Jenkins</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Spotter</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Ward 4</span>
+</td>
+<td class="py-3 px-space-md text-center font-code-sm">19</td>
+<td class="py-3 px-space-md text-center font-code-sm text-emerald-700 font-medium">17</td>
+<td class="py-3 px-space-md text-right font-code-sm font-bold text-primary">580</td>
+<td class="py-3 px-space-md">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm border border-outline-variant/50">Crosswalk Inspector</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="View Public Records">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- RANK 5: SAMUEL OKAFOR -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-md text-center font-code-sm font-semibold text-on-surface-variant">5</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container-high text-primary flex items-center justify-center font-bold text-label-sm font-code-sm">
+                      SO
+                    </div>
+<div>
+<span class="font-semibold text-primary block leading-tight">Samuel Okafor</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Civic Monitor</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Ward 1</span>
+</td>
+<td class="py-3 px-space-md text-center font-code-sm">18</td>
+<td class="py-3 px-space-md text-center font-code-sm text-emerald-700 font-medium">15</td>
+<td class="py-3 px-space-md text-right font-code-sm font-bold text-primary">520</td>
+<td class="py-3 px-space-md">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm border border-outline-variant/50">Storm Drain Watch</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="View Public Records">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- RANK 6: PRIYA PATEL -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-space-md text-center font-code-sm font-semibold text-on-surface-variant">6</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-surface-container-high text-primary flex items-center justify-center font-bold text-label-sm font-code-sm">
+                      PP
+                    </div>
+<div>
+<span class="font-semibold text-primary block leading-tight">Priya Patel</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Urban Steward</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-on-surface">Ward 3</span>
+</td>
+<td class="py-3 px-space-md text-center font-code-sm">16</td>
+<td class="py-3 px-space-md text-center font-code-sm text-emerald-700 font-medium">14</td>
+<td class="py-3 px-space-md text-right font-code-sm font-bold text-primary">490</td>
+<td class="py-3 px-space-md">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm border border-outline-variant/50">Park Preservationist</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors" title="View Public Records">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- DIVIDER INDICATING SKIPPED RANKS 7-13 -->
+<tr class="bg-surface-container-low/40">
+<td class="py-2 text-center text-label-sm font-label-sm text-on-surface-variant" colspan="8">
+<div class="flex items-center justify-center gap-2">
+<span class="h-[1px] w-24 bg-outline-variant"></span>
+<span class="font-code-sm text-outline">Ranks 7 through 13 in Ward 4 • 480 pts to 425 pts</span>
+<span class="h-[1px] w-24 bg-outline-variant"></span>
+</div>
+</td>
+</tr>
+<!-- RANK 14: HIGHLIGHTED LOGGED-IN USER ROW (SARAH JENKINS) -->
+<tr class="bg-blue-50/80 border-y-2 border-secondary font-medium">
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded bg-secondary text-on-secondary font-code-sm font-bold text-label-sm">
+                    14
+                  </span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center font-bold text-label-sm font-code-sm ring-2 ring-secondary">
+                      SJ
+                    </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-primary block leading-tight">Sarah Jenkins</span>
+<span class="bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.2 rounded uppercase tracking-wider">You</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Community Sentry</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="font-code-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-bold px-2 py-0.5 rounded">Ward 4</span>
+</td>
+<td class="py-3 px-space-md text-center font-code-sm font-bold text-primary">14</td>
+<td class="py-3 px-space-md text-center font-code-sm text-emerald-700 font-bold">12</td>
+<td class="py-3 px-space-md text-right font-code-sm font-extrabold text-secondary text-[15px]">420</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-wrap gap-1">
+<span class="bg-secondary-fixed/50 border border-secondary text-on-secondary-fixed-variant px-2 py-0.5 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                      Neighborhood Watch
+                    </span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right">
+<button class="bg-secondary text-on-secondary px-2 py-1 rounded text-label-sm font-label-sm font-semibold hover:bg-primary transition-colors">
+                    My Audit
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-space-md border-t border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-low/20">
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+            Showing <strong>14 of 184</strong> active registered civic guardians in Ward 4
+          </div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant text-label-sm font-label-sm hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">
+              Previous
+            </button>
+<button class="px-2.5 py-1 rounded border border-secondary bg-secondary text-on-secondary text-label-sm font-label-sm font-semibold">
+              1
+            </button>
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant text-label-sm font-label-sm hover:bg-surface-container-high transition-colors">
+              2
+            </button>
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant text-label-sm font-label-sm hover:bg-surface-container-high transition-colors">
+              3
+            </button>
+<span class="px-2 text-on-surface-variant font-code-sm">...</span>
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant text-label-sm font-label-sm hover:bg-surface-container-high transition-colors">
+              12
+            </button>
+<button class="px-2.5 py-1 rounded border border-outline-variant bg-surface-container-lowest text-on-surface-variant text-label-sm font-label-sm hover:bg-surface-container-high transition-colors">
+              Next
+            </button>
+</div>
+</div>
+</div>
+<!-- CIVIC ACCOUNTABILITY INFO STRIP -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter pt-space-xs pb-space-lg">
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant rounded-lg flex items-start gap-space-md">
+<div class="p-2 bg-surface-container rounded-lg text-secondary">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary font-semibold">Verification Standards</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Points are credited only upon photographic resolution confirmed by municipal field crews or two peer citizens.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant rounded-lg flex items-start gap-space-md">
+<div class="p-2 bg-surface-container rounded-lg text-secondary">
+<span class="material-symbols-outlined text-[24px]">redeem</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary font-semibold">Civic Recognition</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Top 5 guardians each quarter receive official City Council commendations and priority civic workshop access.</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md border border-outline-variant rounded-lg flex items-start gap-space-md">
+<div class="p-2 bg-surface-container rounded-lg text-secondary">
+<span class="material-symbols-outlined text-[24px]">policy</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary font-semibold">Integrity Auditing</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Spam or inaccurate geo-tagging results in point suspension under Administrative Code Section 14-B.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

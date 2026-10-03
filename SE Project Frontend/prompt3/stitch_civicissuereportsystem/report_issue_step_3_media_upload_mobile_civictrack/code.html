@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>CivicTrack - Report an Issue (Media Upload)</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#283044",
+            "primary-fixed-dim": "#a5c8ff",
+            "inverse-on-surface": "#eef0ff",
+            "secondary": "#1d4ed8",
+            "surface-bright": "#faf8ff",
+            "on-secondary-fixed": "#001551",
+            "tertiary-container": "#2f3d51",
+            "on-secondary-fixed-variant": "#0039b5",
+            "secondary-container": "#4069f2",
+            "on-background": "#131b2e",
+            "secondary-fixed": "#dce1ff",
+            "background": "#faf8ff",
+            "on-primary-container": "#84a9e0",
+            "primary-fixed": "#d4e3ff",
+            "on-primary-fixed": "#001c3a",
+            "outline-variant": "#c3c6d0",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-high": "#e2e7ff",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "surface-container": "#eaedff",
+            "on-surface": "#131b2e",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#0d1c2f",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary": "#19273a",
+            "surface-tint": "#396092",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#43474f",
+            "surface": "#faf8ff",
+            "on-primary-fixed-variant": "#1e4879",
+            "surface-dim": "#d2d9f4",
+            "secondary-fixed-dim": "#b7c4ff",
+            "on-tertiary-container": "#99a8bf",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-variant": "#dae2fd",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#a5c8ff",
+            "primary": "#00274e",
+            "outline": "#737780",
+            "tertiary-fixed": "#d5e3fd",
+            "primary-container": "#0f3d6e",
+            "on-secondary-container": "#fffbff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "gutter-lg": "2rem",
+            "space-sm": "0.5rem",
+            "margin-lg": "3rem",
+            "margin": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "headline-lg": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "body-lg": ["Public Sans"]
+          },
+          "fontSize": {
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "code-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex justify-center selection:bg-secondary selection:text-on-secondary">
+<!-- Mobile Screen Container (390px simulated constraint on larger screens, full width on mobile) -->
+<div class="w-full max-w-[420px] bg-background min-h-screen flex flex-col relative border-x border-outline-variant shadow-sm pb-40">
+<!-- TopAppBar Component (from JSON specs adapted for mobile header) -->
+<header class="sticky top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm h-16 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Open Navigation Menu" class="p-2 -ml-2 text-primary hover:bg-surface-container-high rounded-lg transition-colors duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CivicTrack</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-primary text-[10px] font-semibold tracking-wider rounded border border-outline-variant">PORTAL</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Notifications" class="relative p-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-secondary text-on-secondary text-[10px] font-bold flex items-center justify-center border-2 border-surface-container-lowest">
+            3
+          </span>
+</button>
+<button class="w-8 h-8 rounded-full ring-2 ring-outline-variant overflow-hidden flex items-center justify-center bg-surface-container-high focus:outline-none" type="button">
+<img class="w-full h-full object-cover" data-alt="High resolution professional portrait avatar of a civil intake inspector in municipal uniform, neutral clean studio lighting, architectural minimalist backdrop, official credentials presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-PtfdOKvNP9FB2K5VDXOsPMM2i7L2JRsbYNjqZCWnBIRYBnolFom7Q4QoenwauWbMbvMVWaqwQNPD2tt-2nleSzVN4PcLPphVl8ekcWpLmRCRlj_POK1WFSC65EriJDD8dwKL7VsVlXF6-2bjcIdwsq_FV7tEMqOGJ5eI41HNcoFDGt-0dkv3RA22F8n7-mjEm5CKUowjIBr0SaXDRWETXMGXFHBhzfen-PofvE_HTgfhuDEgfwLw"/>
+</button>
+</div>
+</header>
+<!-- Main Wizard Content Canvas -->
+<main class="flex-1 px-margin-sm pt-space-md space-y-space-md">
+<!-- Stepper Header Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div>
+<span class="font-code-sm text-code-sm text-secondary font-bold tracking-wide uppercase">FORM #CT-9042</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">Step 3 of 4: Media Upload</h1>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-surface-container text-primary border border-outline-variant">75% Complete</span>
+</div>
+<!-- 4-Step Visual Stepper -->
+<div class="space-y-2">
+<div class="grid grid-cols-4 gap-2">
+<!-- Step 1 Complete -->
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-base" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Details</span>
+</div>
+<!-- Step 2 Complete -->
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-base" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Location</span>
+</div>
+<!-- Step 3 Active -->
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary ring-2 ring-secondary ring-offset-1 flex items-center justify-center font-bold text-xs">
+                3
+              </div>
+<span class="font-label-sm text-label-sm text-primary font-bold mt-1">Media</span>
+</div>
+<!-- Step 4 Pending -->
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-bold text-xs border border-outline-variant">
+                4
+              </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Review</span>
+</div>
+</div>
+<!-- Continuous Progress Line -->
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary h-full rounded-full w-3/4 transition-all duration-300"></div>
+</div>
+</div>
+</section>
+<!-- Civic Integrity Dismissible Warning Banner -->
+<div class="flex items-start gap-3 p-space-md bg-[#FFFBEB] border border-[#FDE68A] rounded-xl transition-opacity duration-200" id="integrity-banner">
+<span class="material-symbols-outlined text-[#D97706] text-xl mt-0.5 shrink-0" data-icon="warning">warning</span>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-[#92400E] font-semibold">Civic Integrity Protocol in effect</p>
+<p class="font-body-sm text-body-sm text-[#B45309] mt-0.5 leading-snug">
+            Verified geo-metadata is checked against regional telemetry. Falsified or unrelated evidence incurs an immediate civic credibility deduction.
+          </p>
+</div>
+<button aria-label="Dismiss warning banner" class="text-[#B45309] hover:text-[#92400E] p-1 -mr-1 rounded" onclick="document.getElementById('integrity-banner').style.display='none'" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="close">close</span>
+</button>
+</div>
+<!-- Mobile Camera / Upload Drop Zone -->
+<section>
+<div class="flex items-center justify-between mb-2">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1">
+            Visual Documentation <span class="text-error font-bold">*</span>
+</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Min. 1 required</span>
+</div>
+<button class="w-full text-left group relative border-2 border-dashed border-outline-variant hover:border-secondary bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-150 rounded-xl p-space-lg flex flex-col items-center justify-center text-center" type="button">
+<div class="flex items-center gap-3 mb-2.5">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="photo_camera">photo_camera</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+</div>
+<span class="font-title-md text-title-md text-primary font-bold">Take Photo or Upload Files</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Supports JPG, PNG, HEIC up to 15MB (Max 5)
+          </p>
+<span class="mt-3 inline-flex items-center gap-1 text-[11px] font-semibold text-secondary bg-surface-container px-2 py-0.5 rounded border border-outline-variant">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span> EXIF Geo-tagging Enabled
+          </span>
+</button>
+</section>
+<!-- Uploaded Media List Stack -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-primary font-bold">Evidence Queue</h2>
+<span class="font-label-sm text-label-sm font-semibold text-secondary bg-surface-container px-2 py-0.5 rounded-full border border-outline-variant">
+            3 of 5 photos uploaded
+          </span>
+</div>
+<div class="space-y-2.5">
+<!-- Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 flex items-center gap-3 shadow-xs">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container shrink-0 border border-outline-variant relative">
+<img class="w-full h-full object-cover" data-alt="Close up sharp capture of asphalt crater pothole damage on municipal asphalt highway with visible depth fissures under clear daylight conditions, neutral documentary photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXZnHxCbr-eZ8WOKq54NLu21jtnc8ffq-QY4DpHj2WQfXUKdfVEkYq1AWKbHdXp8bDW4Hc-Vxn4JzlkddnEEzDNaIyJVgNm2s2BOjYpPHsYdf7xeatn4KrRmSQ0TpYihr9coFniAh8YB4bRLjA69h4rVhKOmY4_SsmEo5R1hksfiuJI8CpJ_VpbLvxgtFJcIGuole8Jo64T2iFESQeKYqupnEUV7ZhjflW0VAOHbzxEJyZPF_OGmIY"/>
+<span class="absolute bottom-1 right-1 bg-[#15803D] text-white p-0.5 rounded">
+<span class="material-symbols-outlined text-[12px] block" data-icon="pin_drop">pin_drop</span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-primary font-semibold truncate">IMG_crater_zoom.jpg</p>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-0.5">3.2 MB</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 bg-[#F0FDF4] border border-[#BBF7D0] rounded text-[11px] font-semibold text-[#15803D]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> GPS Matched
+                </span>
+</div>
+</div>
+<button aria-label="Delete IMG_crater_zoom.jpg" class="p-2 text-outline hover:text-error hover:bg-error-container rounded-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="delete">delete</span>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 flex items-center gap-3 shadow-xs">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container shrink-0 border border-outline-variant relative">
+<img class="w-full h-full object-cover" data-alt="Wide municipal street view photo showing civil roadway intersection with traffic cones and road hazard markers under bright daylight, civic inspection standard format." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdaWpbSbW4WGuwtGKnwBSoASWiyh0ppwTLvNkaWZPEJWcYszx3tRJsyT3YpgPkNC5-95DvEZexNg6jESxUV7qyjuAZtn8LpyiWw8Y2ZPsK1GXCPZ6haU3rcopoQ4tptP4trKF5jAWQqPXNBtCYuQCmWpASza8GeCQFtgtLOUk_tUKUk86JhRM2BE2dCP-TymCSz8hi9y2J-4Psi3dtslaI7G_OhboPX6hVQYYwgOABtD89Bbr1h6V6"/>
+<span class="absolute bottom-1 right-1 bg-[#15803D] text-white p-0.5 rounded">
+<span class="material-symbols-outlined text-[12px] block" data-icon="pin_drop">pin_drop</span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-primary font-semibold truncate">IMG_street_view.jpg</p>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-0.5">4.1 MB</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 bg-[#F0FDF4] border border-[#BBF7D0] rounded text-[11px] font-semibold text-[#15803D]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span> GPS Matched
+                </span>
+</div>
+</div>
+<button aria-label="Delete IMG_street_view.jpg" class="p-2 text-outline hover:text-error hover:bg-error-container rounded-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="delete">delete</span>
+</button>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 flex items-center gap-3 shadow-xs">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-container shrink-0 border border-outline-variant relative">
+<img class="w-full h-full object-cover" data-alt="Automotive rim and tire impact damage inspection photograph taken in daytime municipal curbside setting with mechanical stress marks, objective evidence report." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGxiC40D7oup0t__IUBmmd5d6E6brm6_IYmYjanomx03aS9wyzvey150zf6cfi0MIKNpQ-viimdhNqUXZB-DgEkpk5gKAoZvYbcpNPbT329JIi7i7yAlpm9Fh6dNGpCcTkupo1ueve0ZR-lY5Vnz7cYdH22JM2vjOXA4OpF7bTwvX4A6o8sVHQZMNkxicmNPp2K_bM6i2xyBExcl5UZRX944sBNgkgr5pHQqDIzG-jisj2tzqdyK9A"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-primary font-semibold truncate">IMG_rim_dent.jpg</p>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-0.5">2.8 MB</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.2 bg-surface-container border border-outline-variant rounded text-[11px] font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px]" data-icon="location_off">location_off</span> Manual Verification Needed
+                </span>
+</div>
+</div>
+<button aria-label="Delete IMG_rim_dent.jpg" class="p-2 text-outline hover:text-error hover:bg-error-container rounded-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Regulatory Assurance Callout -->
+<div class="p-3 bg-surface-container-low border border-outline-variant rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-lg shrink-0" data-icon="shield">shield</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+          Uploaded media will be stamped with public cryptographic hash <span class="font-code-sm text-primary font-bold">SHA-256</span> for administrative non-repudiation.
+        </p>
+</div>
+</main>
+<!-- Sticky Bottom Wizard Action Bar (Docked above bottom navigation) -->
+<div class="fixed bottom-16 left-1/2 -translate-x-1/2 w-full max-w-[420px] z-30 bg-surface-container-lowest border-t border-outline-variant p-3 shadow-lg">
+<div class="flex items-center gap-3">
+<!-- Back Action -->
+<button class="w-28 py-2.5 px-3 bg-surface-container-lowest text-on-surface hover:bg-surface-container border border-outline-variant font-label-md text-label-md font-bold rounded-lg flex items-center justify-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+<span>Back</span>
+</button>
+<!-- Primary Review CTA -->
+<button class="flex-1 py-2.5 px-4 bg-primary-container hover:bg-[#1E40AF] active:bg-[#1E3A8A] text-on-primary font-label-md text-label-md font-bold rounded-lg flex items-center justify-center gap-2 shadow-sm transition-colors" type="button">
+<span>Review &amp; Submit</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Mobile Bottom Navigation Bar (Persistent Destination Tabs) -->
+<nav aria-label="Primary Navigation" class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[420px] z-40 bg-surface-container-lowest border-t border-outline-variant h-16 flex items-center justify-around px-2">
+<!-- Dashboard -->
+<button class="flex flex-col items-center justify-center flex-1 py-1 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-[10px] mt-0.5">Dashboard</span>
+</button>
+<!-- Stream -->
+<button class="flex flex-col items-center justify-center flex-1 py-1 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="dynamic_feed">dynamic_feed</span>
+<span class="font-label-sm text-[10px] mt-0.5">Stream</span>
+</button>
+<!-- Report (Active Tab with elevated highlight) -->
+<button class="flex flex-col items-center justify-center flex-1 py-1 text-secondary font-bold relative" type="button">
+<div class="w-10 h-7 rounded-full bg-secondary-fixed flex items-center justify-center mb-0.5">
+<span class="material-symbols-outlined text-xl text-secondary" data-icon="add_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+<span class="font-label-sm text-[11px] text-secondary font-bold">Report</span>
+</button>
+<!-- Leaderboard -->
+<button class="flex flex-col items-center justify-center flex-1 py-1 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-sm text-[10px] mt-0.5">Ranking</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center flex-1 py-1 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+<span class="font-label-sm text-[10px] mt-0.5">Profile</span>
+</button>
+</nav>
+</div>
+</body></html>

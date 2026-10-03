@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack - Issue #CT-9821 Administrative Oversight</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#737780",
+            "on-tertiary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-tint": "#396092",
+            "on-secondary-fixed-variant": "#0039b5",
+            "primary-container": "#0f3d6e",
+            "inverse-surface": "#283044",
+            "on-secondary-container": "#fffbff",
+            "primary-fixed": "#d4e3ff",
+            "surface-container-highest": "#dae2fd",
+            "on-error": "#ffffff",
+            "on-surface": "#131b2e",
+            "inverse-on-surface": "#eef0ff",
+            "on-surface-variant": "#43474f",
+            "on-primary-container": "#84a9e0",
+            "tertiary-container": "#2f3d51",
+            "surface-container": "#eaedff",
+            "surface-container-low": "#f2f3ff",
+            "background": "#faf8ff",
+            "on-primary-fixed": "#001c3a",
+            "on-background": "#131b2e",
+            "surface-container-high": "#e2e7ff",
+            "on-secondary": "#ffffff",
+            "primary": "#00274e",
+            "tertiary": "#19273a",
+            "outline-variant": "#c3c6d0",
+            "surface-container-lowest": "#ffffff",
+            "surface-dim": "#d2d9f4",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#001551",
+            "secondary": "#1d4ed8",
+            "on-primary": "#ffffff",
+            "on-primary-fixed-variant": "#1e4879",
+            "primary-fixed-dim": "#a5c8ff",
+            "secondary-fixed-dim": "#b7c4ff",
+            "inverse-primary": "#a5c8ff",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "secondary-container": "#4069f2",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "on-tertiary-fixed": "#0d1c2f",
+            "tertiary-fixed": "#d5e3fd",
+            "error": "#ba1a1a",
+            "on-tertiary-container": "#99a8bf",
+            "on-error-container": "#93000a",
+            "surface-bright": "#faf8ff",
+            "secondary-fixed": "#dce1ff",
+            "surface-variant": "#dae2fd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter-lg": "2rem",
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "margin": "1.5rem",
+            "margin-lg": "3rem"
+          },
+          "fontFamily": {
+            "title-lg": ["Public Sans"],
+            "body-lg": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "body-sm": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "headline-sm": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "headline-lg": ["Public Sans"],
+            "label-sm": ["Public Sans"]
+          },
+          "fontSize": {
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar (Based on Shared Components JSON) -->
+<header class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm md:px-margin-lg h-16 transition-colors duration-150 ease-in-out">
+<div class="flex items-center gap-space-md">
+<button aria-label="Toggle navigation menu" class="text-primary hover:bg-surface-container-high p-1.5 rounded flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-extrabold">CivicTrack</span>
+<span class="hidden md:inline-block text-outline-variant font-light">|</span>
+<span class="hidden md:inline-block font-label-md text-label-md text-on-surface-variant font-medium tracking-wide">Municipal Oversight Console</span>
+</div>
+</div>
+<!-- Administrative Identity & Trailing Actions -->
+<div class="flex items-center gap-space-md">
+<!-- Status Badge -->
+<div class="hidden sm:flex items-center gap-1.5 px-2 py-0.5 bg-error-container text-on-error-container border border-error/30 rounded">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-code-sm text-code-sm font-semibold tracking-wider uppercase">High Escalation Watch</span>
+</div>
+<!-- Notification button from JSON -->
+<button aria-label="Notifications" class="relative p-2 text-on-surface-variant hover:bg-surface-container-high rounded transition-colors">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<!-- Admin Profile Chip -->
+<div class="flex items-center gap-2.5 pl-2 border-l border-outline-variant">
+<div class="relative">
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A portrait of Clara Jenkins, Municipal Administrator, dressed in formal civil service attire, captured in crisp, natural light inside a modern municipal government center. The background features neutral architectural slate panels and high-transparency glass dividers. The aesthetic reflects institutional responsibility, authority, and professional municipal governance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfnio7xYryuClni1shiI2v0vnZnRipShVNpzU2jyveSedN5p6uT55514ZEmFZOVvTGaL0TLPFKE1HP99Rf27fbZxmc_Am8fBBF3pajj9DMUunwR9tIG4-rsTT3ceIkP37zvHLcoNwOyQGvO3MSpBdVNFwQ4wIbR6ISFij4W-D6Z5aDoiGXot8CZJP3ay9vsB6TzoGDUaZygl9dCqb6a4EOsv4G5hTq531znTfUIxlD4ybzL2UJKHym"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-600 rounded-full ring-1.5 ring-surface-container-lowest"></span>
+</div>
+<div class="hidden lg:flex flex-col text-left">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-semibold text-primary leading-tight">Clara Jenkins</span>
+<span class="bg-primary text-on-primary font-code-sm text-code-sm text-[10px] px-1 py-0.2 rounded uppercase font-bold tracking-wider">ADMIN</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline leading-none mt-0.5">Municipal Oversight Officer</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas Wrapper -->
+<div class="flex flex-1 pt-16 w-full max-w-[1440px] mx-auto">
+<!-- Secondary SideNav Preview (Responsive Drawer Guide from JSON - Collapsible on Desktop Oversight) -->
+<aside class="hidden lg:block w-64 bg-surface-container-low border-r border-outline-variant flex-shrink-0 pt-6 px-3">
+<div class="px-3 pb-4 mb-3 border-b border-outline-variant/60 flex items-center gap-3">
+<div class="w-9 h-9 rounded bg-primary-container text-on-secondary-container flex items-center justify-center font-bold text-sm">
+          PW
+        </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-primary">Marcus Vance</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">Dept Officer - Public Works</div>
+<div class="font-code-sm text-code-sm text-[10px] text-outline">Badge #PW-4821</div>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary text-on-secondary rounded-lg font-label-md text-label-md shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span>Issue Registry</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inbox</span>
+<span>Intake Queue</span>
+<span class="ml-auto bg-surface-container-highest text-primary font-code-sm text-code-sm text-[11px] px-1.5 py-0.5 rounded font-bold">14</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span>Department Dispatch</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<span>Audit Logs</span>
+</a>
+</nav>
+<div class="mt-8 pt-4 border-t border-outline-variant/60 px-3">
+<div class="font-code-sm text-code-sm text-[11px] text-outline font-semibold uppercase tracking-wider mb-2">Statutory Duty</div>
+<div class="bg-surface-container-lowest p-2.5 rounded border border-outline-variant text-[11px] text-on-surface-variant space-y-1">
+<div class="font-semibold text-primary">Municipal Code Sec 18-A</div>
+<p>Critical infrastructure emergencies require automatic secondary escalation at T+4.0 hours.</p>
+</div>
+</div>
+</aside>
+<!-- Main Working Surface -->
+<main class="flex-1 p-margin-sm md:p-6 lg:p-8 overflow-y-auto">
+<!-- Breadcrumb Bar -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-outline font-body-sm text-body-sm mb-4">
+<a class="hover:text-primary transition-colors" href="#">Administration</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Incident Verification &amp; Oversight</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-code-sm text-code-sm font-semibold text-primary bg-surface-container px-2 py-0.5 rounded">Issue #CT-9821</span>
+</nav>
+<!-- Desktop Two-Column Operational Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+<!-- PRIMARY COLUMN (Left, 8 Cols) -->
+<div class="lg:col-span-8 space-y-space-lg">
+<!-- SLA Breach Warning Alert Banner -->
+<div class="bg-error-container/80 border-l-4 border-error border border-error/30 p-4 rounded-lg shadow-sm flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-[28px] mt-0.5 flex-shrink-0" style="font-variation-settings: 'FILL' 1;">error</span>
+<div class="flex-1">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<h2 class="font-title-md text-title-md font-bold text-on-error-container tracking-tight">
+                  CRITICAL SLA BREACH: Target resolution time (4.0 hrs) exceeded by 1h 45m.
+                </h2>
+<span class="bg-error text-white font-code-sm text-code-sm px-2 py-0.5 rounded font-bold uppercase tracking-wider text-[11px]">
+                  Breach Level 2
+                </span>
+</div>
+<p class="font-body-md text-body-md text-on-error-container/90 mt-1 leading-normal">
+                Escalation protocol activated under Municipal Code Sec 18-A. Field response team has failed to mark operational containment within mandated civil oversight window. Direct administrative review active.
+              </p>
+</div>
+</div>
+<!-- Incident Master Header Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 md:p-6 shadow-sm">
+<div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm font-bold text-primary bg-surface-container-high px-2.5 py-1 rounded">
+                  TICKET #CT-9821
+                </span>
+<span class="text-outline text-xs">•</span>
+<span class="font-body-sm text-body-sm text-outline">Logged: Today at 07:45 EST</span>
+</div>
+<div class="flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">timer</span>
+<span>Elapsed Active Time: <strong class="text-error font-bold">05h 45m</strong></span>
+</div>
+</div>
+<!-- Issue Title & Primary Classification -->
+<div class="mt-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">
+                Severe Water Main Rupture &amp; Street Flooding
+              </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                Corner of Elmwood Ave &amp; 14th St, Ward 4 (Industrial Corridor Grid #402)
+              </p>
+</div>
+<!-- Badges & Escalation Chips Cluster -->
+<div class="mt-4 pt-3 border-t border-surface-container flex flex-wrap items-center gap-2.5">
+<!-- Category Badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container text-primary rounded border border-outline-variant font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">water_damage</span>
+                Water &amp; Sanitation
+              </span>
+<!-- Priority Badge -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-error-container text-error border border-error/40 rounded font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                Critical Priority
+              </span>
+<!-- Status Pill: In Progress -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] rounded font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#2563EB]"></span>
+                In Progress
+              </span>
+<!-- Mandatory Prominent RED OVERDUE badge -->
+<span class="bg-red-600 text-white font-bold px-2.5 py-0.5 rounded text-xs flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                OVERDUE
+              </span>
+<!-- Escalation State Chip -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-red-800 border-2 border-red-600 rounded font-label-sm text-label-sm font-bold shadow-sm">
+<span>⚠️ ESCALATED TO DIRECTOR</span>
+<span class="font-normal text-red-700 text-[11px] pl-1 border-l border-red-300">Escalated 12 mins ago</span>
+</span>
+</div>
+</div>
+<!-- Evidence Photo Strip & GIS Ward Boundary Card (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<!-- GIS Ward Boundary & Hydrant Map Card -->
+<div class="md:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">map</span>
+<span class="font-title-md text-title-md font-semibold text-primary">Ward 4 GIS Boundary</span>
+</div>
+<span class="font-code-sm text-code-sm bg-surface-container px-2 py-0.5 rounded text-outline font-medium">Zone 4-North</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+                  Geo-tagged intake coordinates: 42.8864° N, 78.8784° W. Subsurface valve schematic layer enabled.
+                </p>
+</div>
+<!-- Map Visual Mock -->
+<div class="relative w-full h-44 rounded border border-outline-variant overflow-hidden bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A clean, institutional GIS municipal cadastral vector map of Ward 4 city blocks, showing street layout grids, labeled parcels, and marked municipal drainage lines. A bright red pulsating emergency radius highlights the water main rupture intersection with blue municipal pipe overlays and precise grid coordinates. The visual aesthetic is administrative, clean, and utilitarian." data-location="Buffalo, NY" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAru6oa66sPlFf_b9GQSvCDy0yn8FtnitNetKIvHhsVd4xEB_7a3a9drfAXY5okheMzmnGX-V5RIK4uMLtLNByBURmLQELpD_oXkDfRO6nXUrs-SC39qR9THn3etH8mSuMJqfqNqCe-dAlVeP8ymymEq3v4yQVexsOt8vfJlVpFBuGcG9CtJusvHWF4K8EGeCxt6N9QRa98NKIuBLtMdi70miNoGLVPpWZsYqRx2FdAPdqqOQRTeXcG"/>
+<div class="absolute top-2 left-2 bg-surface-container-lowest/90 backdrop-blur px-2 py-1 rounded border border-outline-variant font-code-sm text-code-sm text-[11px] font-semibold text-primary">
+                  SLA Radius: 500m Hazard Corridor
+                </div>
+<div class="absolute bottom-2 right-2 bg-primary text-on-primary font-code-sm text-code-sm text-[10px] px-2 py-0.5 rounded">
+                  Grid Ref: #ELM-1402
+                </div>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-container flex items-center justify-between text-[11px] font-code-sm text-outline">
+<span>Hydrant Sector: H-4089 (Isolated)</span>
+<span class="text-error font-semibold">Pressure Drop: -42 PSI</span>
+</div>
+</div>
+<!-- Evidence Photo Strip Card -->
+<div class="md:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">photo_library</span>
+<span class="font-title-md text-title-md font-semibold text-primary">Citizen &amp; Field Evidence</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 Attachments</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">
+                Intake imagery verified against municipal infrastructure inspection standard.
+              </p>
+<!-- Photo Gallery Strip -->
+<div class="grid grid-cols-3 gap-2 flex-1 items-stretch">
+<div class="relative group rounded border border-outline-variant overflow-hidden h-32 md:h-auto">
+<img class="w-full h-full object-cover" data-alt="A photo of severe municipal road flooding caused by a major water main break on an urban asphalt street. Murky pressurized water is surging through fractured concrete near a sidewalk curb. The daylight lighting is overcast and utilitarian, emphasizing civil infrastructure damage in an urban district." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnsjleyDhOlWnFkexhSnWlWarU7wIGkUB4SXcr1aK6LmDy-1fqn-gpOLZLfMQIf_O9k1uUznJROLuwslL6xzy3H1_7rQQqOFXh85VFCXoKG8e91ro9TSUp4Ct5e6pDzB2mvvyGXrylQe3ljrDDJd4CItsYfxfipvxqRnG72KPJau8i0uaA9hFksz3h3gOvOCVgL4gb-N3B57Eo8-rdFzuNR7uaOoXn788ZbEe-_bRfeNKF9xiFxZ2m"/>
+<div class="absolute bottom-0 inset-x-0 bg-primary/80 text-white font-code-sm text-[10px] px-1 py-0.5 text-center truncate">
+                    Intake: Burst Main
+                  </div>
+</div>
+<div class="relative group rounded border border-outline-variant overflow-hidden h-32 md:h-auto">
+<img class="w-full h-full object-cover" data-alt="A detailed close-up inspection photo of fractured road asphalt and collapsed curb edge around a cracked underground water pipe valve. Clear water is bubbling up across yellow utility road markings under bright midday natural light, capturing the institutional urgency of municipal repair." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjBO0XPVjEMhCFObnlVby6hGHgEa6GOiwkUzI7VogqRQxza1wvVZDgvNvi5pWh3Fk2rP1NnjGQjAYNK9GZvZrGJ8jMaTdvAtRczzcKEEOT80vCjLx-3PmnHM2AYmEHEhZ1Kr6EzjSaM69r2FJk9N9wOSHJO7cAqqhZ-RnPxofNFiQJOtGlhPks3nyuc8UIMuuLz1VSpWJLFleJMGq95mlGothp1bdJ7EC3CAaMdk1wE13VsDflmHyo"/>
+<div class="absolute bottom-0 inset-x-0 bg-primary/80 text-white font-code-sm text-[10px] px-1 py-0.5 text-center truncate">
+                    Structural Fault
+                  </div>
+</div>
+<div class="relative group rounded border border-outline-variant overflow-hidden h-32 md:h-auto">
+<img class="w-full h-full object-cover" data-alt="A field surveillance photograph of municipal barrier tape and warning signs deployed along a flooded two-lane street corner in an industrial ward. Municipal utility trucks and emergency maintenance equipment stand in the background under crisp institutional sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBV7RFwG7IbFLJquRiWE-rq8VdZ9Ih2ulkTNQxsvvsk4SBodiZWuxCr2gM1sBLpiGbYzKw_HZhm7PwDsIVUykKtznf-QBDtrfA6HUSubMhk1bPH8S9twe8N9XZNPp7aTQ9fKIgR0OjwdeHzT9mAhHOSPA9aNnXClUj_upxmCX5V15XDYDZ1Xf88D9atYmALBka465UqAkOQrVPc0u1-dVx2teXfIut2uTuzCCF1yQj8599e7qH8maR"/>
+<div class="absolute bottom-0 inset-x-0 bg-primary/80 text-white font-code-sm text-[10px] px-1 py-0.5 text-center truncate">
+                    Unit 4 Perimeter
+                  </div>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-surface-container flex items-center justify-between text-[11px] text-outline">
+<span>Uploaded via Citizen Portal v3.2</span>
+<button class="text-secondary font-semibold hover:underline flex items-center gap-0.5">
+                  Expand High-Res <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Incident Narrative & Intake Audit Details Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 md:p-6 shadow-sm">
+<h3 class="font-title-md text-title-md font-bold text-primary mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">description</span>
+              Full Incident Narrative &amp; Intake Specifications
+            </h3>
+<div class="space-y-3 font-body-md text-body-md text-on-surface">
+<div class="p-3 bg-surface-container-low rounded border border-outline-variant/60">
+<span class="font-code-sm text-code-sm font-semibold text-primary block mb-1">Citizen Statement (Intake ID: #CIT-89230):</span>
+<p class="text-on-surface-variant">
+                  "Water started exploding out of the street near the storm drain around 7:30 AM. Within 20 minutes, the entire intersection was covered in over a foot of brown running water. Basements in adjacent commercial garages are starting to flood and vehicle traffic is completely stalled."
+                </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 pt-2">
+<div class="p-2.5 rounded bg-surface border border-outline-variant">
+<div class="font-body-sm text-body-sm text-outline">Infrastructure Asset</div>
+<div class="font-label-md text-label-md font-bold text-primary mt-0.5">12" Cast Iron Main</div>
+</div>
+<div class="p-2.5 rounded bg-surface border border-outline-variant">
+<div class="font-body-sm text-body-sm text-outline">Est. Water Loss Rate</div>
+<div class="font-label-md text-label-md font-bold text-error mt-0.5">~1,800 GPM</div>
+</div>
+<div class="p-2.5 rounded bg-surface border border-outline-variant">
+<div class="font-body-sm text-body-sm text-outline">Dispatched Entity</div>
+<div class="font-label-md text-label-md font-bold text-primary mt-0.5">Unit #4 Rapid Works</div>
+</div>
+<div class="p-2.5 rounded bg-surface border border-outline-variant">
+<div class="font-body-sm text-body-sm text-outline">Impact Severity</div>
+<div class="font-label-md text-label-md font-bold text-error mt-0.5">Tier 1 Severe</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Audit & Administrative Log Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 md:p-6 shadow-sm">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">history_edu</span>
+<h3 class="font-title-md text-title-md font-bold text-primary">Audit &amp; Administrative Log</h3>
+</div>
+<span class="font-code-sm text-code-sm text-outline font-medium">Immutable Chain of Custody</span>
+</div>
+<!-- Ordered Audit List with strict design requirements -->
+<div class="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant">
+<!-- Event 1 -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 mt-1 w-3.5 h-3.5 rounded-full bg-primary border-2 border-surface-container-lowest"></div>
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/60 w-full">
+<div class="flex flex-wrap items-center justify-between text-xs gap-1 mb-1">
+<span class="font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield_person</span>
+                      Triage Officer
+                    </span>
+<span class="font-code-sm text-outline">5 hours ago (07:48 EST)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">"Priority set to Critical"</p>
+<span class="font-code-sm text-code-sm text-[11px] text-outline mt-1 block">Officer ID: #TO-1092 • System Dispatch Engine</span>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 mt-1 w-3.5 h-3.5 rounded-full bg-amber-500 border-2 border-surface-container-lowest"></div>
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/60 w-full">
+<div class="flex flex-wrap items-center justify-between text-xs gap-1 mb-1">
+<span class="font-bold text-amber-700 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">notification_important</span>
+                      System Alert
+                    </span>
+<span class="font-code-sm text-outline">2 hours ago (10:45 EST)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">"SLA 75% warning dispatched to Unit #4 supervisor"</p>
+<span class="font-code-sm text-code-sm text-[11px] text-outline mt-1 block">Automated Dispatch Protocol • SMS &amp; Terminal Broadcast</span>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 mt-1 w-3.5 h-3.5 rounded-full bg-error border-2 border-surface-container-lowest"></div>
+<div class="bg-red-50 p-3 rounded-lg border border-red-200 w-full">
+<div class="flex flex-wrap items-center justify-between text-xs gap-1 mb-1">
+<span class="font-bold text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">smart_toy</span>
+                      Municipal Oversight Bot
+                    </span>
+<span class="font-code-sm text-red-700 font-bold">1 hour ago (11:45 EST)</span>
+</div>
+<p class="font-body-md text-body-md text-error font-semibold">"SLA expired at 11:30 EST. Flagged as Overdue."</p>
+<span class="font-code-sm text-code-sm text-[11px] text-red-600 mt-1 block">Breach Condition Met • Target Window: 4.0 Hours</span>
+</div>
+</div>
+<!-- Event 4 -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 mt-1 w-3.5 h-3.5 rounded-full bg-primary-container ring-2 ring-error border-2 border-surface-container-lowest"></div>
+<div class="bg-surface-container-high p-3 rounded-lg border border-primary/30 w-full shadow-xs">
+<div class="flex flex-wrap items-center justify-between text-xs gap-1 mb-1">
+<span class="font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">gavel</span>
+                      Clara Jenkins (Admin Oversight)
+                    </span>
+<span class="font-code-sm text-primary font-bold">12 mins ago (13:18 EST)</span>
+</div>
+<p class="font-body-md text-body-md text-primary font-medium">"Triggered emergency municipal escalation. Requested regional supervisor review."</p>
+<span class="font-code-sm text-code-sm text-[11px] text-primary/70 mt-1 block">Directive: Code Sec 18-A Execution • Priority Level Elevated</span>
+</div>
+</div>
+</div>
+<!-- Internal Admin Note Entry Box -->
+<div class="mt-6 pt-4 border-t border-surface-container">
+<label class="font-label-md text-label-md text-on-surface font-semibold block mb-1.5 flex items-center gap-1" for="admin-directive-input">
+<span class="material-symbols-outlined text-[16px] text-secondary">rate_review</span>
+                Internal Administrative Directive &amp; Field Command
+                <span class="text-error font-bold">*</span>
+</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant focus:border-secondary focus:ring-2 focus:ring-secondary/20 rounded font-body-md text-body-md p-2.5 text-on-surface placeholder:text-outline" id="admin-directive-input" placeholder="Enter binding administrative instruction or mandatory field protocol override..." rows="3"></textarea>
+<div class="mt-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2 text-outline text-xs">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+                  Directives are cryptographically signed and added to permanent municipal records.
+                </div>
+<button class="bg-primary hover:bg-[#1E40AF] text-on-primary px-4 py-2 rounded font-label-md text-label-md font-semibold transition-colors flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+                  Log Administrative Directive
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- SECONDARY COLUMN (Right, 4 Cols - Admin Oversight Controls) -->
+<div class="lg:col-span-4 space-y-space-lg">
+<!-- Card: Lifecycle & Dispatch Timeline -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 md:p-6 shadow-sm">
+<div class="flex items-center justify-between pb-3 mb-4 border-b border-surface-container">
+<h3 class="font-title-md text-title-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">timeline</span>
+                Lifecycle &amp; Dispatch Timeline
+              </h3>
+<span class="font-code-sm text-code-sm text-outline">Phase 5 / 6</span>
+</div>
+<!-- Vertical Timeline Sequence -->
+<div class="space-y-4">
+<!-- 1. Reported -->
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px] font-bold">check</span>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Reported</div>
+<div class="font-body-sm text-body-sm text-outline">07:45 EST (Citizen Portal)</div>
+</div>
+<span class="font-code-sm text-code-sm text-emerald-700 font-semibold">Done</span>
+</div>
+</div>
+<!-- 2. Under Review -->
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px] font-bold">check</span>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Under Review</div>
+<div class="font-body-sm text-body-sm text-outline">07:48 EST (Central Intake)</div>
+</div>
+<span class="font-code-sm text-code-sm text-emerald-700 font-semibold">Done</span>
+</div>
+</div>
+<!-- 3. Verified -->
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px] font-bold">check</span>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Verified</div>
+<div class="font-body-sm text-body-sm text-outline">08:00 EST (Telemetry Validated)</div>
+</div>
+<span class="font-code-sm text-code-sm text-emerald-700 font-semibold">Done</span>
+</div>
+</div>
+<!-- 4. Assigned -->
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px] font-bold">check</span>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Assigned</div>
+<div class="font-body-sm text-body-sm text-outline">08:15 EST to Unit #4</div>
+</div>
+<span class="font-code-sm text-code-sm text-emerald-700 font-semibold">Done</span>
+</div>
+</div>
+<!-- 5. In Progress (ACTIVE STEP with Red SLA Tag) -->
+<div class="p-3 bg-blue-50/70 border-2 border-secondary rounded-lg flex items-start gap-3 shadow-xs">
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-label-md text-label-md font-bold text-secondary">In Progress (ACTIVE)</span>
+<!-- Prominent Red SLA Overdue Tag -->
+<span class="bg-red-600 text-white font-code-sm text-code-sm text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">
+                      Overdue +1h 45m
+                    </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                    Target completion was 11:30 EST. Unit #4 active on location without resolution timestamp.
+                  </p>
+<div class="mt-2 text-xs font-code-sm font-semibold text-red-700 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                    SLA Max Breach (4.0 Hr Ceiling)
+                  </div>
+</div>
+</div>
+<!-- 6. Completed (Pending) -->
+<div class="flex items-center gap-3 opacity-60">
+<div class="w-7 h-7 rounded-full border-2 border-outline-variant text-outline flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">hourglass_empty</span>
+</div>
+<div class="flex-1 flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md font-semibold text-outline">Completed</div>
+<div class="font-body-sm text-body-sm text-outline">Pending resolution sign-off</div>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Awaiting</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card: Admin Actions Module -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant rounded-xl p-5 md:p-6 shadow-sm space-y-4">
+<!-- High-Visibility Intervention Header -->
+<div class="bg-red-50 border border-red-200 p-3 rounded-lg flex items-center gap-2.5">
+<span class="material-symbols-outlined text-red-700 text-[24px]">crisis_alert</span>
+<div>
+<h4 class="font-label-md text-label-md font-bold text-red-900 uppercase tracking-wide">
+                  Administrative Intervention
+                </h4>
+<p class="font-body-sm text-body-sm text-red-800 text-[11px]">
+                  Requires Grade-A Oversight Authority credentials.
+                </p>
+</div>
+</div>
+<!-- Current Assignee Card & Direct Dispatch Ping -->
+<div class="p-3.5 bg-surface-container-low rounded-lg border border-outline-variant space-y-2">
+<div class="text-xs font-semibold text-outline uppercase tracking-wider">Current Assignee &amp; Squad</div>
+<div class="flex items-start justify-between">
+<div>
+<div class="font-title-md text-title-md font-bold text-primary">Unit #4 - Water Works</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+                    Supervising Officer: <strong class="text-primary font-semibold">Lt. Daniel Hayes</strong>
+</div>
+<div class="font-code-sm text-code-sm text-[11px] text-outline mt-0.5">Callsign: RAPID-PUMP-4</div>
+</div>
+<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-1.5 py-0.5 rounded font-code-sm">ON SCENE</span>
+</div>
+<!-- Direct Dispatch Ping Action -->
+<div class="pt-2 border-t border-outline-variant/60 flex items-center justify-between">
+<span class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">sensors</span>
+                  Radio Comm: Active Channel 8
+                </span>
+<button class="px-2.5 py-1 bg-secondary text-on-secondary rounded text-xs font-semibold hover:bg-blue-700 transition-colors flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[14px]">cell_tower</span>
+                  Direct Dispatch Ping
+                </button>
+</div>
+</div>
+<!-- Mandatory Action Buttons -->
+<div class="space-y-2.5 pt-2">
+<!-- Primary Escalate Button -->
+<button class="w-full bg-red-700 hover:bg-red-800 text-white font-label-md text-label-md font-bold py-3 px-4 rounded shadow transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">transfer_within_a_station</span>
+                Reassign Squad / Escalate to Rapid Response
+              </button>
+<!-- Secondary SLA Override Button -->
+<button class="w-full bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container-high font-label-md text-label-md font-semibold py-2.5 px-4 rounded transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-outline">update</span>
+                Override SLA &amp; Grant Extension
+              </button>
+<!-- Audit Trail Export Button -->
+<button class="w-full bg-surface-container text-primary hover:bg-surface-container-high border border-outline-variant/60 font-label-md text-label-md font-semibold py-2.5 px-4 rounded transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+                Export Audit Dossier (PDF/JSON)
+              </button>
+</div>
+<!-- Statutory Security Stamp -->
+<div class="pt-3 border-t border-surface-container flex items-center justify-center gap-1.5 text-outline text-[11px] font-code-sm text-center">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+<span>Session Authenticated: Admin Token #OVS-99124</span>
+</div>
+</div>
+<!-- Quick Reference Oversight Panel -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 text-xs space-y-2">
+<div class="font-bold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">policy</span>
+              Municipal Compliance Checklist
+            </div>
+<ul class="space-y-1.5 text-on-surface-variant">
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-emerald-600 text-[14px]">check_circle</span>
+                Environmental Hazard Assessment Completed
+              </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-emerald-600 text-[14px]">check_circle</span>
+                City Traffic Control Detour Enacted
+              </li>
+<li class="flex items-center gap-1.5 text-error font-semibold">
+<span class="material-symbols-outlined text-error text-[14px]">cancel</span>
+                Containment Sign-off by Shift Commander (OVERDUE)
+              </li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction JS for directive logging and toast -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logButton = document.querySelector('button:has(.material-symbols-outlined:contains("send")), button:last-of-type');
+      const textarea = document.getElementById('admin-directive-input');
+
+      if (logButton && textarea) {
+        logButton.addEventListener('click', () => {
+          if (textarea.value.trim() === '') {
+            textarea.focus();
+            textarea.classList.add('ring-2', 'ring-error', 'border-error');
+            setTimeout(() => {
+              textarea.classList.remove('ring-2', 'ring-error', 'border-error');
+            }, 2000);
+            return;
+          }
+          const text = textarea.value;
+          textarea.value = '';
+          alert('Administrative Directive cryptographically logged to permanent municipal record: "' + text.substring(0, 40) + '..."');
+        });
+      }
+    });
+  </script>
+</body></html>

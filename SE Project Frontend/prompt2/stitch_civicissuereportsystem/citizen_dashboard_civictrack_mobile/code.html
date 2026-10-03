@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack - Citizen Dashboard</title>
+<!-- Google Fonts: Public Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#396092",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#131b2e",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#d4e3ff",
+            "primary": "#00274e",
+            "tertiary": "#19273a",
+            "secondary-container": "#4069f2",
+            "on-surface-variant": "#43474f",
+            "on-tertiary-container": "#99a8bf",
+            "on-primary-fixed": "#001c3a",
+            "surface-variant": "#dae2fd",
+            "tertiary-fixed": "#d5e3fd",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "background": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "on-secondary": "#ffffff",
+            "on-surface": "#131b2e",
+            "surface-container-high": "#e2e7ff",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "on-secondary-fixed": "#001551",
+            "surface-container-low": "#f2f3ff",
+            "on-error": "#ffffff",
+            "primary-container": "#0f3d6e",
+            "surface": "#faf8ff",
+            "secondary-fixed": "#dce1ff",
+            "inverse-on-surface": "#eef0ff",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#b7c4ff",
+            "secondary": "#1d4ed8",
+            "on-secondary-container": "#fffbff",
+            "surface-container-highest": "#dae2fd",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed-variant": "#0039b5",
+            "on-primary-container": "#84a9e0",
+            "inverse-primary": "#a5c8ff",
+            "on-primary-fixed-variant": "#1e4879",
+            "surface-dim": "#d2d9f4",
+            "on-tertiary-fixed": "#0d1c2f",
+            "primary-fixed-dim": "#a5c8ff",
+            "outline-variant": "#c3c6d0",
+            "tertiary-container": "#2f3d51",
+            "outline": "#737780",
+            "surface-container": "#eaedff",
+            "inverse-surface": "#283044",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-sm": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-sm": "1rem",
+            "gutter": "1.5rem",
+            "space-md": "1rem",
+            "gutter-lg": "2rem",
+            "space-xl": "2.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-lg": "3rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "label-md": ["Public Sans"],
+            "headline-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "headline-lg": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+            "code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "display-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-[#F8FAFC] text-on-surface font-body-md text-body-md antialiased min-h-screen pb-24 selection:bg-surface-variant">
+<!-- ================= TOP APP BAR (Shared Component Anchor) ================= -->
+<header class="fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm md:px-margin-lg h-16 bg-surface-container-lowest border-b border-outline-variant transition-colors duration-150 ease-in-out shadow-sm">
+<div class="flex items-center space-x-3">
+<button aria-label="Open Citizen Drawer" class="p-1 rounded text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" id="open-drawer-btn">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-primary font-bold text-[22px]">assured_workload</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CivicTrack</span>
+</div>
+</div>
+<!-- Trailing Actions: Notifications & Avatar -->
+<div class="flex items-center space-x-2.5">
+<button aria-label="Notifications" class="relative p-1.5 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1 right-1 flex items-center justify-center w-4 h-4 bg-error text-on-error font-label-sm text-[10px] font-bold rounded-full leading-none">3</span>
+</button>
+<div class="flex items-center pl-1 border-l border-outline-variant">
+<div class="relative w-8 h-8 rounded-full ring-1 ring-outline-variant overflow-hidden flex items-center justify-center bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Official portrait photograph of a municipal citizen and active community leader Sarah Jenkins, wearing professional attire in an open civic office with neutral balanced natural lighting and high clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyGhZ_uQyiQMXF4hdSy4j_LFBGijC0TWaILH1KySnTpQny6s6g3wn0hTCzCzxEHbTaDdbvBJ5enRYGPTLMchtHls04KySxbY3xOXZPW3GeFzpYssyjfvtG7JOb9DPyt3O61UVAjWtpUY4vbht0qA9ViE0-vVzJyv3W6bt9AozwBo9ISaZDRNkMhm3CUgOZpDxeTuG5kFijKbkWnUNfow48GmAft7AYBXuUImxcHsrIslGlVnqHazIy"/>
+</div>
+</div>
+</div>
+</header>
+<!-- ================= CITIZEN DRAWER MODAL OVERLAY ================= -->
+<div class="fixed inset-0 bg-tertiary/40 backdrop-blur-xs z-50 hidden transition-opacity" id="drawer-overlay">
+<div class="fixed top-0 left-0 h-screen w-72 z-50 flex flex-col bg-surface-container-low border-r border-outline-variant shadow-xl transform -translate-x-full transition-transform duration-200 ease-in-out" id="drawer-content">
+<!-- Drawer Header -->
+<div class="p-margin-sm border-b border-outline-variant flex items-center justify-between bg-surface-container-lowest">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary font-bold text-[20px]">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CivicTrack</span>
+</div>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant" id="close-drawer-btn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Citizen Profile Block -->
+<div class="p-margin-sm border-b border-outline-variant bg-surface-container-lowest/50">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full ring-2 ring-primary/20 overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of Sarah Jenkins, an authorized civic representative wearing a clean dark navy jacket in a modern municipal council background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA65lHu9pPs2rbPOdxWDDcd6QLpVbGfyxvJsVk9srzO82dL7R9MLjI1qc0tjiHZxspoScNQNQpOvKmJijIDuUEFki2QPTVFbjmdd6B3cbNLmPIf9-BYspisNRC4OgjH4L1xrYD00Bzzv4SM0rmzByWhm9ehk87H8Vt-vQUUNCrjlX9aHA6H-Cu2w1How3lIzMIybZcJ2p6gLEdVL3R-s8yKTfw3eQe3VXCwfqU-UvvHRPY-S46d9fjF"/>
+</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-title-md text-primary font-semibold truncate leading-tight">Sarah Jenkins</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Ward 4 Citizen Representative</p>
+<span class="inline-block mt-1 font-code-sm text-[10px] text-primary font-medium bg-primary-fixed/60 px-1.5 py-0.5 rounded">ID #CR-9482</span>
+</div>
+</div>
+</div>
+<!-- Drawer Nav List -->
+<nav class="flex-1 p-margin-sm space-y-1 overflow-y-auto">
+<a class="flex items-center space-x-3 px-3 py-2 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">report_problem</span>
+<span>Issue Registry</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inbox</span>
+<span>Intake Queue</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span>Department Dispatch</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<span>Audit Logs</span>
+</a>
+</nav>
+<!-- Drawer Footer -->
+<div class="p-margin-sm border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-outline">v2.4.1 GovCloud</span>
+<button class="flex items-center space-x-1 text-on-surface-variant font-label-sm text-label-sm hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">logout</span>
+<span>Sign Out</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ================= SUB-HEADER / STICKY ACTION BAR ================= -->
+<section class="mt-16 bg-[#FFFFFF] border-b border-outline-variant/70 sticky top-16 z-20 px-margin-sm py-2.5">
+<div class="flex items-center justify-between gap-2 max-w-7xl mx-auto">
+<div class="flex items-center space-x-1.5 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[16px] flex-shrink-0">location_city</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate tracking-tight">Ward 4 District • Community Operations</span>
+</div>
+<button class="flex-shrink-0 inline-flex items-center space-x-1.5 bg-primary-container text-[#FFFFFF] hover:bg-[#1E40AF] active:bg-[#1E3A8A] px-3 py-1.5 rounded-lg text-label-sm font-label-md transition-colors shadow-xs">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>+ Report Issue</span>
+</button>
+</div>
+</section>
+<!-- ================= MAIN CONTENT CANVAS ================= -->
+<main class="max-w-7xl mx-auto px-margin-sm pt-4 space-y-5">
+<!-- KPI Stat Cards (2x2 Compact Responsive Grid) -->
+<section aria-label="Key Performance Indicators">
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Card 1: Total Filed -->
+<div class="bg-[#FFFFFF] p-3 rounded-xl border border-slate-200/90 shadow-xs flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Filed</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tight">24</div>
+<div class="mt-0.5 flex items-center space-x-1 text-secondary font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">arrow_upward</span>
+<span>+3 this month</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Pending -->
+<div class="bg-[#FFFFFF] p-3 rounded-xl border border-slate-200/90 shadow-xs flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pending</span>
+<div class="w-7 h-7 rounded-lg bg-[#FFFBEB] border border-[#FDE68A] flex items-center justify-center text-[#B45309]">
+<span class="material-symbols-outlined text-[16px]">pending_actions</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tight">5</div>
+<div class="mt-0.5 flex items-center space-x-1 text-[#B45309] font-label-sm text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D97706] inline-block mr-0.5"></span>
+<span>Awaiting Triage</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Resolved -->
+<div class="bg-[#FFFFFF] p-3 rounded-xl border border-slate-200/90 shadow-xs flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Resolved</span>
+<div class="w-7 h-7 rounded-lg bg-[#F0FDF4] border border-[#BBF7D0] flex items-center justify-center text-[#15803D]">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tight">18</div>
+<div class="mt-0.5 flex items-center space-x-1 text-[#15803D] font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>75% Fix Rate</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Civic Points -->
+<div class="bg-[#FFFFFF] p-3 rounded-xl border border-slate-200/90 shadow-xs flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Civic Points</span>
+<div class="w-7 h-7 rounded-lg bg-surface-variant/70 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">military_tech</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="font-headline-md text-headline-md text-primary font-bold tracking-tight">420</div>
+<div class="mt-0.5 flex items-center space-x-1 text-secondary font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">stars</span>
+<span>+60 pts earned</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= CIVIC ISSUE STREAM SECTION ================= -->
+<section class="space-y-3 pt-1">
+<!-- Section Bar: Title, Search, Filters Button -->
+<div class="flex items-center justify-between bg-[#FFFFFF] p-2.5 rounded-xl border border-slate-200/90 shadow-xs">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[20px]">dynamic_feed</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold tracking-tight">Civic Issue Stream</h2>
+</div>
+<div class="flex items-center space-x-1.5">
+<button aria-label="Search reports" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</button>
+<button class="inline-flex items-center space-x-1 bg-surface-container text-on-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/60 font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" id="open-filter-btn">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Filters</span>
+<span class="bg-primary text-on-primary font-code-sm text-[10px] px-1.5 py-0.2 rounded-full font-bold">2</span>
+</button>
+</div>
+</div>
+<!-- Stacked Single-Column Issue Stream Cards -->
+<div class="space-y-3">
+<!-- Card 1: Pothole on MG Road -->
+<article class="bg-[#FFFFFF] border border-slate-200 rounded-xl overflow-hidden shadow-xs hover:border-slate-300 transition-all">
+<div class="p-3.5 space-y-3">
+<div class="flex items-start gap-3">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="A deep hazardous asphalt pothole in the center of an urban dual carriageway during daylight with cracked street road surfaces and yellow lane markings in an institutional civic documentary style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsZlApUPLj_xmfHWk5__h2X_f_VQPHuOn50mvu4xhWAzPQQC7KkNxXglmzX7bif3EQn_et1liDFxBazPzMyn5XWIzEUGOs6Dwsb-HkqRzU6zHxB67TOzuCnwoBXoEOqASv4yyErdFLfgu_VS4kpx8CPphQ1-gnVk1hG-2aj-QrFYiGPIlu-Q4_UgN7oPipBv4r-41d4xeb-QHgNIZVPIfj7J6xoH2EFFS-UzkVJHI3LF83o5-O6HBq"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="font-code-sm text-[11px] text-outline">#W4-2024-819</span>
+<!-- Status Pill: In Progress -->
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2563EB] mr-1.5"></span>
+                    IN PROGRESS
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-bold leading-snug line-clamp-2">Pothole on MG Road near Junction 4</h3>
+<!-- Categorical Tags -->
+<div class="mt-2 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container text-on-surface border border-outline-variant/40">Roads</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-error-container/60 text-error border border-error/20">HIGH</span>
+</div>
+</div>
+</div>
+<!-- Card Footer: Upvotes & Confirmations -->
+<div class="pt-2.5 border-t border-slate-100 flex items-center justify-between font-label-sm text-[12px] text-on-surface-variant">
+<div class="flex items-center space-x-3">
+<button class="flex items-center space-x-1 text-secondary font-semibold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>34 Upvotes</span>
+</button>
+<div class="flex items-center space-x-1 text-outline">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span>12 confirmed</span>
+</div>
+</div>
+<span class="font-body-sm text-[11px] text-outline">Filed 2d ago</span>
+</div>
+</div>
+</article>
+<!-- Card 2: Streetlight not working -->
+<article class="bg-[#FFFFFF] border border-slate-200 rounded-xl overflow-hidden shadow-xs hover:border-slate-300 transition-all">
+<div class="p-3.5 space-y-3">
+<div class="flex items-start gap-3">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="A dark streetlamp pole alongside an empty residential sidewalk in dusk light showing an unlit municipal luminaire with residential buildings visible in the subdued background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs5gaZXAl9D9H4cX55z89nNKtzU6hAVPeyatKFniESiKll-psG5Ut8izgOLJK9jeDs1G1-f1yksJOHz6Cb-WrWwboRP6emkvnPt7ix46bTzD6JpoTMY1A27KvBH4XtaC98wQVMeafU_uJWM6qNn-RzOMdTd9fEDm7c90MSdgcy0nM1O0cvAGIJtXGzBXLs4rK9u1uvi0UE9n0WwiMmwki4wc_RfpNlbKueMWcyqkxB50m0jOLVzuzA"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="font-code-sm text-[11px] text-outline">#W4-2024-814</span>
+<!-- Status Pill: Pending/Reported -->
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-[#FFFBEB] text-[#B45309] border border-[#FDE68A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D97706] mr-1.5"></span>
+                    REPORTED
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-bold leading-snug line-clamp-2">Streetlight not working near Sector 12</h3>
+<!-- Categorical Tags -->
+<div class="mt-2 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container text-on-surface border border-outline-variant/40">Electricity</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container-high text-on-surface-variant border border-outline-variant/40">ROUTINE</span>
+</div>
+</div>
+</div>
+<!-- Card Footer -->
+<div class="pt-2.5 border-t border-slate-100 flex items-center justify-between font-label-sm text-[12px] text-on-surface-variant">
+<div class="flex items-center space-x-3">
+<button class="flex items-center space-x-1 text-secondary font-semibold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>19 Upvotes</span>
+</button>
+<div class="flex items-center space-x-1 text-outline">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span>8 confirmed</span>
+</div>
+</div>
+<span class="font-body-sm text-[11px] text-outline">Filed 4d ago</span>
+</div>
+</div>
+</article>
+<!-- Card 3: Water Main Rupture -->
+<article class="bg-[#FFFFFF] border border-slate-200 rounded-xl overflow-hidden shadow-xs hover:border-slate-300 transition-all">
+<div class="p-3.5 space-y-3">
+<div class="flex items-start gap-3">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="High volume water surging onto a paved street intersection from a ruptured municipal water pipe with caution barricades placed around the flooded gutter under bright morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf2uAEsIZKgrZagzByWD5bqAicq1QSY_WO47lTxy0QlPmP0ErnIxc2xT_jd8eLNk8KqTyz3crL4y-zTbbEyZHFaNiUyF5_FcJ3PvNPJZYN4yINjyjpunTo3cVJqaruZ74IFAQBW0FiVqP9CGacUl2qZN1R8qQ3vTBn-7HBC_a3yZA8FsD1ieOsGPldYgDbX5cHV9LSRpbsBLf_jP9FoDhUYz0D6jKKGEcGGhRGgHKrjxAjHuQ5cnS3"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="font-code-sm text-[11px] text-outline">#W4-2024-790</span>
+<!-- Status Pill: Resolved -->
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-[#F0FDF4] text-[#15803D] border border-[#BBF7D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A] mr-1.5"></span>
+                    RESOLVED
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-bold leading-snug line-clamp-2">Severe Water Main Rupture &amp; Flooding</h3>
+<!-- Categorical Tags -->
+<div class="mt-2 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container text-on-surface border border-outline-variant/40">Water</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-error/10 text-error border border-error/30 font-bold">CRITICAL</span>
+</div>
+</div>
+</div>
+<!-- Card Footer -->
+<div class="pt-2.5 border-t border-slate-100 flex items-center justify-between font-label-sm text-[12px] text-on-surface-variant">
+<div class="flex items-center space-x-3">
+<button class="flex items-center space-x-1 text-secondary font-semibold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>58 Upvotes</span>
+</button>
+<div class="flex items-center space-x-1 text-[#15803D]">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span>41 confirmed</span>
+</div>
+</div>
+<span class="font-body-sm text-[11px] text-[#15803D] font-medium">Repaired 6h ago</span>
+</div>
+</div>
+</article>
+<!-- Card 4: Illegal Waste Dumping -->
+<article class="bg-[#FFFFFF] border border-slate-200 rounded-xl overflow-hidden shadow-xs hover:border-slate-300 transition-all">
+<div class="p-3.5 space-y-3">
+<div class="flex items-start gap-3">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+<img class="w-full h-full object-cover" data-alt="Discarded construction debris and cardboard boxes piled up behind an alleyway brick building awaiting city sanitation team collection under cloudy afternoon lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNS4fEK-42_DySev7aKcvDVnuEZNXRbyxt5JtgSpxu0TSK9heiwSdp6SUdfENphKvDSAHKg9cZ_rYbjzmyXQDkF0K_IlgasJecCefr4ogqO8njsAoKsgT30GfnIRekhAlqRQkVGDaKAVbNK4DiWbUpSALa4h8CSQYcJMUD-PxKiscmSAEXulqcfNdpkbROkkibD7HnUqwuRimfJG3_qgapMdR3dtFUaQKtCzM9ouI1kd_5fB7LGr2-"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="font-code-sm text-[11px] text-outline">#W4-2024-742</span>
+<!-- Status Pill: Escalated/Rejected -->
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-[#FEF2F2] text-[#B91C1C] border border-[#FECACA]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DC2626] mr-1.5"></span>
+                    REJECTED
+                  </span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-bold leading-snug line-clamp-2">Illegal Waste Dumping in Alleyway</h3>
+<!-- Categorical Tags -->
+<div class="mt-2 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container text-on-surface border border-outline-variant/40">Waste</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container text-outline border border-outline-variant/40">LOW</span>
+</div>
+</div>
+</div>
+<!-- Card Footer -->
+<div class="pt-2.5 border-t border-slate-100 flex items-center justify-between font-label-sm text-[12px] text-on-surface-variant">
+<div class="flex items-center space-x-3">
+<button class="flex items-center space-x-1 text-outline font-medium hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>6 Upvotes</span>
+</button>
+<div class="flex items-center space-x-1 text-outline">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span>2 confirmed</span>
+</div>
+</div>
+<span class="font-body-sm text-[11px] text-error font-medium">Private Property</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- ================= FILTERS BOTTOM SHEET MODAL ================= -->
+<div class="fixed inset-0 bg-tertiary/40 backdrop-blur-xs z-50 hidden transition-opacity" id="filter-sheet">
+<div class="fixed bottom-0 left-0 right-0 max-w-lg mx-auto bg-[#FFFFFF] rounded-t-xl p-margin-sm shadow-2xl border-t border-outline-variant space-y-4">
+<div class="flex items-center justify-between pb-2 border-b border-slate-100">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[20px]">filter_alt</span>
+<h3 class="font-title-md text-title-md text-primary font-bold">Active Stream Filters</h3>
+</div>
+<button class="p-1 rounded-lg text-outline hover:bg-surface-container" id="close-filter-btn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-3">
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-1.5">Status Filter</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 rounded bg-secondary text-on-secondary font-label-sm text-[11px] font-semibold flex items-center space-x-1">
+<span>All Active</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface font-label-sm text-[11px]">Under Triage</span>
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface font-label-sm text-[11px]">Resolved</span>
+</div>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-on-surface font-semibold block mb-1.5">Jurisdiction / Ward</label>
+<div class="p-2 border border-outline-variant rounded bg-surface-container-low text-body-sm text-on-surface flex items-center justify-between">
+<span>Ward 4 (Current Session)</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+</div>
+</div>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg font-label-md text-label-md font-semibold hover:bg-primary/90 transition-colors" id="apply-filter-btn">
+          Apply Filters (2 Active)
+        </button>
+<button class="px-3 bg-surface-container text-on-surface py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors" id="reset-filter-btn">
+          Reset
+        </button>
+</div>
+</div>
+</div>
+<!-- ================= MOBILE BOTTOM NAVIGATION BAR ================= -->
+<!-- Strict Hierarchy: Dashboard is Active, with center elevated Report action -->
+<nav aria-label="Mobile Navigation" class="fixed bottom-0 left-0 right-0 z-30 bg-[#FFFFFF] shadow-[0_-2px_10px_rgba(15,23,42,0.06)] px-2 py-1.5 flex items-center justify-around md:hidden">
+<!-- Tab 1: Dashboard (Active) -->
+<a aria-current="page" class="flex flex-col items-center py-1 px-2.5 text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-[10px] font-bold mt-0.5 tracking-tight">Dashboard</span>
+</a>
+<!-- Tab 2: Stream -->
+<a class="flex flex-col items-center py-1 px-2.5 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">dynamic_feed</span>
+<span class="font-label-sm text-[10px] font-medium mt-0.5 tracking-tight">Stream</span>
+</a>
+<!-- Tab 3: Center Elevated Report Action -->
+<div class="relative -top-3">
+<button aria-label="Report New Issue" class="w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-lg border-2 border-[#FFFFFF] hover:bg-[#1E40AF] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+<span class="block text-center font-label-sm text-[10px] font-semibold text-primary mt-0.5">Report</span>
+</div>
+<!-- Tab 4: Leaderboard -->
+<a class="flex flex-col items-center py-1 px-2.5 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">military_tech</span>
+<span class="font-label-sm text-[10px] font-medium mt-0.5 tracking-tight">Leaderboard</span>
+</a>
+<!-- Tab 5: Profile -->
+<a class="flex flex-col items-center py-1 px-2.5 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">account_circle</span>
+<span class="font-label-sm text-[10px] font-medium mt-0.5 tracking-tight">Profile</span>
+</a>
+</nav>
+<!-- Micro-interactions Script for Drawer & Filter Sheet -->
+<script>
+    // Drawer Logic
+    const openDrawerBtn = document.getElementById('open-drawer-btn');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const drawerContent = document.getElementById('drawer-content');
+
+    function toggleDrawer(open) {
+      if (open) {
+        drawerOverlay.classList.remove('hidden');
+        setTimeout(() => {
+          drawerContent.classList.remove('-translate-x-full');
+        }, 10);
+      } else {
+        drawerContent.classList.add('-translate-x-full');
+        setTimeout(() => {
+          drawerOverlay.classList.add('hidden');
+        }, 200);
+      }
+    }
+
+    openDrawerBtn.addEventListener('click', () => toggleDrawer(true));
+    closeDrawerBtn.addEventListener('click', () => toggleDrawer(false));
+    drawerOverlay.addEventListener('click', (e) => {
+      if (e.target === drawerOverlay) toggleDrawer(false);
+    });
+
+    // Filter Sheet Logic
+    const openFilterBtn = document.getElementById('open-filter-btn');
+    const closeFilterBtn = document.getElementById('close-filter-btn');
+    const filterSheet = document.getElementById('filter-sheet');
+    const applyFilterBtn = document.getElementById('apply-filter-btn');
+    const resetFilterBtn = document.getElementById('reset-filter-btn');
+
+    function toggleFilterSheet(open) {
+      if (open) {
+        filterSheet.classList.remove('hidden');
+      } else {
+        filterSheet.classList.add('hidden');
+      }
+    }
+
+    openFilterBtn.addEventListener('click', () => toggleFilterSheet(true));
+    closeFilterBtn.addEventListener('click', () => toggleFilterSheet(false));
+    applyFilterBtn.addEventListener('click', () => toggleFilterSheet(false));
+    resetFilterBtn.addEventListener('click', () => toggleFilterSheet(false));
+    filterSheet.addEventListener('click', (e) => {
+      if (e.target === filterSheet) toggleFilterSheet(false);
+    });
+  </script>
+</body></html>

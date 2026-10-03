@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack - Report an Issue (Validation Error)</title>
+<!-- Google Fonts: Public Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#283044",
+            "primary-fixed-dim": "#a5c8ff",
+            "inverse-on-surface": "#eef0ff",
+            "secondary": "#1d4ed8",
+            "surface-bright": "#faf8ff",
+            "on-secondary-fixed": "#001551",
+            "tertiary-container": "#2f3d51",
+            "on-secondary-fixed-variant": "#0039b5",
+            "secondary-container": "#4069f2",
+            "on-background": "#131b2e",
+            "secondary-fixed": "#dce1ff",
+            "background": "#faf8ff",
+            "on-primary-container": "#84a9e0",
+            "primary-fixed": "#d4e3ff",
+            "on-primary-fixed": "#001c3a",
+            "outline-variant": "#c3c6d0",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-high": "#e2e7ff",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "surface-container": "#eaedff",
+            "on-surface": "#131b2e",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#0d1c2f",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary": "#19273a",
+            "surface-tint": "#396092",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#43474f",
+            "surface": "#faf8ff",
+            "on-primary-fixed-variant": "#1e4879",
+            "surface-dim": "#d2d9f4",
+            "secondary-fixed-dim": "#b7c4ff",
+            "on-tertiary-container": "#99a8bf",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-variant": "#dae2fd",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#a5c8ff",
+            "primary": "#00274e",
+            "outline": "#737780",
+            "tertiary-fixed": "#d5e3fd",
+            "primary-container": "#0f3d6e",
+            "on-secondary-container": "#fffbff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "gutter-lg": "2rem",
+            "space-sm": "0.5rem",
+            "margin-lg": "3rem",
+            "margin": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "headline-lg": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "body-lg": ["Public Sans"]
+          },
+          "fontSize": {
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "code-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TOP APP BAR -->
+<header class="fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm md:px-margin-lg h-16 bg-surface-container-lowest border-b border-outline-variant shadow-none">
+<div class="flex items-center gap-space-md">
+<button aria-label="Toggle Navigation Drawer" class="p-2 text-on-surface hover:bg-surface-container-high transition-colors duration-150 rounded-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-secondary">
+<span class="material-symbols-outlined text-primary text-2xl">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CivicTrack</span>
+</div>
+<span class="hidden sm:inline-block px-2 py-0.5 border border-outline-variant rounded text-[11px] font-code-sm text-on-surface-variant uppercase tracking-wider bg-surface-container-low">
+        MuniOps v4.2
+      </span>
+</div>
+<div class="flex items-center gap-3">
+<div class="hidden lg:flex items-center bg-surface-container-low px-3 py-1.5 rounded border border-outline-variant text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm mr-2 text-secondary">verified_user</span>
+        Session: SECURE_INTAKE_SESSION_#892
+      </div>
+<button aria-label="Notifications" class="relative p-2 text-on-surface hover:bg-surface-container-high transition-colors duration-150 rounded-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-secondary">
+<span class="material-symbols-outlined text-primary text-2xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<div class="flex items-center gap-2 pl-1">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">
+          MV
+        </div>
+</div>
+</div>
+</header>
+<!-- APP BODY: PERSISTENT SIDEBAR + MAIN CONTENT WORKSPACE -->
+<div class="flex flex-1 pt-16 min-h-screen">
+<!-- NAVIGATION DRAWER -->
+<aside class="fixed top-0 left-0 h-screen w-72 z-30 flex flex-col pt-16 bg-surface-container-low border-r border-outline-variant">
+<!-- Profile Header Block -->
+<div class="p-space-md border-b border-outline-variant bg-surface-container-low">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded bg-primary text-on-primary flex items-center justify-center font-bold text-sm shrink-0">
+            MV
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-title-md text-primary truncate leading-tight font-semibold">Marcus Vance</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Department Officer - Public Works</span>
+<span class="font-code-sm text-code-sm text-secondary font-medium mt-1">Badge #PW-4821</span>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 p-space-sm space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Active Context: Issue Registry / Report intake -->
+<a class="flex items-center gap-3 px-3 py-2.5 font-label-md text-label-md bg-secondary text-on-secondary rounded-lg transition-all duration-150 shadow-sm font-semibold" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="flex-1">Issue Registry</span>
+<span class="text-[10px] bg-white/20 px-1.5 py-0.5 rounded font-code-sm">NEW</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-xl">inbox</span>
+<span class="flex-1">Intake Queue</span>
+<span class="bg-surface-container-high text-on-surface-variant px-1.5 py-0.5 text-xs rounded font-mono font-medium">14</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+<span>Department Dispatch</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-xl">fact_check</span>
+<span>Audit Logs</span>
+</a>
+</nav>
+<!-- Authority Watermark / Footer Compliance -->
+<div class="p-space-md border-t border-outline-variant bg-surface-container-low text-on-surface-variant">
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-semibold text-primary">City of Metroville</span>
+<span class="font-code-sm text-outline">SEC-FED-04</span>
+</div>
+<p class="font-body-sm text-[11px] leading-relaxed text-outline">
+          Civil Infrastructure Oversight &amp; Response Portal. All submissions are legally binding public records.
+        </p>
+</div>
+</aside>
+<!-- MAIN WORKSPACE -->
+<main class="flex-1 ml-72 p-space-lg lg:p-space-xl overflow-y-auto max-w-[1240px]">
+<!-- BREADCRUMBS & CONTEXT HEADER -->
+<div class="mb-space-lg">
+<div class="flex items-center gap-2 text-xs font-label-sm text-on-surface-variant uppercase tracking-wider mb-2">
+<span>Issue Registry</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span>Intake Processing</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-bold">New Incident Report</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">
+              Report an Infrastructure Hazard
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+              File an authoritative municipal work order ticket. Submissions are triaged immediately by department dispatch.
+            </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 border border-outline-variant rounded font-code-sm text-xs bg-surface-container-lowest text-on-surface-variant">
+              STATUS: DRAFT-ERR
+            </span>
+</div>
+</div>
+</div>
+<!-- 4-STEP WIZARD STEPPER -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-md mb-space-lg shadow-sm">
+<nav aria-label="Progress">
+<ol class="grid grid-cols-1 md:grid-cols-4 gap-4" role="list">
+<!-- STEP 1: ACTIVE WITH ERROR INDICATOR -->
+<li class="relative border-l-4 md:border-l-0 md:border-t-4 border-error pt-2 pl-3 md:pl-0 md:pt-3">
+<div class="flex items-center justify-between">
+<span class="text-xs font-label-sm font-bold uppercase tracking-wider text-error flex items-center gap-1">
+                  Step 01
+                  <span class="material-symbols-outlined text-sm text-error" style="font-variation-settings: 'FILL' 1;">error</span>
+</span>
+<span class="text-[11px] font-semibold text-error bg-error-container/60 px-1.5 py-0.5 rounded">Action Required</span>
+</div>
+<p class="font-title-md text-title-md text-primary font-bold mt-1">Incident Overview</p>
+<p class="font-body-sm text-body-sm text-error font-medium">Validation failed</p>
+</li>
+<!-- STEP 2: UPCOMING -->
+<li class="relative border-l-4 md:border-l-0 md:border-t-4 border-outline-variant pt-2 pl-3 md:pl-0 md:pt-3 opacity-60">
+<div class="flex items-center justify-between">
+<span class="text-xs font-label-sm font-semibold uppercase tracking-wider text-on-surface-variant">Step 02</span>
+</div>
+<p class="font-title-md text-title-md text-on-surface font-semibold mt-1">Location &amp; Mapping</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Geotag &amp; structural address</p>
+</li>
+<!-- STEP 3: UPCOMING -->
+<li class="relative border-l-4 md:border-l-0 md:border-t-4 border-outline-variant pt-2 pl-3 md:pl-0 md:pt-3 opacity-60">
+<div class="flex items-center justify-between">
+<span class="text-xs font-label-sm font-semibold uppercase tracking-wider text-on-surface-variant">Step 03</span>
+</div>
+<p class="font-title-md text-title-md text-on-surface font-semibold mt-1">Evidence &amp; Media</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Inspection photos &amp; logs</p>
+</li>
+<!-- STEP 4: UPCOMING -->
+<li class="relative border-l-4 md:border-l-0 md:border-t-4 border-outline-variant pt-2 pl-3 md:pl-0 md:pt-3 opacity-60">
+<div class="flex items-center justify-between">
+<span class="text-xs font-label-sm font-semibold uppercase tracking-wider text-on-surface-variant">Step 04</span>
+</div>
+<p class="font-title-md text-title-md text-on-surface font-semibold mt-1">Review &amp; Signoff</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Official record dispatch</p>
+</li>
+</ol>
+</nav>
+</div>
+<!-- PROMINENT RED ALERT BANNER -->
+<div aria-live="assertive" class="mb-space-lg bg-[#FEF2F2] border-l-4 border-error border-y border-r border-[#FECACA] rounded-r-lg p-space-md shadow-sm" role="alert">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-2xl shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">
+            error
+          </span>
+<div class="flex-1">
+<h3 class="font-title-md text-title-md font-bold text-[#991B1B] flex items-center gap-2">
+              Please review and correct 2 required fields before proceeding.
+            </h3>
+<p class="font-body-sm text-body-sm text-[#B91C1C] mt-1 leading-relaxed">
+              Form submission is halted by the municipal intake validation engine. Ensure the required title meets minimum character thresholds and select an infrastructure category code.
+            </p>
+<ul class="mt-2 text-xs font-body-sm text-[#B91C1C] list-disc list-inside space-y-0.5">
+<li><a class="font-semibold underline hover:text-primary" href="#issue-title">Issue Title</a> is empty (requires at least 10 characters).</li>
+<li><a class="font-semibold underline hover:text-primary" href="#category-selector">Infrastructure Category</a> has not been specified.</li>
+<li><a class="font-semibold underline hover:text-primary" href="#issue-description">Incident Description</a> contains fewer than the recommended 30 characters.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- FORM WORKSPACE GRID -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- MAIN FORM PANEL (2 COLUMNS ON LG) -->
+<div class="lg:col-span-2 space-y-space-lg">
+<form class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm space-y-6" id="issue-form">
+<div class="border-b border-surface-container pb-3">
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Step 1: General Incident Details</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Fields with an authoritative crimson asterisk (<span class="text-error font-bold">*</span>) are legally mandated.</p>
+</div>
+<!-- FIELD 1: ISSUE TITLE (EMPTY ERROR STATE) -->
+<div class="space-y-1.5" id="field-title">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="issue-title">
+                  Issue Title <span aria-hidden="true" class="text-error font-bold">*</span>
+</label>
+<span class="text-xs font-code-sm text-error font-medium">0 / 10 min chars</span>
+</div>
+<div class="relative rounded-lg">
+<input aria-describedby="title-error" aria-invalid="true" class="w-full h-11 px-3.5 pr-10 text-on-surface rounded-lg border-2 border-red-500 bg-[#FEF2F2] focus:border-red-600 focus:ring-2 focus:ring-red-200 outline-none transition-all placeholder:text-outline text-sm" id="issue-title" name="issueTitle" placeholder="e.g., Major asphalt collapse near drainage canal" type="text" value=""/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-red-500">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+</div>
+<!-- INLINE ERROR TEXT -->
+<div class="flex items-center gap-1.5 text-error mt-1" id="title-error" role="alert">
+<span class="material-symbols-outlined text-sm shrink-0">cancel</span>
+<span class="font-body-sm text-body-sm font-semibold">Issue title is required (minimum 10 characters).</span>
+</div>
+</div>
+<!-- FIELD 2: CATEGORY DROPDOWN (EMPTY ERROR STATE) -->
+<div class="space-y-1.5" id="field-category">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="category-selector">
+                  Municipal Category <span aria-hidden="true" class="text-error font-bold">*</span>
+</label>
+<span class="text-xs font-body-sm text-on-surface-variant">Civic Division</span>
+</div>
+<div class="relative rounded-lg">
+<select aria-describedby="category-error" aria-invalid="true" class="w-full h-11 px-3.5 pr-10 appearance-none text-on-surface rounded-lg border-2 border-red-500 bg-[#FEF2F2] focus:border-red-600 focus:ring-2 focus:ring-red-200 outline-none transition-all text-sm font-medium" id="category-selector" name="category">
+<option class="text-outline" disabled="" selected="" value="">Select Category...</option>
+<option value="roads">Roadways &amp; Highway Maintenance</option>
+<option value="water">Municipal Water &amp; Storm Drainage</option>
+<option value="electrical">Electrical Grid, Signals &amp; Lighting</option>
+<option value="parks">Parks, Forestry &amp; Public Spaces</option>
+<option value="sanitation">Sanitation, Hazardous Debris &amp; Waste</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-red-500 gap-1">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">error</span>
+<span class="material-symbols-outlined text-base text-outline">arrow_drop_down</span>
+</div>
+</div>
+<!-- INLINE ERROR TEXT -->
+<div class="flex items-center gap-1.5 text-error mt-1" id="category-error" role="alert">
+<span class="material-symbols-outlined text-sm shrink-0">cancel</span>
+<span class="font-body-sm text-body-sm font-semibold">Please select a municipal infrastructure category.</span>
+</div>
+</div>
+<!-- FIELD 3: DESCRIPTION TEXTAREA (PARTIAL TEXT ERROR / WARNING) -->
+<div class="space-y-1.5" id="field-description">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="issue-description">
+                  Incident Description <span aria-hidden="true" class="text-error font-bold">*</span>
+</label>
+<span class="text-xs font-code-sm text-error font-medium">15 / 30 min characters</span>
+</div>
+<div class="relative rounded-lg">
+<textarea aria-describedby="description-helper" aria-invalid="true" class="w-full p-3.5 pr-10 text-on-surface rounded-lg border-2 border-red-500 bg-[#FEF2F2] focus:border-red-600 focus:ring-2 focus:ring-red-200 outline-none transition-all text-sm font-normal resize-y" id="issue-description" name="description" rows="4">Pothole on road</textarea>
+<div class="absolute top-3.5 right-3 text-red-500 pointer-events-none">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+</div>
+<!-- INLINE HELPER/ERROR TEXT -->
+<div class="flex items-center gap-1.5 text-error mt-1" id="description-helper" role="alert">
+<span class="material-symbols-outlined text-sm shrink-0">warning</span>
+<span class="font-body-sm text-body-sm font-semibold">Description must be at least 30 characters explaining the hazard.</span>
+</div>
+<p class="text-[11px] font-body-sm text-outline">Include visible hazards, approximate depth/length, and immediate risks to pedestrians or vehicles.</p>
+</div>
+<!-- FIELD 4: PRIORITY SELECTOR (SEGMENTED CONTROL) -->
+<div class="space-y-2 pt-2 border-t border-surface-container">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface font-semibold">
+                  Assessed Severity / Priority
+                </label>
+<span class="text-xs font-body-sm text-outline">Default: Low</span>
+</div>
+<!-- SEGMENTED CONTROL -->
+<div class="grid grid-cols-4 p-1 bg-surface-container-low border border-outline-variant rounded-lg gap-1">
+<!-- LOW (DEFAULT SELECTED) -->
+<label class="relative flex flex-col items-center justify-center p-2 rounded cursor-pointer transition-all bg-surface-container-lowest border border-outline-variant text-primary shadow-xs">
+<input checked="" class="sr-only" name="priority" type="radio" value="low"/>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+<span class="font-label-md text-xs md:text-sm font-semibold">Low</span>
+</div>
+<span class="text-[10px] text-on-surface-variant mt-0.5">Routine repair</span>
+</label>
+<!-- MEDIUM -->
+<label class="relative flex flex-col items-center justify-center p-2 rounded cursor-pointer transition-all text-on-surface-variant hover:bg-surface-container-high border border-transparent">
+<input class="sr-only" name="priority" type="radio" value="medium"/>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="font-label-md text-xs md:text-sm font-medium">Medium</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">72-hr response</span>
+</label>
+<!-- HIGH -->
+<label class="relative flex flex-col items-center justify-center p-2 rounded cursor-pointer transition-all text-on-surface-variant hover:bg-surface-container-high border border-transparent">
+<input class="sr-only" name="priority" type="radio" value="high"/>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-orange-600"></span>
+<span class="font-label-md text-xs md:text-sm font-medium">High</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">24-hr response</span>
+</label>
+<!-- CRITICAL / ESCALATED -->
+<label class="relative flex flex-col items-center justify-center p-2 rounded cursor-pointer transition-all text-on-surface-variant hover:bg-surface-container-high border border-transparent">
+<input class="sr-only" name="priority" type="radio" value="critical"/>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-md text-xs md:text-sm font-medium">Critical</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">Immediate danger</span>
+</label>
+</div>
+</div>
+<!-- ANCHORED ACTION FOOTER -->
+<div class="pt-6 border-t border-outline-variant flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto px-4 py-2.5 rounded text-on-surface bg-surface-container-lowest border border-outline-variant hover:bg-surface-container-high text-sm font-semibold transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+                Discard Draft
+              </button>
+<div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+<span class="text-xs font-body-sm text-error font-medium hidden md:inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">lock</span>
+                  Resolve errors to unlock Step 2
+                </span>
+<!-- DISABLED CONTINUE BUTTON -->
+<button aria-disabled="true" class="w-full sm:w-auto px-6 py-2.5 rounded bg-outline-variant text-on-surface-variant/60 cursor-not-allowed text-sm font-semibold flex items-center justify-center gap-2 select-none border border-transparent" disabled="" type="button">
+<span>Continue to Location</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+<!-- RIGHT SIDEBAR: VALIDATION GUIDANCE & CIVIC INTAKE NORMS -->
+<div class="space-y-space-md">
+<!-- VALIDATION SUMMARY BENTO CARD -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-md shadow-sm">
+<div class="flex items-center gap-2 pb-3 border-b border-surface-container">
+<span class="material-symbols-outlined text-primary text-xl">gavel</span>
+<h3 class="font-title-md text-title-md text-primary font-bold">Standard Intake Protocol</h3>
+</div>
+<div class="mt-3 space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<p>Municipal intake servers enforce compliance with Section 12-B of Public Works Code:</p>
+<div class="p-3 bg-surface-container-low rounded border border-outline-variant space-y-2">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-xs text-error mt-0.5">circle</span>
+<p class="text-xs leading-relaxed"><strong class="text-on-surface">Title Precision:</strong> Must specify both the hazard type and structural object.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-xs text-error mt-0.5">circle</span>
+<p class="text-xs leading-relaxed"><strong class="text-on-surface">Classification:</strong> Misclassified reports result in 48-hour rerouting delays.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-xs text-error mt-0.5">circle</span>
+<p class="text-xs leading-relaxed"><strong class="text-on-surface">Hazard Detail:</strong> Minimum 30 characters required to avoid spam or accidental clicks.</p>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs text-outline pt-1">
+<span>Compliance Engine: v9.1</span>
+<span class="text-secondary font-semibold cursor-pointer hover:underline">View Manual</span>
+</div>
+</div>
+</div>
+<!-- EXAMPLE HIGH-QUALITY SUBMISSION CARD -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-md shadow-sm">
+<div class="flex items-center gap-2 pb-2 border-b border-surface-container">
+<span class="material-symbols-outlined text-secondary text-xl">tips_and_updates</span>
+<h4 class="font-title-md text-title-md text-primary font-bold">Formatting Example</h4>
+</div>
+<div class="mt-3 space-y-2 text-xs">
+<div class="bg-surface-container-low p-2.5 rounded border border-outline-variant font-code-sm text-on-surface">
+<div class="text-[10px] text-outline uppercase font-semibold">Valid Input Example:</div>
+<p class="mt-1 font-semibold text-primary">"Depression and water pooling on Elm St. Bridge approach"</p>
+</div>
+<p class="text-on-surface-variant font-body-sm text-[12px] leading-relaxed">
+                Clear landmarks and concrete defect identifiers enable automated GIS routing to nearby field squads.
+              </p>
+</div>
+</div>
+<!-- RECENT AUDIT SNIPPET -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-space-md text-xs">
+<div class="flex items-center justify-between text-on-surface-variant mb-2">
+<span class="font-label-sm font-semibold uppercase tracking-wider text-outline">Triage Node Status</span>
+<span class="inline-flex items-center gap-1 text-emerald-700 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Online
+              </span>
+</div>
+<p class="font-body-sm text-on-surface-variant leading-relaxed">
+              Dispatches currently averaging <strong>14.2 minutes</strong> from intake validation to crew ping.
+            </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

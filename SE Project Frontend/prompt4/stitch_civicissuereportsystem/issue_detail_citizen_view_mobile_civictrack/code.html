@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Issue #CT-10482 | CivicTrack</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#737780",
+            "on-tertiary": "#ffffff",
+            "surface": "#faf8ff",
+            "surface-tint": "#396092",
+            "on-secondary-fixed-variant": "#0039b5",
+            "primary-container": "#0f3d6e",
+            "inverse-surface": "#283044",
+            "on-secondary-container": "#fffbff",
+            "primary-fixed": "#d4e3ff",
+            "surface-container-highest": "#dae2fd",
+            "on-error": "#ffffff",
+            "on-surface": "#131b2e",
+            "inverse-on-surface": "#eef0ff",
+            "on-surface-variant": "#43474f",
+            "on-primary-container": "#84a9e0",
+            "tertiary-container": "#2f3d51",
+            "surface-container": "#eaedff",
+            "surface-container-low": "#f2f3ff",
+            "background": "#faf8ff",
+            "on-primary-fixed": "#001c3a",
+            "on-background": "#131b2e",
+            "surface-container-high": "#e2e7ff",
+            "on-secondary": "#ffffff",
+            "primary": "#00274e",
+            "tertiary": "#19273a",
+            "outline-variant": "#c3c6d0",
+            "surface-container-lowest": "#ffffff",
+            "surface-dim": "#d2d9f4",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#001551",
+            "secondary": "#1d4ed8",
+            "on-primary": "#ffffff",
+            "on-primary-fixed-variant": "#1e4879",
+            "primary-fixed-dim": "#a5c8ff",
+            "secondary-fixed-dim": "#b7c4ff",
+            "inverse-primary": "#a5c8ff",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "secondary-container": "#4069f2",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "on-tertiary-fixed": "#0d1c2f",
+            "tertiary-fixed": "#d5e3fd",
+            "error": "#ba1a1a",
+            "on-tertiary-container": "#99a8bf",
+            "on-error-container": "#93000a",
+            "surface-bright": "#faf8ff",
+            "secondary-fixed": "#dce1ff",
+            "surface-variant": "#dae2fd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter-lg": "2rem",
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "margin": "1.5rem",
+            "margin-lg": "3rem"
+          },
+          "fontFamily": {
+            "title-lg": ["Public Sans"],
+            "body-lg": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "body-sm": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "headline-sm": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "headline-lg": ["Public Sans"],
+            "label-sm": ["Public Sans"]
+          },
+          "fontSize": {
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "code-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex justify-center">
+<!-- Mobile Canvas Wrapper (Max 420px for ~390px mobile viewport) -->
+<div class="w-full max-w-[420px] bg-background min-h-screen flex flex-col relative pb-28 border-x border-outline-variant/30 shadow-sm">
+<!-- Top App Bar (Institutional Header with Back Task Flow) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest border-b border-outline-variant/50 px-margin-sm h-16 flex items-center justify-between shadow-[0_1px_2px_rgba(15,23,42,0.05)]">
+<div class="flex items-center gap-space-sm">
+<a aria-label="Go Back" class="inline-flex items-center justify-center w-9 h-9 rounded-lg hover:bg-surface-container-high text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="arrow_back">arrow_back</span>
+</a>
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">Issue</span>
+<span class="font-code-sm text-code-sm text-secondary font-medium tracking-tight bg-surface-container-high px-1.5 py-0.5 rounded">#CT-10482</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Share Issue" class="inline-flex items-center justify-center w-9 h-9 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+</button>
+<button aria-label="Citizen Profile" class="ml-1 flex items-center justify-center p-0.5 rounded-full border border-outline-variant hover:border-secondary transition-colors">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-secondary flex items-center justify-center font-label-sm text-label-sm font-semibold">
+            JD
+          </div>
+</button>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 px-margin-sm py-space-md space-y-space-md">
+<!-- Issue Header Block -->
+<section class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-low border border-outline-variant/60">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="tag">tag</span>
+<span class="font-code-sm text-code-sm text-primary tracking-wider font-semibold">CT-10482</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span class="font-body-sm text-body-sm">Today, 08:24 AM</span>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold leading-tight pt-1">
+          Severe Water Main Rupture &amp; Street Flooding
+        </h1>
+<!-- Status and Meta Badges Bar -->
+<div class="flex flex-wrap items-center gap-1.5 pt-1.5">
+<!-- Status Pill: In Progress -->
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span>
+            In Progress
+          </span>
+<!-- Priority Pill: High Priority -->
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-[#FEF2F2] border border-[#FECACA] text-[#B91C1C] font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px] text-[#DC2626]" data-icon="priority_high">priority_high</span>
+            High Priority
+          </span>
+<!-- Category Pill: Water & Sanitation -->
+<span class="inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-surface-container border border-outline-variant/60 text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-primary-container" data-icon="water_drop">water_drop</span>
+            Water &amp; Sanitation
+          </span>
+</div>
+</section>
+<!-- Photo Gallery: Horizontally scrollable strip with tap-to-expand -->
+<section class="space-y-space-xs">
+<div class="flex items-center justify-between px-0.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="photo_library">photo_library</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Field Evidence Photos</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">(3)</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary flex items-center gap-0.5">
+            Tap to expand
+            <span class="material-symbols-outlined text-[14px]" data-icon="open_in_full">open_in_full</span>
+</span>
+</div>
+<div class="overflow-x-auto flex gap-3 pb-2 pt-1 no-scrollbar -mx-margin-sm px-margin-sm snap-x snap-mandatory">
+<!-- Thumbnail 1 -->
+<div class="snap-start shrink-0 relative w-48 h-32 rounded-lg border border-outline-variant/60 overflow-hidden bg-surface-container group shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105" data-alt="A documentary-style civic photograph capturing an active urban street flood from a fractured underground municipal water main. Murky water spills across asphalt near a crosswalk under crisp morning light, with reflective puddles, institutional street signs, and clear focus highlighting the damaged roadway infrastructure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMryH6zEUfPRzatYEG09HZSBQPdW0ntDkD2go65qOb_Etq1PTVSGU7w5kj5RSF2VWZlr0JER_VuA-2Y_DcExFCdnEPIfEUI3QeSFMtuBQDhNOFKSMgXPjq0IKsPnyIrP6fkmy-7qRKrHvdjEqVG8gry8FfVIhmqDpU950BSehrIFBjIVJT4pMtz0ql3t2eXhmI20aD3sj99fDx8YzFLKHThk8H7yGQfBqBvuSa1Hwfp3M61fpYiE-2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between text-on-primary">
+<span class="font-label-sm text-label-sm font-medium">Main Geyser Source</span>
+<span class="p-1 rounded bg-black/40 backdrop-blur-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="fullscreen">fullscreen</span>
+</span>
+</div>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 bg-primary/90 text-on-primary font-code-sm text-[10px] rounded uppercase font-semibold">Photo 01</span>
+</div>
+<!-- Thumbnail 2 -->
+<div class="snap-start shrink-0 relative w-48 h-32 rounded-lg border border-outline-variant/60 overflow-hidden bg-surface-container group shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105" data-alt="A detailed wide photographic capture of a municipal street crossing engulfed in moderate floodwaters. City storm drain grates are clogged with street debris while yellow warning barriers stand nearby under overcast daylight, rendered with authentic urban textures and utilitarian clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz5Eoi9pQGP70PcTIqr6HOWODjh4C_ZCxffrmr4f2n6agGv6juvyFJZ0BdD_x4PXoTivoRhRbknH3tBv9ybFp5F0uh1YaAg19q11f0BFq1eZza70__wJNiBdUssds-ik8LODaAi26JOmm-Q5r-pjtxdUaVvpHbp_P3OtKu6_G9LAFDzzAwWEKxwxVnpcrz2dOeXrdlMsJ2wNvyCUM6E19vA7MucR28kz7j08OmTID6vl2zrMB2jvke"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between text-on-primary">
+<span class="font-label-sm text-label-sm font-medium">Submerged Sidewalk</span>
+<span class="p-1 rounded bg-black/40 backdrop-blur-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="fullscreen">fullscreen</span>
+</span>
+</div>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 bg-primary/90 text-on-primary font-code-sm text-[10px] rounded uppercase font-semibold">Photo 02</span>
+</div>
+<!-- Thumbnail 3 -->
+<div class="snap-start shrink-0 relative w-48 h-32 rounded-lg border border-outline-variant/60 overflow-hidden bg-surface-container group shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105" data-alt="A close-up documentary shot of an exposed ruptured water pipeline beneath collapsed asphalt curbing. Clear high-pressure potable water is jetting upward against an embankment, framed by concrete cracks, institutional gravel, and public works warning tape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnA9-NtZgZ8kAWfSjJnmNgn7DX_iRuYsEAdhsTLkuU9df3GKlvSydAUSTMI4RSJ-QLuOn80pw7taRRv1dDWoaosIs7zsAmTHJeVPjCJbgBixExKIquytTRmUDFMKFIss4KS0kuRqllmetEq8ct4MT-7f8ZI-aylDHfVq3HSU0GjibRV3C7tsV-tVleyZ4_1wmEKRNQmxpOyNNbrDRre2zx-ZuqfFcVpucGHSZEIRIzztkUWoigk_EC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between text-on-primary">
+<span class="font-label-sm text-label-sm font-medium">Pipe Joint Crack</span>
+<span class="p-1 rounded bg-black/40 backdrop-blur-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="fullscreen">fullscreen</span>
+</span>
+</div>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 bg-primary/90 text-on-primary font-code-sm text-[10px] rounded uppercase font-semibold">Photo 03</span>
+</div>
+</div>
+<!-- Carousel Indicators -->
+<div class="flex justify-center items-center gap-1.5 pt-0.5">
+<span class="w-4 h-1.5 bg-secondary rounded-full"></span>
+<span class="w-1.5 h-1.5 bg-outline-variant rounded-full"></span>
+<span class="w-1.5 h-1.5 bg-outline-variant rounded-full"></span>
+</div>
+</section>
+<!-- Compact Location Card -->
+<section class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p- space-md p-3.5 flex flex-col gap-2.5">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary mt-0.5 shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h2 class="font-title-md text-title-md text-on-surface font-semibold">MG Road &amp; 4th Ave Crossing</h2>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded text-[11px] font-semibold bg-[#F0FDF4] text-[#15803D] border border-[#BBF7D0]">
+                  Verified Geo
+                </span>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-0.5">Lat: 37.7749° N, Long: 122.4194° W</p>
+</div>
+</div>
+</div>
+<!-- Mini Interactive Map Strip -->
+<div class="w-full h-24 rounded-lg overflow-hidden relative border border-outline-variant/60 group cursor-pointer" data-location="San Francisco" style="">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A clean, top-down institutional street grid cartography map showcasing an urban intersection with minimalist architectural footprints, labeled street corridors, and a prominent blue geo-pin marker centered on MG Road and 4th Avenue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtJRS6gU9sU-LU_RZFCxBX5q2Got-knmhYDk3eC0DBIEyEx14x6M8XJe_2OZSEqIb1zzOfwrzr_9lhxlAyOqPVlIyqAd02AkZIxj_AzVjs5h6xZ0guYQMRhXJTQVxkgy3Jop9w1uB9rCHpPnYx4TpfGM0SgUkuJIVK6-9NBiWJ-jODNtiL2M-WWIVXpB8wsSD2R-XemEuw-iughqSsVIWJn4B44_N7AP25MG0MMD0fvip_H8PU8G13"/>
+<div class="absolute inset-0 bg-primary-container/10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-8 h-8 rounded-full bg-secondary/30 animate-ping"></span>
+<div class="w-6 h-6 rounded-full bg-secondary border-2 border-white shadow flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[14px]" data-icon="water_damage">water_damage</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 bg-surface-container-lowest/90 backdrop-blur-sm px-2 py-0.5 rounded border border-outline-variant/60 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[12px] text-secondary" data-icon="map">map</span>
+<span class="font-label-sm text-[11px] text-primary font-medium">Open in Maps</span>
+</div>
+</div>
+</section>
+<!-- Citizen Observation Narrative -->
+<section class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md space-y-space-xs">
+<div class="flex items-center justify-between border-b border-[#F1F5F9] pb-2">
+<span class="font-label-md text-label-md font-semibold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+            Citizen Observation Narrative
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Original Submission</span>
+</div>
+<div class="pt-1">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            Noticed high pressure water surging through asphalt cracks directly adjacent to the crosswalk storm drain around 07:45 AM. The flooding has expanded approximately 40 feet across both north-bound lanes. Vehicle traffic is currently swerving into oncoming lanes to bypass the surge, and the sidewalk curb appears to be subsiding. Water smells potable and untreated sediment is spreading onto the crosswalk.
+          </p>
+</div>
+</section>
+<!-- Lifecycle & Dispatch Timeline (Vertical Card with Compact Nodes) -->
+<section class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md space-y-space-md">
+<div class="flex items-center justify-between border-b border-[#F1F5F9] pb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="alt_route">alt_route</span>
+<h2 class="font-title-md text-title-md text-primary font-semibold">Lifecycle &amp; Dispatch Timeline</h2>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-[#15803D] bg-[#F0FDF4] px-2 py-0.5 rounded border border-[#BBF7D0]">
+            Active SLA
+          </span>
+</div>
+<!-- Timeline Steps Vertical Node Chain -->
+<div class="relative pl-6 space-y-5 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/60">
+<!-- Node 1: Reported -->
+<div class="relative">
+<span class="absolute -left-6 top-0.5 w-[22px] h-[22px] rounded-full bg-[#F0FDF4] border-2 border-[#16A34A] text-[#16A34A] flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</span>
+<div class="flex items-baseline justify-between">
+<p class="font-label-md text-label-md text-on-surface font-semibold">Reported</p>
+<span class="font-code-sm text-code-sm text-on-surface-variant">08:24 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Submitted via CivicTrack Citizen Mobile</p>
+</div>
+<!-- Node 2: Under Review -->
+<div class="relative">
+<span class="absolute -left-6 top-0.5 w-[22px] h-[22px] rounded-full bg-[#F0FDF4] border-2 border-[#16A34A] text-[#16A34A] flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</span>
+<div class="flex items-baseline justify-between">
+<p class="font-label-md text-label-md text-on-surface font-semibold">Under Review</p>
+<span class="font-code-sm text-code-sm text-on-surface-variant">08:31 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Triage automated priority validation</p>
+</div>
+<!-- Node 3: Verified -->
+<div class="relative">
+<span class="absolute -left-6 top-0.5 w-[22px] h-[22px] rounded-full bg-[#F0FDF4] border-2 border-[#16A34A] text-[#16A34A] flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</span>
+<div class="flex items-baseline justify-between">
+<p class="font-label-md text-label-md text-on-surface font-semibold">Verified</p>
+<span class="font-code-sm text-code-sm text-on-surface-variant">08:45 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Incident verified via satellite &amp; neighbor reports</p>
+</div>
+<!-- Node 4: Assigned -->
+<div class="relative">
+<span class="absolute -left-6 top-0.5 w-[22px] h-[22px] rounded-full bg-[#F0FDF4] border-2 border-[#16A34A] text-[#16A34A] flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>
+</span>
+<div class="flex items-baseline justify-between">
+<p class="font-label-md text-label-md text-on-surface font-semibold">Assigned</p>
+<span class="font-code-sm text-code-sm text-on-surface-variant">09:10 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Routed to Dept of Public Works Dispatch</p>
+</div>
+<!-- Node 5: In Progress (ACTIVE NODE) -->
+<div class="relative bg-surface-container-low p-2.5 -ml-2 rounded-lg border border-secondary/30">
+<span class="absolute -left-4 top-3 w-[22px] h-[22px] rounded-full bg-secondary border-2 border-surface-container-lowest text-white flex items-center justify-center z-10 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+</span>
+<div class="flex items-baseline justify-between">
+<p class="font-label-md text-label-md text-secondary font-bold flex items-center gap-1">
+                In Progress
+                <span class="material-symbols-outlined text-[14px] text-secondary" data-icon="engineering">engineering</span>
+</p>
+<span class="font-code-sm text-code-sm text-secondary font-medium">09:40 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5">Work crew on-site: Isolating valve segment #B-12</p>
+</div>
+<!-- Node 6: Completed (Pending) -->
+<div class="relative opacity-60">
+<span class="absolute -left-6 top-0.5 w-[22px] h-[22px] rounded-full bg-surface-container border-2 border-outline-variant text-outline flex items-center justify-center z-10">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+</span>
+<div class="flex items-baseline justify-between">
+<p class="font-label-md text-label-md text-on-surface font-medium">Completed</p>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Pending</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Target closure estimated by 01:30 PM</p>
+</div>
+</div>
+<!-- Dispatch Metadata Grid Card -->
+<div class="pt-2 border-t border-[#F1F5F9] grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-2 rounded-lg border border-outline-variant/40">
+<span class="font-body-sm text-[11px] text-on-surface-variant block">Assigned Unit</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">PW Unit #4</span>
+</div>
+<div class="bg-[#F0FDF4] p-2 rounded-lg border border-[#BBF7D0]">
+<span class="font-body-sm text-[11px] text-[#15803D] block">Target SLA</span>
+<span class="font-label-sm text-label-sm text-[#15803D] font-bold">4h (On Track)</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg border border-outline-variant/40">
+<span class="font-body-sm text-[11px] text-on-surface-variant block">Endorsements</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">41 confirmed</span>
+</div>
+</div>
+</section>
+<!-- Community Comments Section -->
+<section class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-space-md space-y-space-md">
+<div class="flex items-center justify-between border-b border-[#F1F5F9] pb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="forum">forum</span>
+<h2 class="font-title-md text-title-md text-primary font-semibold">Community &amp; Officer Log</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded font-medium">3 entries</span>
+</div>
+<!-- Comments Stream -->
+<div class="space-y-space-md">
+<!-- Comment 1: Field Officer Update -->
+<div class="flex gap-2.5 items-start">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0 mt-0.5">
+              MV
+            </div>
+<div class="flex-1 bg-surface-container-low border border-outline-variant/40 rounded-lg p-2.5 space-y-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-md text-label-md text-primary font-bold">Marcus Vance</span>
+<span class="font-label-sm text-[10px] px-1.5 py-0.2 rounded bg-primary-container text-on-primary font-medium">Officer #PW-4821</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">09:42 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                Shut-off valve key deployed at junction 4B. Water pressure throttled by 85%. Excavation backhoe en route to patch lateral fissure.
+              </p>
+</div>
+</div>
+<!-- Comment 2: Local Citizen Confirmation -->
+<div class="flex gap-2.5 items-start">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0 mt-0.5">
+              EL
+            </div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-2.5 space-y-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Elena Rostova</span>
+<span class="font-label-sm text-[10px] px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant font-medium">Neighbor</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">09:15 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                Confirmed flooding reached the sidewalk curb outside building #412. Pedestrian crossing is now fully impassable without boots.
+              </p>
+</div>
+</div>
+<!-- Comment 3: Transit Authority Advisory -->
+<div class="flex gap-2.5 items-start">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold shrink-0 mt-0.5">
+              CT
+            </div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-2.5 space-y-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-md text-label-md text-on-surface font-semibold">City Transit Bot</span>
+<span class="font-label-sm text-[10px] px-1.5 py-0.2 rounded bg-surface-container-high text-primary font-medium">Municipal Bot</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">08:50 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                Bus route 14 detour activated between 3rd and 5th Avenue until emergency street clearing concludes.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Issue Civic Safeguard Action Banner -->
+<section class="bg-surface-container border border-outline-variant/50 rounded-xl p-space-md flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[24px] text-primary" data-icon="thumb_up">thumb_up</span>
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">Affected by this issue?</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Subscribe for live SMS/push alerts</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary hover:bg-[#1E40AF] px-3 py-1.5 rounded text-label-sm font-semibold transition-colors duration-150 active:scale-95">
+          + Confirm
+        </button>
+</section>
+</main>
+<!-- Sticky Bottom Observation & Comment Bar -->
+<footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[420px] bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/60 px-margin-sm py-2.5 z-40 shadow-[0_-4px_12px_rgba(15,23,42,0.06)]">
+<form class="flex items-center gap-2" onsubmit="event.preventDefault();">
+<div class="relative flex-1">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-3 pr-8 py-2 text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/70 focus:bg-surface-container-lowest focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20 transition-all" placeholder="Add observation or comment..." type="text"/>
+<button aria-label="Attach Photo" class="absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_a_photo">add_a_photo</span>
+</button>
+</div>
+<button aria-label="Send Comment" class="bg-primary hover:bg-[#1E40AF] text-on-primary h-10 px-4 rounded-lg flex items-center justify-center transition-colors active:scale-95 shadow-sm" type="submit">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+</button>
+</form>
+</footer>
+</div>
+</body></html>

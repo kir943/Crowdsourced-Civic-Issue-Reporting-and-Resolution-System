@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack Admin - Issue Management</title>
+<!-- Google Fonts: Public Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#dce1ff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary-container": "#2f3d51",
+            "inverse-on-surface": "#eef0ff",
+            "on-background": "#131b2e",
+            "tertiary-fixed": "#d5e3fd",
+            "surface-container-high": "#e2e7ff",
+            "primary-fixed-dim": "#a5c8ff",
+            "surface-tint": "#396092",
+            "secondary-fixed-dim": "#b7c4ff",
+            "primary": "#00274e",
+            "surface-container": "#eaedff",
+            "background": "#faf8ff",
+            "on-secondary-fixed": "#001551",
+            "primary-container": "#0f3d6e",
+            "primary-fixed": "#d4e3ff",
+            "surface-bright": "#faf8ff",
+            "on-tertiary-fixed": "#0d1c2f",
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#84a9e0",
+            "on-surface": "#131b2e",
+            "on-primary-fixed-variant": "#1e4879",
+            "surface-container-lowest": "#ffffff",
+            "inverse-primary": "#a5c8ff",
+            "on-tertiary-container": "#99a8bf",
+            "outline": "#737780",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "on-primary": "#ffffff",
+            "tertiary": "#19273a",
+            "surface-variant": "#dae2fd",
+            "inverse-surface": "#283044",
+            "on-secondary-fixed-variant": "#0039b5",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "surface": "#faf8ff",
+            "error-container": "#ffdad6",
+            "surface-dim": "#d2d9f4",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-surface-variant": "#43474f",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "on-secondary-container": "#fffbff",
+            "secondary-container": "#4069f2",
+            "secondary": "#1d4ed8",
+            "outline-variant": "#c3c6d0",
+            "on-primary-fixed": "#001c3a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "margin-lg": "3rem",
+            "space-xl": "2.5rem",
+            "margin-sm": "1rem",
+            "gutter-lg": "2rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "display-lg": ["Public Sans"],
+            "headline-sm": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "body-lg": ["Public Sans"],
+            "headline-lg": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "body-md": ["Public Sans"]
+          },
+          "fontSize": {
+            "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "display-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "code-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex justify-center selection:bg-primary selection:text-on-primary">
+<!-- Mobile Screen Shell (~390px responsive viewport constraint) -->
+<div class="w-full max-w-[430px] min-h-screen bg-surface-bright flex flex-col relative pb-36 shadow-lg">
+<!-- Top App Bar (Shared Anchor Execution) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest px-4 h-16 flex items-center justify-between shadow-[0_1px_3px_rgba(15,23,42,0.08)]">
+<div class="flex items-center gap-2">
+<button aria-label="Open navigation menu" class="text-primary hover:bg-surface-container-high rounded p-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CivicTrack</span>
+<span class="bg-primary text-on-primary font-label-sm text-[10px] tracking-wider px-1.5 py-0.5 rounded uppercase font-semibold">ADMIN</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<button aria-label="Search records" class="text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded p-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">search</span>
+</button>
+<button aria-label="System notifications" class="relative text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded p-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute 1 top-1 right-1 min-w-[16px] h-4 bg-error text-on-error font-code-sm text-[10px] font-bold rounded-full flex items-center justify-center px-1">7</span>
+</button>
+<div class="w-8 h-8 rounded-full ring-2 ring-outline-variant overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Official municipal administrative officer headshot of Clara Jenkins in formal dark navy attire, sharp neutral studio lighting, authentic civic portrait in high contrast crisp modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQOA5QY1YNPXd6s9ZLDr9u-Mklz5dscoZPHIX7Apih38xEPOVTm_mQY2I90jQslX2xlI_F72UzadK0Od4Vtsn65Se9nZoaFem6hMqIkPCFZbxaC0duYFc0VrmMJzk4Eqpmi0xxCfg9UIKwGT4pnkoqHLyQ5vzUQjA2q34bmXYwgtpnqkQImYoLeyRB-YBRrc3h-p8Ab8-cwUtKAC92ragKZaRhwVvdakCwkmruPAH5Br9NxGPUWL4P"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 pt-3 pb-6 flex flex-col gap-3">
+<!-- Header Title & Subtitle Area -->
+<section class="flex items-baseline justify-between pt-1">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Issue Management</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Admin Registry &amp; Dispatch Oversight</p>
+</div>
+<button class="flex items-center gap-1 text-secondary font-label-sm text-label-sm hover:underline py-1" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Sort &amp; Filter</span>
+</button>
+</section>
+<!-- Bulk Selection Active Banner -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 shadow-[0_2px_4px_-1px_rgba(15,23,42,0.06)] flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-secondary cursor-pointer" id="bulk-select" type="checkbox"/>
+<label class="font-label-md text-label-md text-primary font-semibold flex items-center gap-1.5" for="bulk-select">
+<span>3 of 128 Selected</span>
+<span class="font-label-sm text-[11px] bg-surface-container text-on-surface-variant px-1.5 py-0.2 rounded font-normal">Active Batch</span>
+</label>
+</div>
+<button class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm" type="button">
+            Select All
+          </button>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="h-9 bg-primary-container hover:bg-secondary text-on-primary font-label-md text-label-md rounded flex items-center justify-center gap-1.5 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Bulk Verify (3)</span>
+</button>
+<button class="h-9 bg-surface-container-lowest border border-error text-error hover:bg-error-container hover:border-error font-label-md text-label-md rounded flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">block</span>
+<span>Bulk Reject</span>
+</button>
+</div>
+</section>
+<!-- Filter Pill Bar (Horizontally scrollable) -->
+<section class="overflow-x-auto hide-scrollbar -mx-4 px-4 py-1 flex items-center gap-2">
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-primary text-on-primary flex items-center gap-1.5 shadow-sm" type="button">
+<span>All Issues</span>
+<span class="bg-surface-container-lowest/20 px-1.5 py-0.2 text-[10px] rounded-full">128</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-error border border-error/30 hover:bg-error-container flex items-center gap-1.5 transition-colors" type="button">
+<span class="w-2 h-2 rounded-full bg-error inline-block"></span>
+<span>Critical</span>
+<span class="bg-error/10 text-error px-1.5 py-0.2 text-[10px] rounded-full font-bold">14</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-container-high flex items-center gap-1.5 transition-colors" type="button">
+<span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+<span>Under Review</span>
+<span class="bg-surface-container px-1.5 py-0.2 text-[10px] rounded-full font-medium">12</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-container-high flex items-center gap-1.5 transition-colors" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+<span>In Progress</span>
+<span class="bg-surface-container px-1.5 py-0.2 text-[10px] rounded-full font-medium">84</span>
+</button>
+<button class="whitespace-nowrap px-3 py-1.5 rounded-full font-label-sm text-label-sm bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-container-high flex items-center gap-1.5 transition-colors" type="button">
+<span class="w-2 h-2 rounded-full bg-error inline-block"></span>
+<span>Overdue</span>
+<span class="bg-surface-container px-1.5 py-0.2 text-[10px] rounded-full font-medium">6</span>
+</button>
+</section>
+<!-- Card-per-Issue List (Mobile High-Density Bento Cards) -->
+<section class="flex flex-col gap-3 pt-1">
+<!-- CARD 1: Selected, Critical Water Incident (Overdue Breach) -->
+<article class="bg-surface-container-lowest border-2 border-secondary rounded-xl p-3.5 shadow-sm transition-all relative">
+<!-- Selection accent tab -->
+<div class="absolute left-0 top-3 bottom-3 w-1 bg-secondary rounded-r"></div>
+<!-- Top row -->
+<div class="flex items-center justify-between gap-2 pb-2.5 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-secondary cursor-pointer" type="checkbox"/>
+<span class="font-code-sm text-code-sm font-semibold text-primary tracking-wide">#CT-10482</span>
+</div>
+<!-- Status: Overdue Breach (Crimson) -->
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded border border-[#FECACA] bg-[#FEF2F2] text-[#B91C1C] font-label-sm text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DC2626]"></span>
+<span>Overdue Breach</span>
+</span>
+</div>
+<!-- Middle row -->
+<div class="pt-2.5 flex flex-col gap-1.5">
+<h2 class="font-title-md text-title-md text-on-surface leading-snug">Severe Water Main Rupture &amp; Street Flooding</h2>
+<div class="flex items-center flex-wrap gap-1.5">
+<span class="bg-surface-container text-on-surface-variant font-label-sm text-[11px] px-2 py-0.5 rounded font-medium">Water &amp; Sanitation</span>
+<span class="bg-[#FEF2F2] text-[#B91C1C] border border-[#FECACA] font-label-sm text-[11px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">Critical</span>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1 ml-auto">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Today, 08:15 AM</span>
+</span>
+</div>
+</div>
+<!-- Location & Citizen metadata row -->
+<div class="mt-2.5 p-2 bg-surface-container-low rounded-lg flex flex-col gap-1.5 border border-outline-variant/40">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-error flex-shrink-0">location_on</span>
+<span class="truncate font-medium">MG Road &amp; 4th Ave Crossing, District 2</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-1 border-t border-outline-variant/30 text-body-sm">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Civilian citizen reporting portrait of Sarah Jenkins with natural lighting, clear municipal record avatar against clean neutral civic backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt6-jvXEl6RppRCD7LzlJhlCsNTjVfYdUUFI4VSGWbXypQetYoU82npLi1ZXOH2QiCuiTy8dCHfSCRvz3gSh112-WD41cvPdoAJwjDNjGNNBmWrPrvSg7Q0GasMGZ7kKnhGe4Ay2tt20nPUeH3fTcfr6bTgWbe_dp51sLzkgxpQSSYdrwZ_PAVahzJCKIa9R1w7m_MbuiOOnd_zxLd8_wEcPT6k8ccRS05wRPv6O0I0z9HbxHbsUah"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-[13px]">Sarah Jenkins</span>
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;" title="Verified Citizen">verified</span>
+</div>
+<span class="font-code-sm text-[11px] text-outline">Priority Index: 9.8</span>
+</div>
+</div>
+<!-- Department Routing Chip -->
+<div class="mt-2.5 flex items-center justify-between text-body-sm">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 bg-surface-container text-primary rounded font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[15px] text-primary">local_shipping</span>
+<span>Assigned: <strong class="font-semibold">Bureau of Water Squad #4</strong></span>
+</div>
+<span class="font-code-sm text-[11px] text-error font-medium">SLA: -2h 40m</span>
+</div>
+<!-- Bottom Action Strip -->
+<div class="mt-3 pt-2.5 border-t border-surface-container flex items-center justify-between gap-2">
+<button class="h-8 px-2.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-sm text-label-sm rounded flex items-center gap-1.5 transition-colors border border-outline-variant/60" type="button">
+<span class="material-symbols-outlined text-[16px]">cloud_download</span>
+<span>Quick Action</span>
+</button>
+<div class="flex items-center gap-1">
+<a class="h-8 px-2.5 text-secondary hover:text-primary font-label-sm text-label-sm flex items-center gap-1 transition-colors" href="#details">
+<span>View Full Details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<button aria-label="More options" class="h-8 w-8 text-on-surface-variant hover:text-primary rounded flex items-center justify-center hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+<!-- CARD 2: Selected, Power Line Hazard (In Progress) -->
+<article class="bg-surface-container-lowest border-2 border-secondary rounded-xl p-3.5 shadow-sm transition-all relative">
+<div class="absolute left-0 top-3 bottom-3 w-1 bg-secondary rounded-r"></div>
+<div class="flex items-center justify-between gap-2 pb-2.5 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-secondary cursor-pointer" type="checkbox"/>
+<span class="font-code-sm text-code-sm font-semibold text-primary tracking-wide">#CT-10479</span>
+</div>
+<!-- Status: In Progress (Blue) -->
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded border border-[#BFDBFE] bg-[#EFF6FF] text-[#1D4ED8] font-label-sm text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2563EB]"></span>
+<span>In Progress</span>
+</span>
+</div>
+<div class="pt-2.5 flex flex-col gap-1.5">
+<h2 class="font-title-md text-title-md text-on-surface leading-snug">Exposed Overhead Power Cable Near Public School</h2>
+<div class="flex items-center flex-wrap gap-1.5">
+<span class="bg-surface-container text-on-surface-variant font-label-sm text-[11px] px-2 py-0.5 rounded font-medium">Energy &amp; Utilities</span>
+<span class="bg-[#FEF2F2] text-[#B91C1C] border border-[#FECACA] font-label-sm text-[11px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">High</span>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1 ml-auto">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Today, 07:42 AM</span>
+</span>
+</div>
+</div>
+<div class="mt-2.5 p-2 bg-surface-container-low rounded-lg flex flex-col gap-1.5 border border-outline-variant/40">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-error flex-shrink-0">location_on</span>
+<span class="truncate font-medium">Oakmont Elementary Gate 3, Sector 9</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-1 border-t border-outline-variant/30 text-body-sm">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Community safety monitor profile portrait of David K. Miller in municipal inspection vest, sharp outdoor daylight, institutional credibility style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0opRKZWNOdGePVSVxdwdLAmQWvBjds0JNAVwOjfrBN5ESZN8dIQuCJhel5KWkakQeCQj4QmXw9CW9FldRa7jcD1XivknvHGKWFPYxOOMl0a97UKlrCgZyDiGqiq4c5BxHVp3_c9xDISTeo3kXS09b9QaHAoHdVGfyWkHpVUQAC0cL_THWkULOmTMFdLPu2mWdDXwQuD15k485xYM4xkqH68KiAP8FYAjRUh4k-XFZYEXUHnNJSxks"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-[13px]">David K. Miller</span>
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;" title="Verified Citizen">verified</span>
+</div>
+<span class="font-code-sm text-[11px] text-outline">Priority Index: 9.1</span>
+</div>
+</div>
+<div class="mt-2.5 flex items-center justify-between text-body-sm">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 bg-surface-container text-primary rounded font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[15px] text-primary">local_shipping</span>
+<span>Assigned: <strong class="font-semibold">Grid Emergency Team 02</strong></span>
+</div>
+<span class="font-code-sm text-[11px] text-secondary font-medium">SLA: 45m left</span>
+</div>
+<div class="mt-3 pt-2.5 border-t border-surface-container flex items-center justify-between gap-2">
+<button class="h-8 px-2.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-sm text-label-sm rounded flex items-center gap-1.5 transition-colors border border-outline-variant/60" type="button">
+<span class="material-symbols-outlined text-[16px]">cloud_download</span>
+<span>Quick Action</span>
+</button>
+<div class="flex items-center gap-1">
+<a class="h-8 px-2.5 text-secondary hover:text-primary font-label-sm text-label-sm flex items-center gap-1 transition-colors" href="#details">
+<span>View Full Details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<button aria-label="More options" class="h-8 w-8 text-on-surface-variant hover:text-primary rounded flex items-center justify-center hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+<!-- CARD 3: Selected, Pothole & Road Cavity (Under Review) -->
+<article class="bg-surface-container-lowest border-2 border-secondary rounded-xl p-3.5 shadow-sm transition-all relative">
+<div class="absolute left-0 top-3 bottom-3 w-1 bg-secondary rounded-r"></div>
+<div class="flex items-center justify-between gap-2 pb-2.5 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-secondary cursor-pointer" type="checkbox"/>
+<span class="font-code-sm text-code-sm font-semibold text-primary tracking-wide">#CT-10471</span>
+</div>
+<!-- Status: Under Review (Amber) -->
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded border border-[#FDE68A] bg-[#FFFBEB] text-[#B45309] font-label-sm text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D97706]"></span>
+<span>Under Review</span>
+</span>
+</div>
+<div class="pt-2.5 flex flex-col gap-1.5">
+<h2 class="font-title-md text-title-md text-on-surface leading-snug">Structural Asphalt Subsidence &amp; Arterial Pothole</h2>
+<div class="flex items-center flex-wrap gap-1.5">
+<span class="bg-surface-container text-on-surface-variant font-label-sm text-[11px] px-2 py-0.5 rounded font-medium">Roads &amp; Transport</span>
+<span class="bg-surface-container text-on-surface-variant font-label-sm text-[11px] px-2 py-0.5 rounded font-medium">Medium</span>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1 ml-auto">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Yesterday, 06:30 PM</span>
+</span>
+</div>
+</div>
+<div class="mt-2.5 p-2 bg-surface-container-low rounded-lg flex flex-col gap-1.5 border border-outline-variant/40">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-error flex-shrink-0">location_on</span>
+<span class="truncate font-medium">Bayview Expressway Southbound Km 14</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-1 border-t border-outline-variant/30 text-body-sm">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Verified commuter citizen profile photo of Elena Rostova in smart casual attire, crisp urban studio lighting, authentic civic record aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHUFjNhQT_fIRa7YNm-Gvj-M173Dh2GsKmYIQQqbSUAUJHQG8iRiSjitPMW4qteQlviEZ4nfZWNUelHD8PPVnMZakHlV13clIrLgngLO5BlbpRv0OMufWt2juIvIrA_P9CWvUpSX52dRZqS3hGBpltBYqm3AQQIuqwO9qBs7EPpxkgP0XjK55urvof_lUw9-tY7mvZP7TxQ_SG4Nj2J_lZhesZobUGI2kkSJdc-r5LNKJF1gsyNUF7"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-[13px]">Elena Rostova</span>
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;" title="Verified Citizen">verified</span>
+</div>
+<span class="font-code-sm text-[11px] text-outline">Priority Index: 7.4</span>
+</div>
+</div>
+<div class="mt-2.5 flex items-center justify-between text-body-sm">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 bg-surface-container text-primary rounded font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[15px] text-primary">local_shipping</span>
+<span>Assigned: <strong class="font-semibold">Public Works Asphalt Div</strong></span>
+</div>
+<span class="font-code-sm text-[11px] text-amber-700 font-medium">Pending Intake</span>
+</div>
+<div class="mt-3 pt-2.5 border-t border-surface-container flex items-center justify-between gap-2">
+<button class="h-8 px-2.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-sm text-label-sm rounded flex items-center gap-1.5 transition-colors border border-outline-variant/60" type="button">
+<span class="material-symbols-outlined text-[16px]">cloud_download</span>
+<span>Quick Action</span>
+</button>
+<div class="flex items-center gap-1">
+<a class="h-8 px-2.5 text-secondary hover:text-primary font-label-sm text-label-sm flex items-center gap-1 transition-colors" href="#details">
+<span>View Full Details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<button aria-label="More options" class="h-8 w-8 text-on-surface-variant hover:text-primary rounded flex items-center justify-center hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+<!-- CARD 4: Unselected, Traffic Signal Malfunction (Under Review) -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3.5 shadow-sm transition-all relative hover:border-outline">
+<div class="flex items-center justify-between gap-2 pb-2.5 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<input class="w-4 h-4 rounded border-outline text-primary focus:ring-secondary cursor-pointer" type="checkbox"/>
+<span class="font-code-sm text-code-sm font-semibold text-primary tracking-wide">#CT-10468</span>
+</div>
+<!-- Status: Under Review (Amber) -->
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded border border-[#FDE68A] bg-[#FFFBEB] text-[#B45309] font-label-sm text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D97706]"></span>
+<span>Under Review</span>
+</span>
+</div>
+<div class="pt-2.5 flex flex-col gap-1.5">
+<h2 class="font-title-md text-title-md text-on-surface leading-snug">Traffic Signal Failure at School Crossing Intersection</h2>
+<div class="flex items-center flex-wrap gap-1.5">
+<span class="bg-surface-container text-on-surface-variant font-label-sm text-[11px] px-2 py-0.5 rounded font-medium">Traffic &amp; Signals</span>
+<span class="bg-[#FEF2F2] text-[#B91C1C] border border-[#FECACA] font-label-sm text-[11px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">High</span>
+<span class="font-body-sm text-body-sm text-outline flex items-center gap-1 ml-auto">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Yesterday, 04:12 PM</span>
+</span>
+</div>
+</div>
+<div class="mt-2.5 p-2 bg-surface-container-low rounded-lg flex flex-col gap-1.5 border border-outline-variant/40">
+<div class="flex items-center gap-1.5 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-error flex-shrink-0">location_on</span>
+<span class="truncate font-medium">Victoria Blvd &amp; Elm Street Junction</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-1 border-t border-outline-variant/30 text-body-sm">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Community member portrait of Arthur Pendelton with warm authentic expression, municipal portal verification aesthetic, bright clear natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8inIaDdW4frxj8XuQxlv_0e_nrJHLx1ok0f5cuH6XFegK5K1i2qmPlVk570nWRphFNNQH4HMVJ9FCXGaKLoh1rW_cO1JX0kS8si-7AUHmAggTj7IzrMXnekyA2DTR858UkkPOPVlHcsylppn7z7sdpQmvhXjSxjAkofwSpmeEFLONgWUuhNUID2JqbDFmUuFp1RQvfwMrKxsmcklnJuJD4UX-3qnB_zytHZZDafhuB1lFqqw7hfXg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface text-[13px]">Arthur Pendelton</span>
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;" title="Verified Citizen">verified</span>
+</div>
+<span class="font-code-sm text-[11px] text-outline">Priority Index: 8.6</span>
+</div>
+</div>
+<div class="mt-2.5 flex items-center justify-between text-body-sm">
+<div class="inline-flex items-center gap-1.5 px-2 py-1 bg-surface-container text-primary rounded font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[15px] text-primary">local_shipping</span>
+<span>Assigned: <strong class="font-semibold">Metro Traffic Engineering</strong></span>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant font-medium">Triage Queue</span>
+</div>
+<div class="mt-3 pt-2.5 border-t border-surface-container flex items-center justify-between gap-2">
+<button class="h-8 px-2.5 bg-surface-container hover:bg-surface-container-high text-primary font-label-sm text-label-sm rounded flex items-center gap-1.5 transition-colors border border-outline-variant/60" type="button">
+<span class="material-symbols-outlined text-[16px]">cloud_download</span>
+<span>Quick Action</span>
+</button>
+<div class="flex items-center gap-1">
+<a class="h-8 px-2.5 text-secondary hover:text-primary font-label-sm text-label-sm flex items-center gap-1 transition-colors" href="#details">
+<span>View Full Details</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<button aria-label="More options" class="h-8 w-8 text-on-surface-variant hover:text-primary rounded flex items-center justify-center hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- Pagination & Record Counter Control Strip -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-3 flex items-center justify-between shadow-sm mt-1">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Page 1 of 18 · 7 items</span>
+<div class="flex items-center gap-1.5">
+<button class="w-8 h-8 rounded border border-outline-variant text-outline flex items-center justify-center opacity-40 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="font-code-sm text-code-sm px-2 py-1 bg-surface-container rounded text-primary font-semibold">1</span>
+<button class="w-8 h-8 rounded border border-outline-variant text-primary hover:bg-surface-container flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Floating Sticky Summary & Batch Action Bar -->
+<aside class="fixed bottom-16 left-0 right-0 max-w-[430px] mx-auto px-4 z-30 pointer-events-none">
+<div class="pointer-events-auto bg-primary text-on-primary rounded-xl p-2.5 px-3.5 shadow-2xl flex items-center justify-between border border-primary-container">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<div class="leading-tight">
+<p class="font-label-md text-label-md text-on-primary font-semibold">3 items staged</p>
+<p class="font-code-sm text-[11px] text-primary-fixed">Ready for batch dispatch</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-8 px-3 bg-secondary hover:bg-blue-600 text-on-secondary font-label-sm text-label-sm rounded flex items-center gap-1 transition-colors" type="button">
+<span>Execute</span>
+<span class="material-symbols-outlined text-[16px]">send</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Bottom Navigation Bar (Semantic Destination Rule - Admin Issue Tab Active) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto h-16 bg-surface-container-lowest shadow-[0_-2px_6px_rgba(15,23,42,0.06)] z-40 flex items-center justify-around px-2">
+<!-- Tab 1: Dashboard -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#dashboard">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="font-label-sm text-[11px] mt-0.5">Dashboard</span>
+</a>
+<!-- Tab 2: Issues (ACTIVE) -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-secondary font-semibold relative" href="#issues">
+<!-- Active indicator pill -->
+<div class="w-10 h-7 bg-surface-container flex items-center justify-center rounded-full mb-0.5">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+</div>
+<span class="font-label-sm text-[11px]">Issues</span>
+</a>
+<!-- Tab 3: Analytics -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#analytics">
+<span class="material-symbols-outlined text-[22px]">insights</span>
+<span class="font-label-sm text-[11px] mt-0.5">Analytics</span>
+</a>
+<!-- Tab 4: Users -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#users">
+<span class="material-symbols-outlined text-[22px]">group</span>
+<span class="font-label-sm text-[11px] mt-0.5">Users</span>
+</a>
+<!-- Tab 5: More -->
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#more">
+<span class="material-symbols-outlined text-[22px]">more_horiz</span>
+<span class="font-label-sm text-[11px] mt-0.5">More</span>
+</a>
+</nav>
+</div>
+</body></html>

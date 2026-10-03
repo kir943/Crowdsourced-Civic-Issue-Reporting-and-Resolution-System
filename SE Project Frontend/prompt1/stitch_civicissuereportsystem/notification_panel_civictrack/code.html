@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack - Mobile Notifications</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#b7c4ff",
+            "secondary-container": "#4069f2",
+            "primary-container": "#0f3d6e",
+            "surface-container-highest": "#dae2fd",
+            "error-container": "#ffdad6",
+            "on-background": "#131b2e",
+            "surface-container-high": "#e2e7ff",
+            "on-surface-variant": "#43474f",
+            "tertiary-fixed": "#d5e3fd",
+            "outline": "#737780",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#eef0ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#131b2e",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#dae2fd",
+            "tertiary-container": "#2f3d51",
+            "secondary-fixed": "#dce1ff",
+            "primary-fixed": "#d4e3ff",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "surface-container-low": "#f2f3ff",
+            "on-primary-container": "#84a9e0",
+            "on-secondary-fixed-variant": "#0039b5",
+            "outline-variant": "#c3c6d0",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "on-secondary-container": "#fffbff",
+            "surface": "#faf8ff",
+            "error": "#ba1a1a",
+            "background": "#faf8ff",
+            "on-primary-fixed": "#001c3a",
+            "surface-container": "#eaedff",
+            "inverse-surface": "#283044",
+            "on-secondary-fixed": "#001551",
+            "surface-bright": "#faf8ff",
+            "primary": "#00274e",
+            "on-tertiary-fixed": "#0d1c2f",
+            "secondary": "#1d4ed8",
+            "tertiary": "#19273a",
+            "surface-tint": "#396092",
+            "surface-dim": "#d2d9f4",
+            "on-primary-fixed-variant": "#1e4879",
+            "primary-fixed-dim": "#a5c8ff",
+            "on-error-container": "#93000a",
+            "on-tertiary-container": "#99a8bf",
+            "inverse-primary": "#a5c8ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "margin-sm": "1rem",
+            "space-xl": "2.5rem",
+            "gutter-lg": "2rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "margin-lg": "3rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Public Sans"],
+            "headline-sm": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "label-sm": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "headline-lg": ["Public Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "display-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen relative overflow-x-hidden">
+<!-- TopAppBar Component (Rendered directly with tokens and shared specs) -->
+<header class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm md:px-margin-lg h-16 shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Open Navigation Drawer" class="p-2 -ml-2 rounded-lg text-on-surface hover:bg-surface-container-high transition-colors duration-150 ease-in-out flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="policy">policy</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CivicTrack</span>
+</div>
+</div>
+<!-- Right Controls: Notification Bell is in OPEN / ACTIVE state -->
+<div class="flex items-center gap-2">
+<button aria-expanded="true" aria-label="Notifications Panel Toggle" class="relative p-2 rounded-lg bg-surface-container-high text-primary border border-secondary transition-colors duration-150 ease-in-out flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-2xl text-secondary" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="absolute top-1 right-1 flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-sm text-label-sm font-semibold border border-outline-variant">
+        MV
+      </div>
+</div>
+</header>
+<!-- Underlying Mobile Dashboard Content (Dimmed to represent realistic back-office operational canvas) -->
+<main aria-hidden="true" class="pt-20 px-margin-sm pb-16 max-w-lg mx-auto filter blur-[1px] select-none pointer-events-none opacity-40 transition-all duration-200">
+<div class="mb-space-lg flex justify-between items-center">
+<div>
+<p class="font-label-sm text-label-sm text-outline">MUNICIPAL DESK / DISTRICT 4</p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">Field Intake &amp; Oversight</h1>
+</div>
+<span class="bg-surface-container-high text-primary font-code-sm text-code-sm px-2 py-1 rounded border border-outline-variant">LIVE OPS</span>
+</div>
+<!-- Civic Stat Cards -->
+<div class="grid grid-cols-2 gap-space-sm mb-space-lg">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Active Dispatches</p>
+<p class="font-headline-md text-headline-md font-bold text-primary mt-1">28</p>
+<span class="font-code-sm text-code-sm text-secondary font-medium">↑ 4 added today</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Resolved (24h)</p>
+<p class="font-headline-md text-headline-md font-bold text-primary mt-1">42</p>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-medium">94% SLA Compliant</span>
+</div>
+</div>
+<!-- Standard Dashboard Block -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-4 space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<span class="font-title-md text-title-md text-primary font-semibold">Priority Escalations</span>
+<span class="font-label-sm text-label-sm text-error font-medium">2 Critical</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant">
+<p class="font-label-md text-label-md font-semibold text-primary">Water Valve Rupture #W-104</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Lincoln &amp; 7th Blvd · Public Utilities Dispatched</p>
+</div>
+</div>
+</main>
+<!-- Ambient Backdrop Scrim (Layer 3 modal/drawer dimming behavior) -->
+<div aria-modal="true" class="fixed inset-0 top-16 bg-primary/40 backdrop-blur-[2px] z-40 transition-opacity duration-200 ease-in-out" role="dialog">
+<!-- Mobile Notification Flyout Dropdown / Sheet -->
+<section class="w-full max-w-md mx-auto bg-surface-container-lowest shadow-2xl rounded-b-2xl border-x border-b border-outline-variant overflow-hidden flex flex-col max-h-[calc(100vh-4.5rem)] animate-in slide-in-from-top-3 duration-200 ease-out">
+<!-- Panel Header -->
+<div class="px-4 pt-4 pb-3 border-b border-outline-variant bg-surface-container-lowest sticky top-0 z-10">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="font-title-lg text-title-lg font-bold text-primary tracking-tight">Notifications</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-secondary text-on-secondary shadow-sm">
+              4 Unread
+            </span>
+</div>
+<button class="font-label-sm text-label-sm font-semibold text-secondary hover:text-primary transition-colors focus:outline-none focus:underline" type="button">
+            Mark all as read
+          </button>
+</div>
+<!-- Filter Segmented Tabs -->
+<div class="mt-3 flex items-center gap-1.5 p-1 bg-surface-container-low rounded-lg border border-outline-variant/60">
+<button class="flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold font-label-sm text-on-secondary bg-secondary shadow-sm transition-all text-center" type="button">
+            All
+          </button>
+<button class="flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold font-label-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all text-center flex items-center justify-center gap-1.5" type="button">
+<span>Unread</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</button>
+<button class="flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold font-label-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all text-center" type="button">
+            Alerts
+          </button>
+</div>
+</div>
+<!-- Notification Items Container -->
+<div class="overflow-y-auto divide-y divide-outline-variant/40 overscroll-contain">
+<!-- 1. UNREAD: Verified Pothole -->
+<article class="p-4 bg-surface-container-low/70 hover:bg-surface-container-high transition-colors relative cursor-pointer group">
+<div class="flex items-start gap-3">
+<span aria-label="Unread notification indicator" class="mt-1 flex-shrink-0 w-2 h-2 rounded-full bg-secondary ring-4 ring-secondary/20"></span>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold tracking-wide bg-amber-50 border border-amber-200 text-amber-800">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                  VERIFIED
+                </span>
+<span class="font-code-sm text-[11px] text-on-surface-variant font-medium">3m ago</span>
+</div>
+<h3 class="font-title-md text-sm font-bold text-primary tracking-tight leading-snug">
+                Your issue was Verified
+              </h3>
+<p class="font-body-sm text-xs text-on-surface-variant mt-1 leading-relaxed">
+                Ticket <span class="font-code-sm font-semibold text-primary">#CV-8921</span> (Pothole on Elm Ave) was inspected and verified by Municipal Officer. Status changed to Verified.
+              </p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-xl flex-shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+</article>
+<!-- 2. UNREAD: Water Main Leak Assigned -->
+<article class="p-4 bg-surface-container-low/70 hover:bg-surface-container-high transition-colors relative cursor-pointer group">
+<div class="flex items-start gap-3">
+<span aria-label="Unread notification indicator" class="mt-1 flex-shrink-0 w-2 h-2 rounded-full bg-secondary ring-4 ring-secondary/20"></span>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold tracking-wide bg-blue-50 border border-blue-200 text-blue-800">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                  ASSIGNED
+                </span>
+<span class="font-code-sm text-[11px] text-on-surface-variant font-medium">18m ago</span>
+</div>
+<h3 class="font-title-md text-sm font-bold text-primary tracking-tight leading-snug">
+                New issue assigned to Road Dept.
+              </h3>
+<p class="font-body-sm text-xs text-on-surface-variant mt-1 leading-relaxed">
+                Emergency water main leak at 5th &amp; Pine routed to Public Works Team 2.
+              </p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-xl flex-shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+</article>
+<!-- 3. UNREAD: Resolution Proof Submitted -->
+<article class="p-4 bg-surface-container-low/70 hover:bg-surface-container-high transition-colors relative cursor-pointer group">
+<div class="flex items-start gap-3">
+<span aria-label="Unread notification indicator" class="mt-1 flex-shrink-0 w-2 h-2 rounded-full bg-secondary ring-4 ring-secondary/20"></span>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold tracking-wide bg-indigo-50 border border-indigo-200 text-indigo-800">
+<span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
+                  INSPECTION
+                </span>
+<span class="font-code-sm text-[11px] text-on-surface-variant font-medium">45m ago</span>
+</div>
+<h3 class="font-title-md text-sm font-bold text-primary tracking-tight leading-snug">
+                Resolution Proof Submitted
+              </h3>
+<p class="font-body-sm text-xs text-on-surface-variant mt-1 leading-relaxed">
+                Contractor uploaded completion photo for Traffic Light Signal #402. Verification requested.
+              </p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-xl flex-shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+</article>
+<!-- 4. READ: Issue Resolved & Closed -->
+<article class="p-4 bg-surface-container-lowest hover:bg-surface-container-low transition-colors relative cursor-pointer group">
+<div class="flex items-start gap-3">
+<span aria-hidden="true" class="w-2 flex-shrink-0"></span>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold tracking-wide bg-emerald-50 border border-emerald-200 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  RESOLVED
+                </span>
+<span class="font-code-sm text-[11px] text-outline font-medium">Yesterday</span>
+</div>
+<h3 class="font-title-md text-sm font-medium text-on-surface tracking-tight leading-snug">
+                Issue Resolved &amp; Closed
+              </h3>
+<p class="font-body-sm text-xs text-outline mt-1 leading-relaxed">
+                Streetlight outage at Oak St #108 was marked resolved by Officer Vance.
+              </p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-outline text-xl flex-shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+</article>
+<!-- 5. READ: Citizen Feedback Acknowledged -->
+<article class="p-4 bg-surface-container-lowest hover:bg-surface-container-low transition-colors relative cursor-pointer group">
+<div class="flex items-start gap-3">
+<span aria-hidden="true" class="w-2 flex-shrink-0"></span>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold tracking-wide bg-slate-100 border border-slate-200 text-slate-700">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+                  ACKNOWLEDGED
+                </span>
+<span class="font-code-sm text-[11px] text-outline font-medium">3d ago</span>
+</div>
+<h3 class="font-title-md text-sm font-medium text-on-surface tracking-tight leading-snug">
+                Citizen Feedback Acknowledged
+              </h3>
+<p class="font-body-sm text-xs text-outline mt-1 leading-relaxed">
+                Thank you for reporting sidewalk hazards in Ward 4.
+              </p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-outline text-xl flex-shrink-0" data-icon="chevron_right">chevron_right</span>
+</div>
+</article>
+</div>
+<!-- Panel Footer Action Link -->
+<div class="p-3 border-t border-outline-variant bg-surface-container-low text-center">
+<a class="inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 text-xs font-label-md font-semibold text-primary hover:text-secondary hover:bg-surface-container-high rounded transition-colors" href="#history">
+<span>View All Notification History</span>
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+</div>
+</body></html>

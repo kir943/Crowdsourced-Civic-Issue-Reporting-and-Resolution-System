@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CivicTrack - Issue Submission Confirmation</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Public Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Public Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#283044",
+            "primary-fixed-dim": "#a5c8ff",
+            "inverse-on-surface": "#eef0ff",
+            "secondary": "#1d4ed8",
+            "surface-bright": "#faf8ff",
+            "on-secondary-fixed": "#001551",
+            "tertiary-container": "#2f3d51",
+            "on-secondary-fixed-variant": "#0039b5",
+            "secondary-container": "#4069f2",
+            "on-background": "#131b2e",
+            "secondary-fixed": "#dce1ff",
+            "background": "#faf8ff",
+            "on-primary-container": "#84a9e0",
+            "primary-fixed": "#d4e3ff",
+            "on-primary-fixed": "#001c3a",
+            "outline-variant": "#c3c6d0",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-high": "#e2e7ff",
+            "tertiary-fixed-dim": "#b9c7e0",
+            "surface-container": "#eaedff",
+            "on-surface": "#131b2e",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#0d1c2f",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary": "#19273a",
+            "surface-tint": "#396092",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#43474f",
+            "surface": "#faf8ff",
+            "on-primary-fixed-variant": "#1e4879",
+            "surface-dim": "#d2d9f4",
+            "secondary-fixed-dim": "#b7c4ff",
+            "on-tertiary-container": "#99a8bf",
+            "on-tertiary-fixed-variant": "#3a485c",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-variant": "#dae2fd",
+            "on-tertiary": "#ffffff",
+            "inverse-primary": "#a5c8ff",
+            "primary": "#00274e",
+            "outline": "#737780",
+            "tertiary-fixed": "#d5e3fd",
+            "primary-container": "#0f3d6e",
+            "on-secondary-container": "#fffbff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-sm": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "gutter-lg": "2rem",
+            "space-sm": "0.5rem",
+            "margin-lg": "3rem",
+            "margin": "1.5rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Public Sans"],
+            "title-md": ["Public Sans"],
+            "label-md": ["Public Sans"],
+            "headline-md": ["Public Sans"],
+            "display-lg": ["Public Sans"],
+            "body-sm": ["Public Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "headline-lg": ["Public Sans"],
+            "headline-lg-mobile": ["Public Sans"],
+            "body-md": ["Public Sans"],
+            "title-lg": ["Public Sans"],
+            "display-lg-mobile": ["Public Sans"],
+            "label-sm": ["Public Sans"],
+            "body-lg": ["Public Sans"]
+          },
+          "fontSize": {
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "display-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar (from Shared Components JSON specs) -->
+<header class="fixed top-0 left-0 w-full z-40 flex items-center justify-between px-margin-sm md:px-margin-lg h-16 bg-surface-container-lowest border-b border-outline-variant transition-colors duration-150 ease-in-out">
+<!-- Left branding & jurisdiction -->
+<div class="flex items-center space-x-4">
+<button aria-label="Toggle navigation drawer" class="p-2 rounded hover:bg-surface-container-high transition-all text-primary flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-secondary" type="button">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center space-x-3">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="account_balance">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight">CivicTrack</span>
+</div>
+<span class="h-4 w-px bg-outline-variant"></span>
+<div class="flex items-center space-x-1.5 px-2.5 py-1 bg-surface-container rounded text-on-surface-variant font-label-sm text-label-sm border border-outline-variant">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="location_on">location_on</span>
+<span>Ward 4 Oversight District</span>
+</div>
+</div>
+</div>
+<!-- Right utility & Citizen Profile -->
+<div class="flex items-center space-x-3">
+<!-- System status indicator -->
+<div class="hidden lg:flex items-center space-x-2 px-3 py-1 bg-surface-container-low rounded border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Dispatch Node: ONLINE</span>
+</div>
+<!-- Notifications -->
+<button aria-label="Notifications" class="p-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors relative focus:outline-none" type="button">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<span class="h-6 w-px bg-outline-variant"></span>
+<!-- Citizen Profile Anchor: Sarah Jenkins -->
+<div class="flex items-center space-x-3 pl-1">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover border border-outline-variant shadow-sm" data-alt="A professional headshot of Sarah Jenkins, a civic resident in Ward 4, photographed in high-key daylight against a clean architectural office backdrop. The portrait exudes civil responsibility and community leadership with neutral tones and balanced natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeQ5EWuxHlPO1MwpS0vPBXIiPxSYJGFGGhHvi9Qy5c9ZS51iRLOkhcEWWo7CR0qSmP5mICcbxHkq7Kvr9-HHP6mnOETvpvuWHJrkYF2ZjdXL8-Lo_-cQiye266vADLxbryZp0JVu-fnf17GyO40rn02B8nqieSpchKJYfBXafngtzO8A-4QikamFb9DLzy2DCmFgnrFYHNW_Mmufa_rC30NaOVdYB0ALAgQOjGxv094KLtKG7yQULn"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-600 rounded-full ring-2 ring-white" title="Verified Resident"></span>
+</div>
+<div class="hidden sm:flex flex-col text-left">
+<span class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Sarah Jenkins</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Citizen Contributor · #W4-9021</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Shell Body (Drawer + Canvas) -->
+<div class="flex pt-16 min-h-screen">
+<!-- NavigationDrawer (from Shared Components JSON specs) -->
+<aside class="fixed top-0 left-0 h-screen w-72 z-30 flex flex-col pt-16 bg-surface-container-low border-r border-outline-variant transition-all duration-150 ease-in-out hidden md:flex">
+<!-- Profile Header Block -->
+<div class="p-4 border-b border-outline-variant bg-surface-container-lowest/50">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-white flex items-center justify-center font-bold font-headline-sm">
+            SJ
+          </div>
+<div class="flex-1 min-w-0">
+<h3 class="font-label-md text-label-md font-semibold text-on-surface truncate">Sarah Jenkins</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Ward 4 Resident Council</p>
+<div class="flex items-center space-x-1.5 mt-1">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                Verified Civic Identity
+              </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+<!-- Tab 1: Dashboard -->
+<a class="flex items-center space-x-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Tab 2: Issue Registry (Active destination representing the issue tracking ecosystem) -->
+<a class="flex items-center space-x-3 px-3 py-2.5 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg shadow-sm" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="report_problem" data-weight="fill" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="font-medium">Issue Registry</span>
+<span class="ml-auto text-xs px-1.5 py-0.5 rounded bg-blue-700 text-white font-mono">NEW</span>
+</a>
+<!-- Tab 3: Intake Queue -->
+<a class="flex items-center space-x-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="inbox">inbox</span>
+<span>Intake Queue</span>
+</a>
+<!-- Tab 4: Department Dispatch -->
+<a class="flex items-center space-x-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="local_shipping">local_shipping</span>
+<span>Department Dispatch</span>
+</a>
+<!-- Tab 5: Audit Logs -->
+<a class="flex items-center space-x-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="fact_check">fact_check</span>
+<span>Audit Logs</span>
+</a>
+<!-- Municipal Divider -->
+<div class="pt-4 mt-4 border-t border-outline-variant/60">
+<span class="px-3 text-[11px] font-semibold text-outline tracking-wider uppercase font-label-sm">Municipal Services</span>
+<div class="mt-2 space-y-1">
+<a class="flex items-center space-x-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="map">map</span>
+<span>Ward Infrastructure Map</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="verified_user">verified_user</span>
+<span>Civic Trust Ledger</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Institutional Accountability Footer in Sidebar -->
+<div class="p-3 bg-surface-container-lowest/80 border-t border-outline-variant">
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span class="font-code-sm text-code-sm">v4.12-PROD</span>
+<span class="inline-flex items-center text-emerald-700">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mr-1.5"></span>
+            GovCloud Verified
+          </span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas (Offset by drawer width on desktop) -->
+<main class="flex-1 md:ml-72 bg-surface p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col items-center justify-start overflow-y-auto">
+<!-- Breadcrumb Bar -->
+<div class="w-full max-w-3xl mb-6 flex items-center justify-between">
+<nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:text-primary transition-colors flex items-center space-x-1" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="home">home</span>
+<span>Citizen Portal</span>
+</a>
+<span class="material-symbols-outlined text-xs text-outline" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Issue Intake</a>
+<span class="material-symbols-outlined text-xs text-outline" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-semibold">Submission Confirmation</span>
+</nav>
+<div class="hidden sm:flex items-center space-x-2 text-xs font-code-sm text-on-surface-variant bg-surface-container-lowest px-2.5 py-1 rounded border border-outline-variant">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="fingerprint">fingerprint</span>
+<span>AUTH-SIG: 9a3e:7b21:f04d</span>
+</div>
+</div>
+<!-- Main Municipal Confirmation Bento Card -->
+<div class="w-full max-w-3xl bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<!-- Top Institutional Seal Ribbon -->
+<div class="h-2 bg-gradient-to-r from-primary via-secondary to-primary-container"></div>
+<!-- Header Section -->
+<div class="p-6 md:p-8 text-center flex flex-col items-center border-b border-surface-container">
+<!-- Large Emerald Green Circular Badge with Verified Checkmark -->
+<div class="relative mb-5">
+<div class="w-20 h-20 rounded-full bg-emerald-50 border-2 border-emerald-200 flex items-center justify-center text-emerald-600 shadow-sm ring-8 ring-emerald-50/60">
+<span class="material-symbols-outlined text-5xl" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white rounded-full p-1 border-2 border-white shadow-sm flex items-center justify-center" title="Cryptographically Sealed">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+</div>
+</div>
+<!-- Headline -->
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight max-w-xl mb-3">
+            Issue Successfully Submitted to Municipal Dispatch
+          </h1>
+<!-- Prominent Issue Ticket ID Chip -->
+<div class="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 px-3 bg-surface-container-low border border-outline-variant rounded-lg mb-4">
+<div class="flex items-center space-x-1.5">
+<span class="text-xs text-on-surface-variant font-label-sm uppercase tracking-wider font-semibold">Registration No:</span>
+<span class="font-code-sm text-code-sm font-bold text-primary bg-surface-container-lowest px-2 py-0.5 rounded border border-outline-variant">
+                Issue #CT-10482
+              </span>
+<button aria-label="Copy Issue ID" class="p-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" onclick="navigator.clipboard.writeText('CT-10482')" title="Copy Issue ID to clipboard" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<span class="hidden sm:inline text-outline-variant">|</span>
+<!-- Status Pending Chip from Design System specifications -->
+<div class="inline-flex items-center space-x-1.5 px-2 py-0.5 bg-[#FFFBEB] border border-[#FDE68A] text-[#B45309] rounded text-[12px] font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#D97706]"></span>
+<span>Status: Awaiting Department Triage</span>
+</div>
+</div>
+<!-- Subtitle -->
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl text-center leading-relaxed">
+            Thank you for strengthening Ward 4 infrastructure. Your report has been cryptographically logged into the Public Works registry.
+          </p>
+</div>
+<!-- Summary Details Section (Structured Civic Grid) -->
+<div class="p-6 md:p-8 bg-surface-bright/50">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="fact_check">fact_check</span>
+<h2 class="font-title-md text-title-md text-primary font-semibold">Official Intake Summary</h2>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Timestamp: Today, 11:42 AM EST</span>
+</div>
+<!-- 2x2 Bento Metadata Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Service Area Box -->
+<div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Service Area</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="pin_drop">pin_drop</span>
+</div>
+<div class="mt-2">
+<p class="font-title-md text-title-md text-on-surface font-semibold">Ward 4 Central - Sector 3</p>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Cross-streets: Elmhurst Ave &amp; 44th Blvd</p>
+</div>
+</div>
+<!-- SLA Box -->
+<div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Estimated Triage SLA</span>
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="schedule">schedule</span>
+</div>
+<div class="mt-2">
+<p class="font-title-md text-title-md text-secondary font-semibold">Within 4 business hours</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 font-medium">Target Inspection: Today, 3:30 PM</p>
+</div>
+</div>
+<!-- Assigned Intake Depot Box -->
+<div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Assigned Intake Depot</span>
+<span class="material-symbols-outlined text-primary text-lg" data-icon="warehouse">warehouse</span>
+</div>
+<div class="mt-2">
+<p class="font-title-md text-title-md text-on-surface font-semibold">Public Works Roadway Squad #4</p>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Depot Facility: Northwest Municipal Yard</p>
+</div>
+</div>
+<!-- Civic Points Earned Box -->
+<div class="p-4 rounded-lg bg-gradient-to-br from-amber-50/70 to-surface-container-lowest border border-amber-200/80 flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-amber-900 font-semibold flex items-center space-x-1">
+<span class="material-symbols-outlined text-amber-600 text-sm" data-icon="military_tech" data-weight="fill" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<span>Civic Trust Recognition</span>
+</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-code-sm text-code-sm font-bold border border-amber-300">
+                  +25 PTS
+                </span>
+</div>
+<div class="mt-2">
+<p class="font-body-md text-body-md text-amber-950 font-medium leading-snug">
+                  +25 Civic Points awarded for verified geotagged report
+                </p>
+<p class="font-body-sm text-body-sm text-amber-800/80 mt-0.5">Tier Status: Gold Contributor (Level 3)</p>
+</div>
+</div>
+</div>
+<!-- Action Progress Timeline / Pipeline preview -->
+<div class="mt-6 p-4 rounded-lg bg-surface-container-low border border-outline-variant">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Processing Pipeline</span>
+<span class="font-code-sm text-code-sm text-secondary">Step 1 of 4 Completed</span>
+</div>
+<div class="grid grid-cols-4 gap-2 text-center">
+<!-- Step 1: Completed -->
+<div class="flex flex-col items-center">
+<div class="w-full h-1.5 bg-secondary rounded mb-2"></div>
+<span class="font-label-sm text-[11px] font-semibold text-secondary">1. Logged</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Confirmed</span>
+</div>
+<!-- Step 2: Active -->
+<div class="flex flex-col items-center">
+<div class="w-full h-1.5 bg-amber-400 rounded mb-2 animate-pulse"></div>
+<span class="font-label-sm text-[11px] font-semibold text-on-surface">2. Triage</span>
+<span class="font-body-sm text-[10px] text-amber-700">In Progress</span>
+</div>
+<!-- Step 3: Queued -->
+<div class="flex flex-col items-center">
+<div class="w-full h-1.5 bg-outline-variant/60 rounded mb-2"></div>
+<span class="font-label-sm text-[11px] font-semibold text-outline">3. Dispatch</span>
+<span class="font-body-sm text-[10px] text-outline">Pending</span>
+</div>
+<!-- Step 4: Resolution -->
+<div class="flex flex-col items-center">
+<div class="w-full h-1.5 bg-outline-variant/60 rounded mb-2"></div>
+<span class="font-label-sm text-[11px] font-semibold text-outline">4. Resolution</span>
+<span class="font-body-sm text-[10px] text-outline">Verification</span>
+</div>
+</div>
+</div>
+<!-- Call to Action Buttons -->
+<div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-outline-variant/50">
+<!-- Secondary Actions group -->
+<div class="flex items-center space-x-3 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-4 py-2.5 bg-white text-on-surface font-label-md text-label-md rounded border border-outline hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-secondary shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg text-on-surface-variant" data-icon="podcasts">podcasts</span>
+<span>View in Live Civic Stream</span>
+</a>
+</div>
+<!-- Primary Action -->
+<div class="flex items-center space-x-3 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-2.5 bg-[#0F3D6E] hover:bg-[#1E40AF] active:bg-[#1E3A8A] text-white font-label-md text-label-md font-semibold rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary shadow-sm" href="#">
+<span>Track This Issue in My Issues</span>
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Ghost link: File Another Issue -->
+<div class="mt-4 text-center">
+<a class="inline-flex items-center space-x-1.5 text-on-surface-variant hover:text-primary font-label-md text-label-md underline underline-offset-4 decoration-outline-variant transition-colors py-1" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
+<span>File Another Issue</span>
+</a>
+</div>
+</div>
+<!-- Municipal Accountability Note at Bottom -->
+<div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant flex items-start space-x-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5" data-icon="mark_email_read">mark_email_read</span>
+<p class="font-body-sm text-body-sm leading-relaxed">
+            A receipt confirmation has been dispatched to your registered email (<span class="font-medium text-primary">sarah.jenkins@civicnet.org</span>) and SMS. You will receive automated alerts when the field crew arrives at the coordinates.
+          </p>
+</div>
+</div>
+<!-- Institutional Civic Support Footer -->
+<footer class="w-full max-w-3xl mt-8 pt-6 pb-12 text-center text-xs text-on-surface-variant">
+<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-2 font-label-sm">
+<a class="hover:text-primary transition-colors" href="#">Municipal Service Charter</a>
+<span class="text-outline-variant">·</span>
+<a class="hover:text-primary transition-colors" href="#">Public Works SLA Standards</a>
+<span class="text-outline-variant">·</span>
+<a class="hover:text-primary transition-colors" href="#">Citizen Privacy Protocol</a>
+<span class="text-outline-variant">·</span>
+<a class="hover:text-primary transition-colors" href="#">Ward 4 Council Liaison</a>
+</div>
+<p class="font-body-sm text-outline">
+          Department of Public Works · City Administrative Operations · Emergency Escalations Hotline: (800) 555-CIVIC
+        </p>
+</footer>
+</main>
+</div>
+</body></html>
